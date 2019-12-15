@@ -1,0 +1,121 @@
+.wrapper {
+  height: 100%;
+  background-color: rgb(243, 240, 240);
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.header {
+  height: 128px;
+  background-color: rgb(243, 240, 240);
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    padding: 40px 0 0;
+  }
+}
+
+.main {
+  display: block;
+
+  &__container {
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+
+    &__head {
+      font-size: 22px;
+      padding: 32px;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: rgb(243, 240, 240) solid 1px;
+    }
+    &__inner {
+      padding: 24px 16px 40px;
+
+      &__content {
+        max-width: 343px;
+        margin: 0 auto;
+        position: relative;
+
+        .btn-default {
+          line-height: 48px;
+          font-size: 14px;
+          text-align: center;
+          cursor: pointer;
+          display: block;
+        }
+
+        .btn-mail {
+          color: white;
+          background-color: #ea352d;
+        }
+
+        .icon-mail {
+          position: absolute;
+          top: 13px;
+          left: 20px;
+          color: white;
+          font-size: 20px;
+        }
+
+        .btn-facebook {
+          margin: 16px 0 0;
+          color: white;
+          background-color: #385185;
+        }
+
+        .icon-facebook {
+          position: absolute;
+          top: 73px;
+          left: 20px;
+          color: white;
+          font-size: 30px;
+        }
+
+        .btn-google {
+          margin: 16px 0 0;
+          color: #333;
+          background-color: white;
+          border: #979797 solid 1px;
+        }
+        .icon-google {
+          position: absolute;
+          top: 145px;
+          left: 20px;
+          color: black;
+        }
+      }
+    }
+  }
+}
+.footer {
+  background-color: rgb(243, 240, 240);
+  width: 456px;
+  height: 240px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+
+    &__content {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 100px;
+      left: 0;
+    }
+  
+
+  .inline-block {
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 0 0 16px;
+    cursor: pointer;
+  }
+}
+
+
