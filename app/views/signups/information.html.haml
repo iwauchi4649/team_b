@@ -1,0 +1,58 @@
+- content_for(:css) do
+  = stylesheet_link_tag "information"
+
+.wrapper
+  .header
+    -# メルカリロゴ
+    .header__logo
+    = image_tag "fmarket_logo_red.svg", size: "189x49", class: "logo"
+    .header__signup-bar
+
+
+  .main
+    .main__container
+      .main__container__head 会員情報登録
+      .main__container__content
+        .main__container__content__form
+          .form-group
+            -# ニックネーム
+            %label(for="nickname")  ニックネーム
+            %span.form-required  必須
+            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", :value => ""}
+            %ul.error
+              %li#nickname-error.error__text
+              ニックネームを入力してください
+          .form-group
+            -# メアド
+            %label.form-group__label(for="email")  メールアドレス
+            %span.form-required  必須
+            %input.input-form{:name => "email", :placeholder => "PC･携帯どちらでも可", :type => "email", :value => ""}
+            %ul.error
+              %li#email-error.error__text
+              メールアドレスを入力してください
+          .form-group.form-password__revelation
+            -# pw
+            %label.form-group__label(for="password")  パスワード
+            %span.form-required  必須
+            %input.input-form{:name => "password",:placeholder => "7文字以上の半角英数字", :type =>"password", :value => ""}
+            %ul.error
+              %li#password-error.error__text
+              パスワードを入力してください
+            %p.form-info-text  *英字と数字の両方を含めてください
+            .chackbox-default
+              .chack-icon
+                =check_box_tag :check1
+                =label_tag :check1, "パスワードを表示する"
+          .form-group
+            %h3.chapter-head 本人確認
+            %p.chapter-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .form-group
+            %div
+              %label お名前（全角）
+              %span.form-required  必須
+              %input.input-form-half
+              %input.input-form-half
+          .form-group
+          .form-group
+
+  .footer
