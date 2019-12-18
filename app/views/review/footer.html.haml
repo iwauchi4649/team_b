@@ -19,8 +19,10 @@
         
   .footer__sections
     .footer__sections__contents
-      %p  会社概要（運営会社）
-      %ul 
+      %p  メルカリについて
+      %ul.messages
+        %li
+          会社概要（運営会社）
         %li 
           採用情報
         %li
@@ -31,12 +33,12 @@
           メルカリロゴ利用ガイドライン
       %ul.icon-download
         %li
-          = fa_icon 'twitter', class: 'icon-twitter'
+          = fa_icon 'twitter', class: 'icon-twitter', alt: '', height: '16', width: '21'
         %li
-          = fa_icon 'facebook', class: 'icon-facebook'
+          = fa_icon 'facebook', class: 'icon-facebook', alt: '', height: '16', width: '21'
     .footer__sections__contents
       %p  ヘルプ＆ガイドライン
-      %ul
+      %ul.messages
         %li
           メルカリガイド
         %li
@@ -55,26 +57,28 @@
           メルカリボックス
     .footer__sections__contents
       %p  プライバシーと利用規約
-      %ul
-        %li
-          プライバシーポリシー
-        %li
-          メルカリ利用規約
-        %li
-          あんしんスマホサポート制度に関する利用特約
-        %li
-          コンプライアンスポリシー
-        %li
-          個人データの安全管理に係る基本方針
-        %li
-          特定商取引に関する表記
-        %li
-          資金決済方に基づく表示
-        %li
-          法令遵守と犯罪防止抑制のために
+      .footer__sections__contents__text
+        %ul.messages#right
+          %li
+            プライバシーポリシー
+          %li
+            メルカリ利用規約
+          %li
+            あんしんスマホサポート制度に関する利用特約
+          %li
+            コンプライアンスポリシー
+        %ul.messages
+          %li
+            個人データの安全管理に係る基本方針
+          %li
+            特定商取引に関する表記
+          %li
+            資金決済方に基づく表示
+          %li
+            法令遵守と犯罪防止抑制のために
     .footer__sections__contents
       %p  国
-      %ul
+      %ul.messages
         %li
           日本
         %li
