@@ -1,0 +1,68 @@
+.wrapper
+  .header
+    = render 'top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head 支払い方法
+      .main__container__content
+        .main__container__content__form
+          .form-group
+            %label(for="payment")  カード番号
+            %span.form-required  必須
+            %input.input-form{:name => "payment", :placeholder => "半角数字のみ", :type => "text", :value => ""}
+            %ul.error
+              %li#card-error.error__text
+                必須項目です
+            %ul.card-list
+              = image_tag "cardlist.png", size: "300x45", class: "logo"
+
+          .form-group
+            %label(for="payment")  有効期限
+            %span.form-required  必須
+            .expiration
+              .expiration__select-wrap
+                %select.select-default{:name => "birthday_month"}
+                  %option{:value => "0"} --
+                  %option{:value => "1"} 01
+                  %option{:value => "2"} 02
+                  %option{:value => "3"} 03
+                  %option{:value => "4"} 04
+                  %option{:value => "1"} 05
+                  %option{:value => "2"} 06
+                  %option{:value => "3"} 07
+                  %option{:value => "4"} 08
+                  %option{:value => "1"} 09
+                  %option{:value => "2"} 10
+                  %option{:value => "3"} 11
+                  %option{:value => "4"} 12
+                %span 月
+              .expiration__select-wrap
+                %select.select-default{:name => "birthday_month"}
+                  %option{:value => "0"} --
+                  %option{:value => "1"} 19
+                  %option{:value => "2"} 20
+                  %option{:value => "3"} 21
+                  %option{:value => "4"} 22
+                  %option{:value => "1"} 23
+                  %option{:value => "2"} 24
+                  %option{:value => "3"} 25
+                  %option{:value => "4"} 26
+                  %option{:value => "1"} 27
+                  %option{:value => "2"} 28
+                  %option{:value => "3"} 29
+                %span 年
+          .form-group
+            %label(for="payment")  セキュリティーコード
+            %span.form-required  必須
+            %input.input-form{ :placeholder => "カード背面4桁もしくは3桁の番号", :type => "namber", :value => ""}
+            %ul.error
+              %li#security-code-error.error__text
+                必須項目です
+
+          %btn.btn-default
+            次へ進む
+
+  .footer
+    = render 'top-footer'

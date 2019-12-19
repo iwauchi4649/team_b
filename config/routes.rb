@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :review do
-    get 'hikaru'
+    get "hikaru"
+    get "top"
+    get "information"
+    get "crcard"
+    get "login"
   end
-  root 'review#hikaru'
+  root "review#hikaru"
 end
