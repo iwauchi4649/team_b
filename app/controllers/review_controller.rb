@@ -13,4 +13,8 @@ class ReviewController < ApplicationController
 
   def login
   end
+
+  def footer
+  end
+
 end
