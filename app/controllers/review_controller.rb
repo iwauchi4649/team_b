@@ -16,5 +16,4 @@ class ReviewController < ApplicationController
 
   def footer
   end
-
 end
