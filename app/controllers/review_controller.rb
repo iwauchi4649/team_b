@@ -16,4 +16,7 @@ class ReviewController < ApplicationController
 
   def footer
   end
+  
+  def hikaru2
+  end
 end
