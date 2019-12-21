@@ -7,9 +7,14 @@
   cursor: pointer;
 }
 
+.footerlogo {
+  position: absolute;
+  right: 130px;
+  top: 60px;
+}
+
 .header {
   height: 128px;
-  background-color: rgb(243, 240, 240);
 
   &__title {
     text-align: center;
@@ -93,7 +98,6 @@
   }
 }
 .footer {
-  background-color: rgb(243, 240, 240);
   width: 456px;
   height: 240px;
   margin: 0 auto;
@@ -107,15 +111,13 @@
       bottom: 0;
       top: 100px;
       left: 0;
+      li {
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 0 0 16px;
+        cursor: pointer;
+      }
     }
-  
-
-  .inline-block {
-    display: inline-block;
-    font-size: 12px;
-    margin: 0 0 0 16px;
-    cursor: pointer;
-  }
 }
 
 
