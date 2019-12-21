@@ -1,0 +1,180 @@
+.main
+
+  -# ヘッダー
+  .main__header
+    = render "review/main_header"
+
+  -# メイン
+  .main__contents
+    .main__contents__center
+      -# 3枚の画像のスライド
+      .main__contents__center__image-slyde
+        = image_tag "banner-6th-thanks.jpg"
+        -# = image_tag "banner-natsukashi.jpg"
+        -# = image_tag "banner-meisaku.jpg"
+      -# 人気カテゴリー
+      .main__contents__center__popular-category
+        %h1
+          人気のカテゴリー
+        .main__contents__center__popular-category__tag
+          %ul
+            %li<
+              %a レディース
+            %li<
+              %a メンズ
+            %li<
+              %a 家電・スマホ・カメラ
+            %li<
+              %a おもちゃ・ホビー・グッズ
+      -# (1.レディース,2.メンズ,3.家電・スマホ・カメラ,4.おもちゃ・ホビー・グッズ)新着アイテム
+      .main__contents__center__item
+        .main__contents__center__item__ladies
+          .main__contents__center__item__ladies__title
+            %h1
+              レディース新着アイテム
+            %a
+              もっと見る
+          -# 10個超えた時の処理をどうするか
+          .main__contents__center__item__ladies__image
+            %ul.main__contents__center__item__ladies__image__ul
+              %li.main__contents__center__item__ladies__image__ul__li
+                .main__contents__center__item__ladies__image__ul__li__top-image
+                  =image_tag "sample.jpg" , size:"188x188"
+                  %area-label="price"
+                .main__contents__center__item__ladies__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__item__mens
+          .main__contents__center__item__mens__title
+            %h1
+              メンズ新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__item__mens__image
+            %ul.main__contents__center__item__mens__image__ul
+              %li.main__contents__center__item__mens__image__ul__li
+                .main__contents__center__item__mens__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__item__mens__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__item__electricity
+          .main__contents__center__item__electricity__title
+            %h1
+              家電・スマホ・カメラ新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__item__electricity__image
+            %ul.main__contents__center__item__electricity__image__ul
+              %li.main__contents__center__item__electricity__image__ul__li
+                .main__contents__center__item__electricity__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__item__electricity__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__item__toy
+          .main__contents__center__item__toy__title
+            %h1
+              おもちゃ・ホビー・グッズ新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__item__toy__image
+            %ul.main__contents__center__item__toy__image__ul
+              %li.main__contents__center__item__toy__image__ul__li
+                .main__contents__center__item__toy__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__item__toy__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+      -# 人気のブランド
+      .main__contents__center__popular-brand
+        %h1
+          人気のブランド
+        .main__contents__center__popular-brand__tag
+          %ul
+            %li<
+              %a シャネル
+            %li<
+              %a ルイヴィトン
+            %li<
+              %a シュプリーム
+            %li<
+              %a ナイキ
+      -# (1.シャネル,2.ルイヴィトン,3.シュプリーム,4.ナイキ)新着アイテム
+      .main__contents__center__brand
+        .main__contents__center__brand__chanel
+          .main__contents__center__brand__chanel__title
+            %h1
+              シャネル新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__brand__chanel__image
+            %ul.main__contents__center__brand__chanel__image__ul
+              %li.main__contents__center__brand__chanel__image__ul__li
+                .main__contents__center__brand__chanel__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__brand__chanel__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__brand__vuitton
+          .main__contents__center__brand__vuitton__title
+            %h1
+              ルイヴィトン新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__brand__vuitton__image
+            %ul.main__contents__center__brand__vuitton__image__ul
+              %li.main__contents__center__brand__vuitton__image__ul__li
+                .main__contents__center__brand__vuitton__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__brand__vuitton__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__brand__supreme
+          .main__contents__center__brand__supreme__title
+            %h1
+              シュプリーム新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__brand__supreme__image
+            %ul.main__contents__center__brand__supreme__image__ul
+              %li.main__contents__center__brand__supreme__image__ul__li
+                .main__contents__center__brand__supreme__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__brand__supreme__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+        .main__contents__center__brand__nike
+          .main__contents__center__brand__nike__title
+            %h1
+              ナイキ新着アイテム
+            %a
+              もっと見る
+          .main__contents__center__brand__nike__image
+            %ul.main__contents__center__brand__nike__image__ul
+              %li.main__contents__center__brand__nike__image__ul__li
+                .main__contents__center__brand__nike__image__ul__li__top-image
+                  =image_tag "sample.jpg"
+                  %area-label="price"
+                .main__contents__center__brand__nike__image__ul__li__under-text
+                  %span
+                    サンプルピアス
+  
+  -# 出品ボタン
+  .main__exhibit-btn
+    .main__exhibit-btn__under
+      %a
+        出品
+      = link_to "#", class: "main__exhibit-btn__under__icon" do
+        = fa_icon "camera"
+  -# 脚注や用語の説明など(ここではアプリ版ダウンロード案内)
+  .main__aside
+
+  -# フッダーはrenderで引っ張る
+  .main__footer
