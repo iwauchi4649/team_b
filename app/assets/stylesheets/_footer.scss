@@ -1,120 +1,120 @@
-.footer{
-  min-height: 100px;
-  // background: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1….jpg") center center / cover;
-  // background-position: center center;
-  background: linear-gradient(-135deg, #E4A972, #9941D8);
-  &__baner{
-    height: 260px;
-    width: 845px;
-    margin: 0 auto;
-    display: flex;
-    
-    &__app{
+  .footer{
+    min-height: 100px;
+    // background: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1….jpg") center center / cover;
+    // background-position: center center;
+    background: linear-gradient(-135deg, #E4A972, #9941D8);
+    &__baner{
+      height: 260px;
+      width: 845px;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      -webkit-box-pack: center;
-      justify-content: center;
-      &__one{
-        h2{
-          color: rgb(255, 255, 255);
-          font-size: 24px;
-          font-weight: 600;
-          margin-bottom: 15px;
-        }
-        
-      }
-      &__two{
-        p{
-          color: rgb(255, 255, 255);
-          font-size: 35px;
-          margin-bottom: 20px;
-        }
-      }
-      &__three{
-        height: 68px;
-        width: 417px;
+      
+      &__app{
         display: flex;
-        &__mercari{
-
-        }
-        &__download{
-          margin-top: 16px;
-          margin-right: 8px;
-          ul{
-            li{
-              display: inline-block;
-              margin-left: 20px;
-            }
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        &__one{
+          h2{
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
           }
           
         }
-
-      }
-      }
-    &__logo{
-      display: inline-block;
-    }
-  }
-  &__sections{
-    background-color: rgb(34, 34, 34);
-    color: rgb(255, 255, 255);
-    font-size: 12px;
-    padding: 0px 20px 10px;
-    display: flex;
-    &__contents{
-      padding-right: 40px;
-      display: inline-block;
-      &__text{
-        display: flex;
-        .messages#right{
-          margin-right: 15px;
+        &__two{
+          p{
+            color: rgb(255, 255, 255);
+            font-size: 35px;
+            margin-bottom: 20px;
+          }
         }
+        &__three{
+          height: 68px;
+          width: 417px;
+          display: flex;
+          &__mercari{
+
+          }
+          &__download{
+            margin-top: 16px;
+            margin-right: 8px;
+            ul{
+              li{
+                display: inline-block;
+                margin-left: 20px;
+              }
+            }
+            
+          }
+
+        }
+        }
+      &__logo{
+        display: inline-block;
       }
-      p {
-        font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.4em;
-        margin-top: 18px;
-        padding: 0;
-      }
-      ul{
-        li{
+    }
+    &__sections{
+      background-color: rgb(34, 34, 34);
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      padding: 0px 20px 10px;
+      display: flex;
+      &__contents{
+        padding-right: 40px;
+        display: inline-block;
+        &__text{
+          display: flex;
+          .messages#right{
+            margin-right: 15px;
+          }
+        }
+        p {
+          font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+          font-size: 16px;
+          font-weight: 600;
           line-height: 1.4em;
-          margin: 16px 0px 0px;
+          margin-top: 18px;
+          padding: 0;
+        }
+        ul{
+          li{
+            line-height: 1.4em;
+            margin: 16px 0px 0px;
+            
+          }
           
         }
-        
-      }
-      ul.messages{
-        opacity: 0.7;
-      }
-      ul.icon-download{
-        display: flex;
-        font-size: 28px;
+        ul.messages{
+          opacity: 0.7;
+        }
+        ul.icon-download{
+          display: flex;
+          font-size: 28px;
 
+        }
+        .icon-facebook{
+          margin-left: 20px;
+          box-sizing: border-box;
+          max-width: 100%;
+          height: auto;
+          max-height: 100%;
+          width: 26px;
+          
+        }
       }
-      .icon-facebook{
-        margin-left: 20px;
-        box-sizing: border-box;
-        max-width: 100%;
-        height: auto;
-        max-height: 100%;
-        width: 26px;
+    }
+    &__logo{
+      background-color: rgb(34, 34, 34);
+      color: rgb(255, 255, 255);
+      padding-left: 20px;
+      &__mercari{
         
       }
+      &__right{
+        text-align: center;
+        font-size: 12px;
+      }
     }
   }
-  &__logo{
-    background-color: rgb(34, 34, 34);
-    color: rgb(255, 255, 255);
-    padding-left: 20px;
-    &__mercari{
-      
-    }
-    &__right{
-      text-align: center;
-      font-size: 12px;
-    }
-  }
-}
