@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     get "crcard"
     get "login"
     get "footer"
-    get 'hikaru'
-    get 'hikaru2'
+    get 'mypage'
+    get 'phone'
+    get 'done'
+    get 'address'
   end
-  root "review#hikaru"
+  root "review#mypage"
 end
