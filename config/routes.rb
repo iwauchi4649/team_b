@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "footer"
     get 'hikaru'
     get 'hikaru2'
+    get 'personal'
   end
   root "review#hikaru"
 end

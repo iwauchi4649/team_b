@@ -19,4 +19,7 @@ class ReviewController < ApplicationController
   
   def hikaru2
   end
+
+  def personal
+  end
 end
