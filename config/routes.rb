@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'done'
     get 'address'
     get 'main'
+    get 'personal'
   end
   root "review#mypage"
 end

@@ -28,4 +28,7 @@ class ReviewController < ApplicationController
 
   def main
   end
+
+  def personal
+  end
 end

@@ -12,7 +12,7 @@
             -# ニックネーム
             %label(for="nickname")  ニックネーム
             %span.form-required  必須
-            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", :value => ""}
+            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", value:  ""}
             %ul.error
               %li#nickname-error.error__text
                 ニックネームを入力してください
@@ -20,7 +20,7 @@
             -# メアド
             %label.form-group__label(for="email")  メールアドレス
             %span.form-required  必須
-            %input.input-form{:name => "email", :placeholder => "PC･携帯どちらでも可", :type => "email", :value => ""}
+            %input.input-form{:name => "email", :placeholder => "PC･携帯どちらでも可", :type => "email", value:  ""}
             %ul.error
               %li#email-error.error__text
                 メールアドレスを入力してください
@@ -28,7 +28,7 @@
             -# pw
             %label.form-group__label(for="password")  パスワード
             %span.form-required  必須
-            %input.input-form{:name => "password",:placeholder => "7文字以上の半角英数字", :type =>"password", :value => ""}
+            %input.input-form{:name => "password",:placeholder => "7文字以上の半角英数字", :type =>"password", value:  ""}
             %ul.error
               %li#password-error.error__text
                 パスワードを入力してください
@@ -46,8 +46,8 @@
               %label お名前（全角）
               %span.form-required  必須
             .form-group__name
-              %input.input-form-half{:name => "family_name_kanji",:placeholder => "例）目流狩", :type =>"text", :value => ""}
-              %input.input-form-half{:name => "frist_name_kanji",:placeholder => "例）太郎", :type =>"text", :value => ""}
+              %input.input-form-half{:name => "family_name_kanji",:placeholder => "例）目流狩", :type =>"text", value:  ""}
+              %input.input-form-half{:name => "frist_name_kanji",:placeholder => "例）太郎", :type =>"text", value:  ""}
             %ul.error
               %li#famiryname-error.error__text
                 姓を入力してください
@@ -59,8 +59,8 @@
               %label お名前カナ（全角）
               %span.form-required  必須
             .form-group__name
-              %input.input-form-half{:name => "family_name_kana",:placeholder => "例）メルカリ", :type =>"text", :value => ""}
-              %input.input-form-half{:name => "frist_name_kana",:placeholder => "例）タロウ", :type =>"text", :value => ""}
+              %input.input-form-half{:name => "family_name_kana",:placeholder => "例）メルカリ", :type =>"text", value:  ""}
+              %input.input-form-half{:name => "frist_name_kana",:placeholder => "例）タロウ", :type =>"text", value:  ""}
             %ul.error
               %li#famiryname-error.error__text
                 姓カナを入力してください
@@ -73,27 +73,27 @@
             .birthday-select
               .select-wrap
                 %select.select-default{:name => "birthday_month"}
-                  %option{:value => "0"} --
-                  %option{:value => "1"} 2019
-                  %option{:value => "2"} 2018
-                  %option{:value => "3"} 2017
-                  %option{:value => "4"} 2016
+                  %option{value:  "0"} --
+                  %option{value:  "1"} 2019
+                  %option{value:  "2"} 2018
+                  %option{value:  "3"} 2017
+                  %option{value:  "4"} 2016
               %span 年
               .select-wrap.select-wrap__month
                 %select.select-default{:name => "birthday_month"}
-                  %option{:value => "0"} --
-                  %option{:value => "1"} 2019
-                  %option{:value => "2"} 2018
-                  %option{:value => "3"} 2017
-                  %option{:value => "4"} 2016
+                  %option{value:  "0"} --
+                  %option{value:  "1"} 2019
+                  %option{value:  "2"} 2018
+                  %option{value:  "3"} 2017
+                  %option{value:  "4"} 2016
               %span 月
               .select-wrap.select-wrap__day
                 %select.select-default{:name => "birthday_month"}
-                  %option{:value => "0"} --
-                  %option{:value => "1"} 2019
-                  %option{:value => "2"} 2018
-                  %option{:value => "3"} 2017
-                  %option{:value => "4"} 2016
+                  %option{value:  "0"} --
+                  %option{value:  "1"} 2019
+                  %option{value:  "2"} 2018
+                  %option{value:  "3"} 2017
+                  %option{value:  "4"} 2016
               %span 日
               %ul.error
                 %li#famiryname-error.error__text
