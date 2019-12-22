@@ -1,0 +1,63 @@
+.wrapper
+  .header
+    = render 'top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head お届け先住所入力
+      .main__container__content
+        .main__container__content__form
+          .form-group
+            %label(for="post")  郵便番号
+            %span.form-required  必須
+            %input.input-form{:name => "post", :placeholder => "例)123-4567", :type => "text", :value => ""}
+            %ul.error
+              %li#post-error.error__text
+                郵便番号を入力してください
+          .form-group
+            %label 都道府県
+            %span.form-required  必須
+            .prefectures-select
+              .select-wrap
+                %select.select-default{:name => "prefectures"}
+                  %option{:value => "0"} --
+                  %option{:value => "1"} 東京都
+                  %option{:value => "2"} 大阪府
+                  %option{:value => "3"} 福岡県
+                  %option{:value => "4"} 京都府
+            %ul.error
+              %li#prefectures-error.error__text
+                都道府県を入力してください
+          .form-group
+            %label(for="city")  市区町村
+            %span.form-required  必須
+            %input.input-form{:name => "city", :placeholder => "例)横浜市緑区", :type => "text", :value => ""}
+            %ul.error
+              %li#city-error.error__text
+                市町村区を入力してください
+          .form-group
+            %label(for="address")  番地
+            %span.form-required  必須
+            %input.input-form{:name => "address", :placeholder => "例)青山1-1-1", :type => "text", :value => ""}
+            %ul.error
+              %li#address-error.error__text
+                番地を入力してください
+          .form-group
+            %label(for="building")  建物名
+            %span.form-free  任意
+            %input.input-form{:name => "building", :placeholder => "例)柳ビル103", :type => "text", :value => ""}
+            %ul.error
+              %li#building-error.error__text
+                建物名を入力してください
+          
+          .form-info-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります
+
+        .main__container__content__form.low
+          .low__content
+            %p.low__content__text「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+          %btn.btn-default
+            次へ進む
+  .top-footer
+    = render 'top-footer'
