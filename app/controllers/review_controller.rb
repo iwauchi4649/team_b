@@ -25,4 +25,7 @@ class ReviewController < ApplicationController
 
   def address
   end
+
+  def main
+  end
 end

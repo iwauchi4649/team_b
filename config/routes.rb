@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'phone'
     get 'done'
     get 'address'
+    get 'main'
   end
   root "review#mypage"
 end
