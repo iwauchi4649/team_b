@@ -1,0 +1,25 @@
+.wrapper
+  .header
+    = render 'top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head 電話番号の登録
+      .main__container__content
+        .main__container__content__form
+          .form-group
+            -# ニックネーム
+            %label(for="nickname")  携帯電話の番号
+            %input.input-form{:name => "nickname", :placeholder => "携帯電話の番号を入力", :type => "text", :value => ""}
+            %ul
+              %li
+                本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+          
+        .main__container__content__form.low
+          %btn.btn-default
+            SMSを送信する
+          .low__content
+            %p.low__content__text※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+  .top-footer
+    = render 'top-footer'
