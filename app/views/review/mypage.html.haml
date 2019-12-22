@@ -4,7 +4,7 @@
       = render 'side-bar'
       .container__content
         .container__content__user-icon
-          %a(href="#")
+          = link_to "#" do
             %figure
               = image_tag '/no.png', alt: '', height: '60px', width: '60px', class: 'figure'
             %h2 ユーザー名
@@ -36,7 +36,7 @@
                       %span
                         21時間前
               %li.container__tab__list__show
-                %a(href="#")
+                = link_to "#" do
                   一覧を見る
         .container__tab
           .container__tab__head
