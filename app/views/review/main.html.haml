@@ -168,13 +168,7 @@
   
   -# 出品ボタン
   .main__exhibit-btn
-    .main__exhibit-btn__under
-      %a
-        出品
-      = link_to "#", class: "main__exhibit-btn__under__icon" do
-        = fa_icon "camera"
-  -# 脚注や用語の説明など(ここではアプリ版ダウンロード案内)
-  .main__aside
+    = render "review/main_exbit-btn"
 
-  -# フッダーはrenderで引っ張る
-  .main__footer
+-# = render "review/footer"
+-# footer.html.hamlファイルにアンダースコア(_)を追記する必要あり
