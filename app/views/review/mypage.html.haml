@@ -24,9 +24,9 @@
             %li
               %h3 やることリスト
           .container__tab__list
-            %ul{id: "mypage_tab_notification", class: "active"}
+            %ul#mypage_tab_notification.active
               %li
-                %a{href: "#", class: "container__tab__list__link"}
+                = link_to "#", class: "container__tab__list__link" do
                   %figure
                     = image_tag '/icon.png', alt: '', class: 'container__tab__list__link__image'
                   .container__tab__list__link_body
