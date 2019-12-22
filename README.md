@@ -90,6 +90,3 @@
 
   ### Asociation
   - belongs_to :good
-
-  <!-- |カテゴリー|categories|integer |null: false, foreign_key: true|
-  |ブランド|brand|string|null: false, foreign_key: true| -->
