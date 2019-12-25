@@ -31,4 +31,7 @@ class ReviewController < ApplicationController
 
   def personal
   end
+
+  def exhibition
+  end
 end
