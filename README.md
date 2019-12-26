@@ -3,8 +3,7 @@
 
   |名前|Column|Type|Options|
   |---|------|----|-------|
-  |ID|id|integer|null: false,foreign_key: true|
-  |評価ID|evalution|integer|null: false|
+  |ID|id|integer|null: false|
   |メールアドレス|mail|string|null: false, unique: true| 
   |パスワード|password|string|null: false|
   |ニックネーム|nickname|string|null: false, unique: true|
@@ -104,7 +103,7 @@
   |いいね|like|integer |null: false|
 
   ### Asociation
-  belongs_to :users
+  belongs_to :user
 
   ### photos
   |名前|Column|Type|Options|
