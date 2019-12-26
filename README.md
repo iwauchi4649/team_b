@@ -100,13 +100,15 @@
   |名前|Column|Type|Options|
   |--|------|----|-------|
   |ID|id|integer |null: false|
+  |ユーザーID|user_id|integer |null: false,foreign_key: true|
   |いいね|like|integer |null: false|
 
   ### Asociation
-  has_many :users
+  belongs_to :users
 
   ### photos
   |名前|Column|Type|Options|
+  |--|------|----|-------|
   |ID|id|string|null: false|
   |グッズID|good_id|string|null: false,foreign_key: true|
   |画像|image|string|null: false|
