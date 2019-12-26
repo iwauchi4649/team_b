@@ -9,14 +9,10 @@
   |ニックネーム|nickname|string|null: false, unique: true|
   |名前(全角)|name_full|string|null: false|
   |名前（カナ）|name_cana|string|null: false|
-  |誕生日(年)|birth_year|date|null: false|
-  |誕生日(月)|birth_month|date|null: false|
-  |誕生日(日)|birth_day|date|null: false|
+  |誕生日(年)|birth_year|integer|null: false|
+  |誕生日(月)|birth_month|integer|null: false|
+  |誕生日(日)|birth_day|integer|null: false|
   |電話番号|call_number|integer |null: false, unique: true|
-  |郵便番号|potal_code|integer |null: false|
-  |都道府県|prefectures|string|null: false|
-  |市町村|municipalties|string|null: false|
-  |住所|adress|string|null: false|
   |ポイント|point|integer |null: false|
 
   ### Association
@@ -24,6 +20,20 @@
   - has_many :credit_cards
   - has_many :evalutions
   - has_many :comments
+  - has_many :adress
+
+  ### adress
+  |名前|Column|Type|Options|
+  |---|------|----|-------|
+  |ID|id|integer|null: false|
+  |ユーザーID|user_id|integer|null: false,foreign_key: true|
+  |番地|adress|string|null: false|
+  |郵便番号|potal_code|integer |null: false|
+  |都道府県|prefectures|string|null: false|
+  |市町村|municipalties|string|null: false|
+
+  ### Association
+  belongs_to :user
 
   ## credit_cards
   |名前|Column|Type|Options|
@@ -59,17 +69,18 @@
   - belongs_to :user
   - belongs_to :brand
   - belongs_to :categorie
-  - belongs_to :like
+  - has_many :likes,dependent: :destroy
   - has_many :photos,dependent: :destroy
   - has_many :conditions,dependent: :destroy
   - has_many :comments,dependent: :destroy
+  - has_many :evalutions,dependent: :destroy
 
 
   ### wrongテーブル
   名前|Column|Type|Options|
   |--|------|----|-------|
   |ID|id|integer |null: false|
-  |商品ID|good_id|integer |null: false,|
+  |商品ID|good_id|integer |null: false,foreign_key: true|
   |不適切|wrong|string|null: false|
 
   ### Asociation
@@ -80,11 +91,12 @@
   |--|------|----|-------|
   |ID|id|integer |null: false|
   |ユーザーID|id|integer |null: false,foreign_key: true|
+  |商品ID|good_id|integer |null: false,foreign_key: true|
   |コメント|comment|text|null: false|
 
   ### Asociation
   belongs_to :user
-
+  belongs_to :good
   ### conditionsテーブル
   |名前|Column|Type|Options|
   |--|------|----|-------|
@@ -100,10 +112,12 @@
   |--|------|----|-------|
   |ID|id|integer |null: false|
   |ユーザーID|user_id|integer |null: false,foreign_key: true|
+  |商品ID|good_id|integer |null: false,foreign_key: true|
   |いいね|like|integer |null: false|
 
   ### Asociation
   belongs_to :user
+  belongs_to :good
 
   ### photos
   |名前|Column|Type|Options|
@@ -120,10 +134,12 @@
   |--|------|----|-------|
   |ID|id|string|null: false|
   |ユーザーID|user_id|integer |null: false,foreign_key: true|
+  |商品ID|good_id|integer |null: false,foreign_key: true|
   |評価|evalution|string|null: false|
 
   ### Asociation
   belongs_to :user
+  belongs_to :good
 
   ### categoriesテーブル
   |名前|Column|Type|Options|
