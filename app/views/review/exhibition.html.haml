@@ -1,84 +1,15 @@
 .wrapper
   .header
     = render 'top-header'
-    .header__signup-bar
-
-  .main
-    .main__container
-      .main__container__head 商品の情報を入力
-      .main__container__content
-        .main__container__content__form
-          .form-group
-            %label(for="nickname")  出品画像
-            %span.form-required  必須
-            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", value:  ""}
-    .main__container
-      .main__container__content
-        .main__container__content__form
-          .form-group
-            %label(for="nickname")  商品名
-            %span.form-required  必須
-            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", value:  ""}
-          .form-group
-            %label(for="nickname")  商品の説明
-            %span.form-required  必須
-            %input.input-form{:name => "nickname", :placeholder => "例 メルカリ太郎", :type => "text", value:  ""}
-    .main__container
-      .main__container__content
-        .main__container__content__form
-          .form-group
-            %label カテゴリー
-            %span.form-required  必須
-            .select-wrap
-              %select.select-default{:name => "birthday_month"}
-                %option{value:  "0"} --
-                %option{value:  "1"} 2019
-          .form-group
-            %label 商品の状態
-            %span.form-required  必須
-            .select-wrap
-              %select.select-default{:name => "birthday_month"}
-                %option{value:  "0"} --
-                %option{value:  "1"} 2019
-    .main__container
-      .main__container__content
-        .main__container__content__form
-          .form-group
-            %label 配送料の負担
-            %span.form-required  必須
-            .select-wrap
-              %select.select-default{:name => "birthday_month"}
-                %option{value:  "0"} --
-                %option{value:  "1"} 2019
-          .form-group
-            %label 発送元の地域
-            %span.form-required  必須
-            .select-wrap
-              %select.select-default{:name => "birthday_month"}
-                %option{value:  "0"} --
-                %option{value:  "1"} 2019
-          .form-group
-            %label 発送までの日数
-            %span.form-required  必須
-            .select-wrap
-              %select.select-default{:name => "birthday_month"}
-                %option{value:  "0"} --
-                %option{value:  "1"} 2019
-      .main__container
-        .main__container__content
-          .main__container__content__form
-            .form-group
-              -# ニックネーム
-              %label(for="nickname")  価格
-              %span.form-required  必須
-              %input.input-form{:name => "nickname", :placeholder => "例)300", :type => "text", value:  ""}
-
-          .main__container__content__form.low
-            .low__content
-              %p.low__content__text 禁止されている出品、行為を必ずご確認ください。
-              またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
-              また、出品をもちまして加盟店規約に同意したことになります。
-            %btn.btn-default
-              出品する
-  .top-footer
-    = render 'top-footer'
+.exhibition 
+  .exhibition__container 
+    .exhibition__container__sell
+      %h2 商品の情報を入力
+      %form
+        .upload-box
+          .upload-box__head
+            %h3 出品画像
+            %span 必須
+          %p 最大10枚までアップロードできます
+          .upload-box__input
+            %input{:type => "file"}

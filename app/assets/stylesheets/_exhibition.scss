@@ -1,0 +1,57 @@
+body{
+  box-sizing: border-box;
+  background-color: #f3f0f0;
+  .exhibition{
+    display: block;
+    &__container{
+      width: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      &__sell{
+        h2{
+          padding: 32px 8px;
+          font-size: 22px;
+          font-weight: bold;
+          line-height: 1.5;
+          text-align: center;
+        }
+        form{
+          border-top: 1px solid #eee;
+          .upload-box{
+            width: 620px;
+            padding: 40px;
+            &__head{
+              h3{
+                font-size: 16px;
+                font-weight: bold;
+                display: inline;
+              }
+              span{
+                display: inline;
+                color: #fff;
+                background-color: #ea352d;
+                margin: 0 0 0 8px;
+                padding: 3px 5px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+                font-weight: bold;
+              }
+            }
+            p{
+              margin: 8px 0 0;
+              line-height: 1.5;
+              font-size: 12px;
+            }
+            &__input{
+              input{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
