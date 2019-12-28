@@ -1,7 +1,5 @@
 .footer{
   min-height: 100px;
-  // background: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1….jpg") center center / cover;
-  // background-position: center center;
   background: linear-gradient(-135deg, #E4A972, #9941D8);
   &__baner{
     height: 260px;
@@ -59,7 +57,7 @@
     background-color: rgb(34, 34, 34);
     color: rgb(255, 255, 255);
     font-size: 12px;
-    padding: 0px 20px 10px;
+    padding: 0px 180px 10px;
     display: flex;
     &__contents{
       padding-right: 40px;
@@ -108,13 +106,20 @@
   &__logo{
     background-color: rgb(34, 34, 34);
     color: rgb(255, 255, 255);
-    padding-left: 20px;
+    padding-left: 180px;
+    padding-top: 30px;
+    
+
     &__mercari{
+      display: inline-block;
       
     }
     &__right{
       text-align: center;
       font-size: 12px;
+      display: inline-block;
+      padding-left: 360px;
+      padding-bottom: 30px;
     }
   }
 }
