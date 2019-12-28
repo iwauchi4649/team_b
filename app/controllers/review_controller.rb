@@ -17,4 +17,12 @@ class ReviewController < ApplicationController
   def footer
   end
 
+  def address
+  end
+
+  def done
+  end
+
+  def phone
+  end
 end

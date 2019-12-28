@@ -72,7 +72,7 @@
             %span.form-required  必須
             .birthday-select
               .select-wrap
-                %select.select-default{:name => "birthday_month"}
+                %select.select-default-half{:name => "birthday_month"}
                   %option{:value => "0"} --
                   %option{:value => "1"} 2019
                   %option{:value => "2"} 2018
@@ -80,7 +80,7 @@
                   %option{:value => "4"} 2016
               %span 年
               .select-wrap.select-wrap__month
-                %select.select-default{:name => "birthday_month"}
+                %select.select-default-half{:name => "birthday_month"}
                   %option{:value => "0"} --
                   %option{:value => "1"} 2019
                   %option{:value => "2"} 2018
@@ -88,7 +88,7 @@
                   %option{:value => "4"} 2016
               %span 月
               .select-wrap.select-wrap__day
-                %select.select-default{:name => "birthday_month"}
+                %select.select-default-half{:name => "birthday_month"}
                   %option{:value => "0"} --
                   %option{:value => "1"} 2019
                   %option{:value => "2"} 2018
@@ -98,7 +98,6 @@
               %ul.error
                 %li#famiryname-error.error__text
                   生年月日を入力してください
-            .clearflex
           .form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります
 
@@ -107,5 +106,5 @@
             %p.low__content__text「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
           %btn.btn-default
             次へ進む
-  .footer
+  .top-footer
     = render 'top-footer'
