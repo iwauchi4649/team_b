@@ -6,7 +6,7 @@
   |ID|id|integer|null: false|
   |メールアドレス|mail|string|null: false, unique: true| 
   |パスワード|password|string|null: false|
-  |ニックネーム|nickname|string|null: false, unique: true|
+  |ニックネーム|nickname|string|null: false|
   |名前(全角)|name_full|string|null: false|
   |名前（カナ）|name_cana|string|null: false|
   |誕生日(年)|birth_year|integer|null: false|
@@ -20,14 +20,14 @@
   - has_many :credit_cards
   - has_many :evalutions
   - has_many :comments
-  - has_many :adress
+  - has_many :addresses
 
-  ### adress
+  ### addresses
   |名前|Column|Type|Options|
   |---|------|----|-------|
   |ID|id|integer|null: false|
   |ユーザーID|user_id|integer|null: false,foreign_key: true|
-  |番地|adress|string|null: false|
+  |番地|address|string|null: false|
   |郵便番号|potal_code|integer |null: false|
   |都道府県|prefectures|string|null: false|
   |市町村|municipalties|string|null: false|
@@ -77,7 +77,7 @@
 
 
   ### wrongテーブル
-  名前|Column|Type|Options|
+  |名前|Column|Type|Options|
   |--|------|----|-------|
   |ID|id|integer |null: false|
   |商品ID|good_id|integer |null: false,foreign_key: true|
