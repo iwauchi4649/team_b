@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     get "crcard"
     get "login"
     get "footer"
+    get "address"
+    get "done"
+    get "phone"
     get 'mypage'
-    get 'phone'
-    get 'done'
-    get 'address'
     get 'main'
     get 'personal'
   end
