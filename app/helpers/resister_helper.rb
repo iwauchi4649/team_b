@@ -1,0 +1,2 @@
+module ResisterHelper
+end
