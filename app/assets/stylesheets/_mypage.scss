@@ -1,8 +1,8 @@
-body{
+.mypage{
   box-sizing: border-box;
   background-color: #f5f5f5;
   .container{
-    margin: 40px auto 0;
+    margin: 40px auto;
     display: flex;
     justify-content: center;
     &__side{
@@ -65,6 +65,7 @@ body{
             margin: 8px 0 0;
             font-size: 14px;
             color: #333;
+            font-weight: bold;
           }
           .container__content__user-icon__number{
             margin: 0;
@@ -102,7 +103,6 @@ body{
         text-align: center;
         border: 0;
         background: #eee;
-        font-size: 14px;
         .active{
           background-color: #fff;
           border-top: 2px solid #ea352d;
@@ -116,9 +116,10 @@ body{
         li{
           width: 50%;
           height: 80px;
-          line-height: 40px;
+          line-height: 80px;
           h3{
             display: block;
+            font-weight: bold;
           }
         }
       }
@@ -159,7 +160,7 @@ body{
                 }
               }
               .container__tab__list__link_body{
-                margin: 0 40px 0 68px;
+                margin: 0 40px 0 28px;
                 font-size: 14px;
                 time{
                   font-size: 12px;
@@ -186,7 +187,6 @@ body{
     }
   }
 }
-
 a{
   text-decoration: none;
 }

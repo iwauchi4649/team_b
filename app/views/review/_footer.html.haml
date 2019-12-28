@@ -1,0 +1,91 @@
+.footer
+  .footer__baner
+    .footer__baner__app
+      .footer__baner__app__one
+        %h2 スマホでかんたんフリマアプリ
+      .footer__baner__app__two
+        %p 今すぐ無料でダウンロード
+      .footer__baner__app__three
+        .footer__baner__app__three__mercari
+          = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?82960919', width: '68'
+        .footer__baner__app__three__download
+          %ul
+            %li
+              = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?82960919',height: '40', width: '133'
+            %li
+              = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?82960919', alt: '', height: '40', width: '133', class: ''
+    .footer__baner__logo
+      = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?82960919', alt: '', height: '260', width: '262', class: ''
+        
+  .footer__sections
+    .footer__sections__contents
+      %p  メルカリについて
+      %ul.messages
+        %li
+          会社概要（運営会社）
+        %li 
+          採用情報
+        %li
+          プレスリリース
+        %li
+          公式ブログ
+        %li
+          メルカリロゴ利用ガイドライン
+      %ul.icon-download
+        %li
+          = fa_icon 'twitter', class: 'icon-twitter', alt: '', height: '16', width: '21'
+        %li
+          = fa_icon 'facebook-square', class: 'icon-facebook', alt: '', height: '16', width: '21'
+    .footer__sections__contents
+      %p  ヘルプ＆ガイドライン
+      %ul.messages
+        %li
+          メルカリガイド
+        %li
+          らくらくメルカリ便
+        %li
+          ゆうゆうメール便
+        %li
+          大型メール便
+        %li
+          車体取引ガイド
+        %li
+          メルカリあんしん・あんぜん宣言！
+        %li
+          偽ブランド品撲滅への取り組み
+        %li
+          メルカリボックス
+    .footer__sections__contents
+      %p  プライバシーと利用規約
+      .footer__sections__contents__text
+        %ul.messages#right
+          %li
+            プライバシーポリシー
+          %li
+            メルカリ利用規約
+          %li
+            あんしんスマホサポート制度に関する利用特約
+          %li
+            コンプライアンスポリシー
+        %ul.messages
+          %li
+            個人データの安全管理に係る基本方針
+          %li
+            特定商取引に関する表記
+          %li
+            資金決済方に基づく表示
+          %li
+            法令遵守と犯罪防止抑制のために
+    .footer__sections__contents
+      %p  国
+      %ul.messages
+        %li
+          日本
+        %li
+          United States
+  .footer__logo
+    .footer__logo__mercari
+      = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg', alt: '', height: '31', width: '124', class: ''
+    .footer__logo__right
+      %p
+        ©︎ Mercari,Inc.

@@ -1,5 +1,5 @@
 class ReviewController < ApplicationController
-  def hikaru
+  def mypage
   end
 
   def top
@@ -19,10 +19,16 @@ class ReviewController < ApplicationController
 
   def address
   end
+    
+  def phone
+  end
 
   def done
   end
 
-  def phone
+  def main
+  end
+
+  def personal
   end
 end
