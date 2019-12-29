@@ -34,6 +34,7 @@
       &__btn {
         padding: 24px 0;
         border-bottom: 1px solid #eee;
+
         
         &__text {
           max-width: 320px;
@@ -45,16 +46,19 @@
             line-height: 48px;
             font-size: 14px;
             border: 1px solid transparent;
-            transition: all ease-out .3s;
             cursor: pointer;
             text-align: center;
             background: #ea352d;
             border: 1px solid #ea352d;
             color: #fff;
+            transition: all ease-out .3s;
 
             a {
               color: white;
             }
+          }
+          .btn-default:hover {
+            opacity: 0.8;
           }
         }
       }
