@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'mypage'
     get 'main'
     get 'personal'
+    get "crcard_add"
   end
   root "review#mypage"
 end

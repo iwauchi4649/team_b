@@ -19,7 +19,7 @@ class ReviewController < ApplicationController
 
   def address
   end
-    
+
   def phone
   end
 
@@ -30,5 +30,8 @@ class ReviewController < ApplicationController
   end
 
   def personal
+  end
+
+  def crcard_add
   end
 end
