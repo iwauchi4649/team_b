@@ -34,4 +34,7 @@ class ReviewController < ApplicationController
 
   def crcard_add
   end
+
+  def confirm_purchase
+  end
 end

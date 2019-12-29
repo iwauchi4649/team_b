@@ -1,0 +1,92 @@
+.purchase-main {
+  display: block;
+
+  &__container {
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+
+    &__head {
+      font-size: 22px;
+      padding: 32px;
+      text-align: center;
+      font-weight: bold;
+
+      h2 {
+        font-weight: bold;
+      }
+    }
+    &__content {
+      padding: 24px 16px 24px;
+      border-top: 1px solid #f5f5f5;
+      display: flex;
+      position: relative;
+
+      &__image {
+        margin-left: 150px;
+      }
+
+      &__text {
+        padding-left: 20px;
+
+        li:first-of-type {
+          margin-bottom: 5px;
+        }
+        li:last-of-type {
+          font-weight: bold;
+        }
+      }
+      .price {
+        margin-left: 150px;
+      }
+      &__price {
+        font-weight: bold;
+      }
+
+      &__money {
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      &__point {
+        color: gray;
+      }
+
+      &__info {
+        margin-left: 150px;
+
+        li:first-of-type {
+          font-weight: bold;
+          padding-bottom: 2px;
+        }
+      }
+      .change {
+        margin-left: 200px;
+        color: #0099e8;
+        position: absolute;
+        left: 250px;
+      }
+      .btn-default {
+        display: block;
+        width: 345px;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-align: center;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        transition: all ease-out .3s;
+        margin: 0 auto;
+
+        a {
+          color: white;
+        }
+      }
+      .btn-default:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
