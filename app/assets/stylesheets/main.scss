@@ -12,6 +12,8 @@
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     position: relative;
     z-index: 3;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    font-size: 14px;
 
     &__center {
       width: 1020px;
@@ -1323,6 +1325,7 @@
     position: fixed;
     text-align: center;
     z-index: 2;
+    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
 
     &__under{
       box-sizing:border-box;
