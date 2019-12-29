@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'address'
     get 'main'
     get 'personal'
+    get 'profile'
   end
   root "review#mypage"
 end
