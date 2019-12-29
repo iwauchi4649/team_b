@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'personal'
     get "crcard_add"
     get 'profile'
+    get 'logout'
   end
   root "review#mypage"
 end
