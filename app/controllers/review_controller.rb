@@ -37,4 +37,10 @@ class ReviewController < ApplicationController
 
   def confirm_purchase
   end
+  
+  def profile
+  end
+
+  def logout
+  end
 end
