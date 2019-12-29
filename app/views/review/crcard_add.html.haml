@@ -1,0 +1,27 @@
+.main__header
+  = render 'main_header'
+
+%body.mypage
+.container
+  = render 'side-bar'
+
+  .container__crcontent
+    .container__crcontent__head
+      %h2 支払い方法
+
+    .container__crcontent__inner
+      .container__crcontent__inner__text
+        %h3 クレジットカード一覧
+
+      .container__crcontent__inner__btn
+        .container__crcontent__inner__btn__text
+          .btn-default
+            = fa_icon "credit-card", class: 'icon-card'
+            =link_to "クレジットカードを追加する", "#"
+
+      .container__crcontent__inner__right
+        =link_to "支払い方法について", "#"
+
+  .main__exhibit-btn
+    = render "review/main_exbit-btn"
+= render 'footer'

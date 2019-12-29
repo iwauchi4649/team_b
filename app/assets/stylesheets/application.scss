@@ -1,3 +1,6 @@
+@import "./reset";
+@import "./mixin/color";
+@import "./mixin/background-color";
 @import "./mypage";
 @import "./top.scss";
 @import "./information.scss";
@@ -5,6 +8,8 @@
 @import "./crcard.scss";
 @import "./login.scss";
 @import "./footer";
-@import "./reset";
 @import "./main";
+@import "./personal";
+@import "./crcard_add";
 @import "./profile";
+
