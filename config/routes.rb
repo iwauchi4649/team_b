@@ -8,10 +8,11 @@ Rails.application.routes.draw do
     get "address"
     get "done"
     get "phone"
-    get 'mypage'
-    get 'main'
-    get 'personal'
+    get "mypage"
+    get "main"
+    get "personal"
     get "crcard_add"
+    get "confirm_purchase"
     get 'profile'
     get 'logout'
   end
