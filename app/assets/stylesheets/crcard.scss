@@ -19,11 +19,11 @@
 
 .main {
   display: block;
-  .main__container {
+    &__container {
 
-    .main__container__content {
+      &__content {
 
-      .main__container__content__form {
+        &__form {
 
         .form-group {
           .expiration {

@@ -79,4 +79,5 @@ gem "font-awesome-rails"
 gem 'devise'
 gem "jquery-rails"
 gem 'carrierwave'
+gem 'ancestry'
 
