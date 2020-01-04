@@ -1,0 +1,29 @@
+= form_for(@user) do |f|
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control'
+  .form-group
+    = f.label :nickname, 'ニックネーム'
+    = f.email_field :nickname, class: 'form-control'
+  .form-group
+    = f.label :name_full, '名前(全角)'
+    = f.password_field :name_full, class: 'form-control'
+  .form-group
+    = f.label :name_cana, '名前（カナ）'
+    = f.password_field :name_cana, class: 'form-control'
+  .form-group
+    = f.label :birth_year, '誕生日（年）'
+    = f.password_field :birth_year, class: 'form-control'
+  .form-group
+    = f.label :birth_month, '誕生日（月）'
+    = f.password_field :birth_month, class: 'form-control'
+  .form-group
+    = f.label :birth_day, '誕生日（日）'
+    = f.password_field :birth_month, class: 'form-control'
+  .form-group
+    = f.label :call_number, '電話番号'
+    = f.password_field :call_number, class: 'form-control'
+  .form-group
+    = f.label :point, 'ポイント'
+    = f.password_field :point, class: 'form-control'
+

@@ -1,3 +1,5 @@
+require 'faker'
+
 FactoryBot.define do
  # 仮想ユーザーの設定
   factory :credit_card do

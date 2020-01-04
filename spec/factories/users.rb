@@ -2,9 +2,9 @@ FactoryBot.define do
 # 仮想ユーザーの設定
   factory :user do
       sequence(:email) { |n| "hoge#{n}@example.com"}
-      nickname           {"user"}
-      name_full          {"メルカリ太郎"}
-      name_cana          {"メルカリタロウ"}
+      nickname           {Faker::Name.last_name}
+      name_full          {Faker::Name.name}
+      name_cana          {Faker::Name.name}
       birth_year         {"2000"}
       birth_month        {"12"}
       birth_day          {"12"}

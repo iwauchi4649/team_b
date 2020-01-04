@@ -13,38 +13,38 @@
 ActiveRecord::Schema.define(version: 2020_01_04_070410) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id_id"
-    t.string "address", null: false
-    t.integer "potal_code", null: false
-    t.string "prefectures", null: false
-    t.string "municipalties", null: false
+    t.bigint "user_id"
+    t.string "address", limit: 40, null: false
+    t.bigint "potal_code", null: false
+    t.string "prefectures", limit: 40, null: false
+    t.string "municipalties", limit: 40, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_addresses_on_user_id_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "card_number", null: false
-    t.integer "expiration_date_month", null: false
-    t.integer "expiration_date_year", null: false
-    t.integer "security_code", null: false
+    t.bigint "user_id", null: false
+    t.bigint "card_number", null: false
+    t.date "expiration_date_month", null: false
+    t.date "expiration_date_year", null: false
+    t.bigint "security_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "nickname", default: "", null: false
-    t.string "name_full", default: "", null: false
-    t.string "name_cana", default: "", null: false
-    t.integer "birth_year", default: 0, null: false
-    t.integer "birth_month", default: 0, null: false
-    t.integer "birth_day", default: 0, null: false
-    t.integer "call_number", default: 0, null: false
-    t.integer "point", default: 0, null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", limit: 40, default: "", null: false
+    t.string "nickname", limit: 40, default: "", null: false
+    t.string "name_full", limit: 40, default: "", null: false
+    t.string "name_cana", limit: 40, default: "", null: false
+    t.integer "birth_year", limit: 1, default: 0, null: false
+    t.integer "birth_month", limit: 1, default: 0, null: false
+    t.integer "birth_day", limit: 1, default: 0, null: false
+    t.bigint "call_number", default: 0, null: false
+    t.bigint "point", default: 0, null: false
+    t.string "encrypted_password", limit: 40, default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -54,5 +54,4 @@ ActiveRecord::Schema.define(version: 2020_01_04_070410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "credit_cards", "users"
 end

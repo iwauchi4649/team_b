@@ -2,10 +2,11 @@ require 'rails_helper'
 
   describe CreditCard do
     describe "#create" do
-      # it "全て入力する" do
-      #   creditcard = build(:credit_card)
-      #   expect(creditcard).to be_valid
-      # end
+      it "全て入力する" do
+        user = build(:user)
+        creditcard = build(:credit_card)
+        expect(creditcard).to be_valid
+      end
       # it "user_idが空では登録できない" do
       #   creditcard= build(:credit_card, user_id: nil)
       #   expect(creditcard.errors[:user]).to be_present
