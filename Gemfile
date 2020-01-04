@@ -82,6 +82,7 @@ gem 'carrierwave'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 group :development do
   gem 'web-console', '>= 3.3.0'
