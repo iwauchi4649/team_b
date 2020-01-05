@@ -12,11 +12,11 @@
         display: block;
         height: 44px;
         line-height: 32px;
-        color: #333;
+        @include black;
 
         &__icon{
           font-size: 18px;
-          color: #ccc;
+          @include icon-gray;
           vertical-align: middle;
         }
 
@@ -36,11 +36,11 @@
         display: block;
         height: 44px;
         line-height: 32px;
-        color: #333;
+        @include black;
 
         &__icon{
           font-size: 18px;
-          color: #ccc;
+          @include icon-gray;
           vertical-align: middle;
         }
 
@@ -60,11 +60,11 @@
         display: block;
         height: 44px;
         line-height: 32px;
-        color: #333;
+        @include black;
 
         &__icon{
           font-size: 18px;
-          color: #ccc;
+          @include icon-gray;
           vertical-align: middle;
         }
 
@@ -84,7 +84,7 @@
         display: block;
         height: 44px;
         line-height: 32px;
-        color: #333;
+        @include black;
 
         &__image{
           overflow: hidden;
