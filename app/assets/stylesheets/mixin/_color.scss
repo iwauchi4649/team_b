@@ -1,3 +1,11 @@
 @mixin color() {
     color: rgb(255, 255, 255);
-  }
+}
+
+@mixin black() {
+    color: #333;
+}
+
+@mixin icon-gray() {
+  color: #ccc;
+}
