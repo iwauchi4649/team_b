@@ -1,4 +1,4 @@
 mercari:
   email: "user@example.com"
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.now - 100 %>

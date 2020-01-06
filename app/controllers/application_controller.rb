@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:nickname,:name_full,:name_cana,:birth_year,:birth_month,:birth_day,:call_number,:encrypted_password]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-  end
+    # strong parametersを設定し、user_idを許可
+    devise_parameter_sanitizer.for(:sign_up){|u|
+        u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :encrypted_password)
+    }
+    devise_parameter_sanitizer.for(:sign_in){|u|
+      u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :encrypted_password)
+    }
+end
 end
