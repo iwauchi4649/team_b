@@ -32,7 +32,13 @@ class ReviewController < ApplicationController
   def personal
   end
 
+  def exhibition
+  end
+  
   def crcard_add
+  end
+
+  def confirm_purchase
   end
   
   def profile
