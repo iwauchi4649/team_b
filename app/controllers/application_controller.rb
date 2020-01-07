@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # strong parametersを設定し、user_idを許可
     devise_parameter_sanitizer.for(:sign_up){|u|
-        u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :encrypted_password)
+        u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :password)
     }
     devise_parameter_sanitizer.for(:sign_in){|u|
-      u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :encrypted_password)
+      u.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :password)
     }
 end
 end
