@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "personal"
     get "crcard_add"
     get "confirm_purchase"
+    get 'exhibition'
     get "profile"
     get "logout"
     get "product_details"
