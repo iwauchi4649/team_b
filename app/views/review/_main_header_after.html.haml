@@ -1,0 +1,44 @@
+.main__header__center
+  -# upはメルカリロゴと検索窓
+  .main__header__center__up
+    .main__header__center__up__mercari-logo
+      %a
+        =image_tag "main_logo.svg" , size:"134x36"
+    .main__header__center__up__form
+      %input{type:"search" , placeholder: "何かお探しですか？" , class:"main__header__center__up__form__text"}
+      %button.main__header__center__up__form__search-btn{title: "検索", type: "submit"}
+        = link_to "#", class: "main__header__center__up__form__search-btn__icon" do
+          = fa_icon "search"
+  -# downはカテゴリー、いいね一覧、お知らせ、やることリスト、マイページ
+  .main__header__center__down
+    .main__header__center__down__left
+      .main__header__center__down__left__category-search
+        = fa_icon "bars" ,class: "main__header__center__down__left__category-search__icon"
+        %a
+          カテゴリーから探す
+      .main__header__center__down__left__bland-search 
+        = fa_icon "tag" ,class: "main__header__center__down__left__bland-search__icon"
+        %a
+          ブランドから探す
+    .main__header__center__down__right
+      %ul.main__header__center__down__right__ul
+        %li.main__header__center__down__right__ul__liked-item
+          = link_to "#", class: "main__header__center__down__right__ul__liked-item__link" do
+            = fa_icon "heart" , class: "main__header__center__down__right__ul__liked-item__link__icon"
+            %span
+              いいね！一覧
+        %li.main__header__center__down__right__ul__notice
+          = link_to "#", class: "main__header__center__down__right__ul__notice__link" do
+            = fa_icon "bell" , class: "main__header__center__down__right__ul__notice__link__icon"
+            %span
+              お知らせ
+        %li.main__header__center__down__right__ul__todo
+          = link_to "#", class: "main__header__center__down__right__ul__todo__link" do
+            = fa_icon "check" , class: "main__header__center__down__right__ul__todo__link__icon"
+            %span
+              やることリスト
+        %li.main__header__center__down__right__ul__mypage
+          = link_to "#", class: "main__header__center__down__right__ul__mypage__link" do
+            =image_tag "sample.jpg" , size:"32x32" , class: "main__header__center__down__right__ul__mypage__link__image"
+            %span
+              マイページ
