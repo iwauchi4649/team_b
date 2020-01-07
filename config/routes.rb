@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "confirm_purchase"
     get 'profile'
     get 'logout'
+    get 'exhibition'
   end
   root "review#mypage"
 end
