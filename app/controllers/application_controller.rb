@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
     def configure_permitted_parameters
-      # sign_inのときに、usernameも許可する
+      # sign_upのときに、以下も許可する
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name_full])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name_cana])

@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :evalutions
   has_many :comments
   has_many :addresses
-  validates_uniqueness_of :encrypted_password
+  validates_uniqueness_of :password
 end

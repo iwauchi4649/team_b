@@ -35,9 +35,9 @@
     %br/
     = f.text_field :call_number, autofocus: true, autocomplete: "call_number"
   .field
-    = f.label :encrypted_password
+    = f.label :password
     %br/
-    = f.password_field :encrypted_password, autofocus: true, autocomplete: "encrypted_password"
+    = f.password_field :password, autofocus: true, autocomplete: "password"
 
   .actions
     = f.submit "Sign up"
