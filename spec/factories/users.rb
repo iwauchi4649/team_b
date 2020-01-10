@@ -10,7 +10,7 @@ FactoryBot.define do
       birth_day          {"12"}
       call_number        {"09012345678"}
       point              {"0"}
-      password           {"hogehoge"}
+      encrypted_password           {"hogehoge"}
   end
 
 end

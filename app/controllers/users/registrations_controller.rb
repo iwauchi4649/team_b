@@ -5,10 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
+  def create
+    @user = User.new
+    @user = User.new(configure_sign_up_params)
+    if @user.save
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
-
   # POST /resource
   # def create
   #   super
@@ -41,10 +47,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit({ roles: [] },  :nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :password) }
+ 
+  def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+    user_params.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :password)
   end
-
+  devise_parameter_sanitizer.permit(:sign_in) do |user_params|
+    user_params.permit(:nickname, :name_full, :name_cana, :birth_year, :birth_month, :birth_day, :call_number, :password)
+  end
+end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
