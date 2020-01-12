@@ -12,6 +12,7 @@ FactoryBot.define do
       point              {"0"}
       password           {"hogehoge"}
       password_confirmation {"hogehoge"}
+
   end
 
 end
