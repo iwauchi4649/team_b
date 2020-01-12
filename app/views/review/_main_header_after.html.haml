@@ -38,7 +38,7 @@
             %span
               やることリスト
         %li.main__header__center__down__right__ul__mypage
-          = link_to "/review/:review_id/mypage", class: "main__header__center__down__right__ul__mypage__link" do
+          = link_to review_mypage_path, class: "main__header__center__down__right__ul__mypage__link" do
             =image_tag "sample.jpg" , size:"32x32" , class: "main__header__center__down__right__ul__mypage__link__image"
             %span
               マイページ
