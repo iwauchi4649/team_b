@@ -2,7 +2,7 @@
   -# upはメルカリロゴと検索窓
   .main__header__center__up
     .main__header__center__up__mercari-logo
-      = link_to review_main_path do
+      = "/review/:review_id/main" do
         =image_tag "main_logo.svg" , size:"134x36"
     .main__header__center__up__form
       %input{type:"search" , placeholder: "何かお探しですか？" , class:"main__header__center__up__form__text"}
