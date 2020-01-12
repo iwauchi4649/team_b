@@ -50,20 +50,18 @@ ActiveRecord::Schema.define(version: 2020_01_06_052345) do
 
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "category_id"
-    t.bigint "brand_id"
-    t.bigint "condition_id"
-    t.string "name", null: false
-    t.text "discription", null: false
+    t.string "brand"
+    t.string "name"
+    t.string "condition"
+    t.text "discription"
     t.string "size"
-    t.string "delivery_type", null: false
-    t.string "prefecture", null: false
-    t.string "day", null: false
-    t.integer "fee", null: false
+    t.string "delivery_type"
+    t.string "prefecture"
+    t.string "day"
+    t.integer "fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_goods_on_brand_id"
     t.index ["category_id"], name: "index_goods_on_category_id"
-    t.index ["condition_id"], name: "index_goods_on_condition_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,9 +90,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_052345) do
 
   add_foreign_key "comments", "goods"
   add_foreign_key "evalutions", "goods"
-  add_foreign_key "goods", "brands"
   add_foreign_key "goods", "categories"
-  add_foreign_key "goods", "conditions"
   add_foreign_key "likes", "goods"
   add_foreign_key "photos", "goods"
   add_foreign_key "wrongs", "goods"
