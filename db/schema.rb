@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_01_06_052345) do
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "address", limit: 40, null: false
+    t.bigint "potal_code", null: false
+    t.string "prefectures", limit: 40, null: false
+    t.string "municipalties", limit: 40, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -38,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_01_06_052345) do
     t.string "condition", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "card_number", null: false
+    t.date "expiration_date_month", null: false
+    t.date "expiration_date_year", null: false
+    t.bigint "security_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
   create_table "evalutions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,6 +100,26 @@ ActiveRecord::Schema.define(version: 2020_01_06_052345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["good_id"], name: "index_photos_on_good_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", limit: 40, default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "nickname", limit: 40, default: "", null: false
+    t.string "name_full", limit: 40, default: "", null: false
+    t.string "name_cana", limit: 40, default: "", null: false
+    t.bigint "birth_year", default: 0, null: false
+    t.integer "birth_month", limit: 1, default: 0, null: false
+    t.integer "birth_day", limit: 1, default: 0, null: false
+    t.string "call_number", limit: 40, default: "", null: false
+    t.bigint "point", default: 0, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "wrongs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
