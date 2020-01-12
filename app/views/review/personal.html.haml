@@ -1,6 +1,6 @@
-
-%body
+.main__header
   = render 'main_header'
+%body.mypage
   .container
     = render 'side-bar'
     .container__personal-inf
@@ -115,5 +115,6 @@
         .container__personal-inf__box__sections__form-group
           .container__personal-inf__box__sections__form-group__text-right
             %a{ href:"", id: "#" }本人情報の登録について
+  = render 'footer'
 
 
