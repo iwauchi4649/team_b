@@ -45,7 +45,7 @@
             .upload-box__input
               .upload-box__input__select-category
                 .parents
-                  = f.select :category, @category_parent_array, {}, {class: 'category', id: 'parent_category'}
+                  = f.select :category, @category_parent_array, {prompt: "--"}, {class: 'category', id: 'parent_category'}
                 .children
                 .grandchildren
             .append-box
