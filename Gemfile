@@ -80,4 +80,4 @@ gem 'devise'
 gem "jquery-rails"
 gem 'carrierwave'
 gem 'ancestry'
-
+gem 'fog-aws'
