@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :goods do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :review do
     get "top"
     get "information"
@@ -13,7 +19,6 @@ Rails.application.routes.draw do
     get "personal"
     get "crcard_add"
     get "confirm_purchase"
-    get 'exhibition'
     get "profile"
     get "logout"
     get "product_details"
