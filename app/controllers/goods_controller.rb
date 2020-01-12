@@ -16,7 +16,7 @@ class GoodsController < ApplicationController
   def create
     @good = Good.new(good_params)
     if @good.save!
-      redirect_to review_main_path
+      redirect_to "/review/:review_id"
     else
       render :new
     end
