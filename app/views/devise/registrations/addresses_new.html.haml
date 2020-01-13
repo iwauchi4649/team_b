@@ -1,0 +1,23 @@
+%h2 Sign up
+= form_with model: @address,url: registration_path(resource_name),local: true do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :address
+    %br/
+    = = f.text_field :address, autofocus: true, autocomplete: "address"
+  .field
+    = f.label :potal_code
+    %br/
+    = f.text_field :potal_code, autofocus: true, autocomplete: "potal_code"
+  .field
+    = f.label :prefectures
+    %br/
+    = f.text_field :prefectures, autofocus: true, autocomplete: "prefectures"
+  .field
+    = f.label :municipalties
+    %br/
+    = f.text_field :municipalties, autofocus: true, autocomplete: "municipalties"
+
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
