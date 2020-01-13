@@ -31,7 +31,7 @@ class ReviewController < ApplicationController
 
   def personal
   end
-  
+
   def crcard_add
   end
 
@@ -47,4 +47,6 @@ class ReviewController < ApplicationController
   def product_details
   end
 
+  def crcard_add_input
+  end
 end
