@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '9b37d6374be4533207a4d4fa19808213c164e7377d82e19ef489f1a1694001d177cbd8a45f465a285b4f4b212246ee779372feafefc88a5a6c96e0b4f66cc32b'
+  # config.secret_key = '950dc1e82ddf9ce3769cfec16a1c81eec86b91f03f1f3c0666a3775acde137d4aa950f739996964859a2a2e73abb762e01515109aa8460e3406182dd66fff3a3'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -53,13 +53,11 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [:email]
-  config.case_insensitive_keys = [:encrypted_password]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
   config.strip_whitespace_keys = [:email]
-  config.strip_whitespace_keys = [:encrypted_password]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -116,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'e2d3551fe8e7d54aaf1cc1652c15b2a32001a8f926ec992ddcb71099c15f4d3c993028c3a71e4b4dbb931a9e4eb39c48e83449e2817bead1ac1cca56de497e77'
+  # config.pepper = '5a72b2ecdb6f1761140d359b9bdb94b266d61b79a481e02ec145136680f467f414af672c891225d7027435e294e8bb887171bffb8daae2514987990400026e50'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -234,7 +232,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  config.scoped_views = true
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

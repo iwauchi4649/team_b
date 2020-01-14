@@ -8,12 +8,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new
     @user = User.new(configure_sign_up_params)
-    if @user.save
+    if @user.save!
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to "/review/:review_id/main"
     else
-      render 'new'
-    end
+      render :new
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def after_sign_up_path_for(resource)
+    "/users/addresses"
+  end
+
+  def addresses
   end
   # POST /resource
   # def create
