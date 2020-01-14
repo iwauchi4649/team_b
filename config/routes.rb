@@ -5,8 +5,20 @@ Rails.application.routes.draw do
     registration: 'users/registration'
   }
   devise_scope :user do
-    get 'second_page' => 'users/registrations#second_page'
+    get 'users/addresses' => 'users/registrations#addresses'
   end
+
+  def devise_scope(scope)
+    constraint = lambda do |request|
+      request.env["devise.mapping"] = Devise.mappings[scope]
+      true
+    end
+
+    constraints(constraint) do
+      yield
+    end
+  end
+  
   get 'users/index'
   get 'users/show'
   get 'users/new'
