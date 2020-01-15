@@ -59,10 +59,10 @@ describe User do
       expect(user.errors[:point]).not_to include("can't be blank")
     end
     
-    it "encrypted_passwordが空では登録できない" do
-      user = build(:user, encrypted_password: nil)
+    it "passwordが空では登録できない" do
+      user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:encrypted_password]).not_to include("空ではできない")
+      expect(user.errors[:password]).not_to include("空ではできない")
     end
   end
 end

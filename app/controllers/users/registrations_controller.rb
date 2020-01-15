@@ -6,14 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def create
-    super
-    # @user = User.new
-    # @user = User.new(configure_sign_up_params)
-    # if @user.save!
-    #   flash[:success] = "Welcome to the Sample App!"
-    #   redirect_to "/review/:review_id/main"
-    # else
-    #   render :new
+    @user = User.new
+    @user = User.new(configure_sign_up_params)
+    if @user.save!
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to "/review/:review_id/main"
+    else
+      render :new
   end
 
   def new
@@ -78,7 +77,7 @@ end
   # end
 
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    users_addresses_path
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   super(resource)
+  # end
 end

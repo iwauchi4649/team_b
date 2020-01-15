@@ -6,13 +6,10 @@ class ApplicationController < ActionController::Base
   # deviceのコントローラーのときに、下記のメソッドを呼ぶ
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_up_path_for(resource)
-    '/review/:review_id/main'
-  end
   protected
 
     def configure_permitted_parameters
-      # sign_inのときに、usernameも許可する
+      # sign_upのときに、以下も許可する
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name_full])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name_cana])
