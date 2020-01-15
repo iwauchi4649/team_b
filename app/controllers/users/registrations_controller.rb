@@ -6,22 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def create
-    @user = User.new
-    @user = User.new(configure_sign_up_params)
-    if @user.save!
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to "/review/:review_id/main"
-    else
-      render :new
+   super
   end
 
   def new
-    @user = User.new
   end
 
-  def after_sign_up_path_for(resource)
-    "/users/addresses"
-  end
+  
 
   def addresses
   end
@@ -41,9 +32,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
