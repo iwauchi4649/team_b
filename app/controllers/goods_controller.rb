@@ -23,10 +23,12 @@ class GoodsController < ApplicationController
   end
 
   def index
+    @goods = Good.all
   end
 
   private
+
   def good_params
-    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee,photos_attributes: [:id, :image])
+    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:id, :image])
   end
 end

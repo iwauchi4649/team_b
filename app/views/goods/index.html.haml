@@ -53,7 +53,10 @@
             %ul.main__contents__center__item__mens__image__ul
               %li.main__contents__center__item__mens__image__ul__li
                 .main__contents__center__item__mens__image__ul__li__top-image
-                  =image_tag "sample.jpg"
+                /これをspan???/
+                - @goods.each do |good|
+                  = simple_format(good.name)
+                  / =image_tag "sample.jpg" /
                   %area-label="price"
                 .main__contents__center__item__mens__image__ul__li__under-text
                   %span
