@@ -4,15 +4,14 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registration: 'users/registration'
   }
-  devise_scope :user do
-    get 'second_page' => 'users/registrations#second_page'
+  resources :signup do
+    collection do
+    get "step1"
+    get "step2"
+    get "step3"
+    get "step4"
+    end
   end
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
   resources :review do
     get "top"
     get "information"
