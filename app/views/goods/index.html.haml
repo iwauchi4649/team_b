@@ -38,11 +38,15 @@
             %ul.main__contents__center__item__ladies__image__ul
               %li.main__contents__center__item__ladies__image__ul__li
                 .main__contents__center__item__ladies__image__ul__li__top-image
-                  =image_tag "sample.jpg" , size:"188x188"
-                  %area-label="price"
+                  - @photos.each do |photo|
+                    = (photo.image)
+                  %area-label
+                  - @goods.each do |good|
+                    = (good.fee)
                 .main__contents__center__item__ladies__image__ul__li__under-text
                   %span
-                    サンプルピアス
+                  - @goods.each do |good|
+                    = simple_format(good.name)
         .main__contents__center__item__mens
           .main__contents__center__item__mens__title
             %h1
@@ -53,10 +57,7 @@
             %ul.main__contents__center__item__mens__image__ul
               %li.main__contents__center__item__mens__image__ul__li
                 .main__contents__center__item__mens__image__ul__li__top-image
-                /これをspan???/
-                - @goods.each do |good|
-                  = simple_format(good.name)
-                  / =image_tag "sample.jpg" /
+                  =image_tag "sample.jpg"
                   %area-label="price"
                 .main__contents__center__item__mens__image__ul__li__under-text
                   %span

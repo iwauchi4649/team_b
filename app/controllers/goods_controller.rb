@@ -23,7 +23,8 @@ class GoodsController < ApplicationController
   end
 
   def index
-    @goods = Good.all
+    @goods = Good.select("name", "fee")
+    @photos = Photo.select("image")
   end
 
   private
