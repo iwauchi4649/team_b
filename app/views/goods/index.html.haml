@@ -38,15 +38,12 @@
             %ul.main__contents__center__item__ladies__image__ul
               %li.main__contents__center__item__ladies__image__ul__li
                 .main__contents__center__item__ladies__image__ul__li__top-image
-                  - @photos.each do |photo|
-                    = (photo.image)
+                  =image_tag @photos.image.url
                   %area-label
-                    - @goods.each do |good|
-                      = (good.fee)
+                    = @goods.fee
                 .main__contents__center__item__ladies__image__ul__li__under-text
                   %span
-                  - @goods.each do |good|
-                    = simple_format(good.name)
+                  = simple_format(@goods.name)
         .main__contents__center__item__mens
           .main__contents__center__item__mens__title
             %h1
