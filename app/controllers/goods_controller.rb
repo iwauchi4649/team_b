@@ -16,15 +16,15 @@ class GoodsController < ApplicationController
   def create
     @good = Good.new(good_params)
     if @good.save!
-      redirect_to "/review/:review_id/main"
+      redirect_to "/goods"
     else
       render :new
     end
   end
 
   def index
-    @goods = Good.select("name", "fee")
-    @photos = Photo.select("image")
+    @goods = Good.all
+    @photos = Photo.all
   end
 
   private
