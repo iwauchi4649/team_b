@@ -25,16 +25,16 @@ class GoodsController < ApplicationController
   def index
     # 写真とgood_idを紐付ける
     @lady_category_id = Category.find_by(name: "レディース").indirect_ids
-    @lady_goods = Good.where(category_id: @lady_category_id)
+    @lady_goods = Good.where(category_id: @lady_category_id).order('id DESC')
     @lady_goods_id = Good.where(category_id: @lady_category_id).pluck(:id)
     # nameとfee用
     @lady_photo = Photo.where(good_id: @lady_goods_id).limit(10).order('id DESC')
 
     # 写真とgood_idを紐付ける
-    @good_chanel_id = Good.find_by(name:“シャネル“).pluck(:id)
+    @good_chanel_id = Good.where(brand:"シャネル").pluck(:id)
     @photo_chanel_id = Photo.where(good_id: @good_chanel_id).limit(10).order('id DESC')
     # nameとfee用
-    @chanel = Good.find_by(name:“シャネル“)
+    @chanel = Good.where(brand:"シャネル").order('id DESC')
   end
 
   private
