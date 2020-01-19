@@ -114,13 +114,15 @@
               もっと見る
           .main__contents__center__brand__chanel__image
             %ul.main__contents__center__brand__chanel__image__ul
+            - @chanel.zip(@photo_chanel_id) do |photo, good|
               %li.main__contents__center__brand__chanel__image__ul__li
                 .main__contents__center__brand__chanel__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
+                  =image_tag "#{photo.image.url}"
+                  %area-label
+                    = good.fee
                 .main__contents__center__brand__chanel__image__ul__li__under-text
                   %span
-                    サンプルピアス
+                    = good.name
         .main__contents__center__brand__vuitton
           .main__contents__center__brand__vuitton__title
             %h1
