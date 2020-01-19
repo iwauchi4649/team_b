@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get "step2"
     get "step3"
     get "step4"
+  resources :goods do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
   resources :review do
@@ -18,12 +22,17 @@ Rails.application.routes.draw do
     get "crcard"
     get "login"
     get "footer"
-    get 'mypage'
-    get 'phone'
-    get 'done'
-    get 'address'
-    get 'main'
-    get 'personal'
+    get "address"
+    get "done"
+    get "phone"
+    get "mypage"
+    get "main"
+    get "personal"
+    get "crcard_add"
+    get "confirm_purchase"
+    get "profile"
+    get "logout"
+    get "product_details"
   end
-  root "review#mypage"
+  root "review#main"
 end

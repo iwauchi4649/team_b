@@ -89,3 +89,5 @@ group :development do
 end
 gem 'phony_rails' 
 gem 'payjp'
+gem 'ancestry'
+gem 'fog-aws'

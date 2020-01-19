@@ -11,7 +11,7 @@
           .form-group
             %label(for="post")  郵便番号
             %span.form-required  必須
-            %input.input-form{:name => "post", :placeholder => "例)123-4567", :type => "text", :value => ""}
+            %input.address-input-form{name: "post", placeholder: "例)123-4567", type: "text", value: ""}
             %ul.error
               %li#post-error.error__text
                 郵便番号を入力してください
@@ -20,33 +20,33 @@
             %span.form-required  必須
             .prefectures-select
               .select-wrap
-                %select.select-default{:name => "prefectures"}
-                  %option{:value => "0"} --
-                  %option{:value => "1"} 東京都
-                  %option{:value => "2"} 大阪府
-                  %option{:value => "3"} 福岡県
-                  %option{:value => "4"} 京都府
+                %select.select-default{name: "prefectures"}
+                  %option{value: "0"} --
+                  %option{value: "1"} 東京都
+                  %option{value: "2"} 大阪府
+                  %option{value: "3"} 福岡県
+                  %option{value: "4"} 京都府
             %ul.error
               %li#prefectures-error.error__text
                 都道府県を入力してください
           .form-group
             %label(for="city")  市区町村
             %span.form-required  必須
-            %input.input-form{:name => "city", :placeholder => "例)横浜市緑区", :type => "text", :value => ""}
+            %input.address-input-form{name: "city", placeholder: "例)横浜市緑区", type: "text", value: ""}
             %ul.error
               %li#city-error.error__text
                 市町村区を入力してください
           .form-group
             %label(for="address")  番地
             %span.form-required  必須
-            %input.input-form{:name => "address", :placeholder => "例)青山1-1-1", :type => "text", :value => ""}
+            %input.address-input-form{name: "address", placeholder: "例)青山1-1-1", type: "text", value: ""}
             %ul.error
               %li#address-error.error__text
                 番地を入力してください
           .form-group
             %label(for="building")  建物名
             %span.form-free  任意
-            %input.input-form{:name => "building", :placeholder => "例)柳ビル103", :type => "text", :value => ""}
+            %input.address-input-form{name: "building", placeholder: "例）柳ビル103", type: "text", value: ""}
             %ul.error
               %li#building-error.error__text
                 建物名を入力してください

@@ -17,13 +17,13 @@ class ReviewController < ApplicationController
   def footer
   end
 
+  def address
+  end
+
   def phone
   end
 
   def done
-  end
-
-  def address
   end
 
   def main
@@ -31,4 +31,20 @@ class ReviewController < ApplicationController
 
   def personal
   end
+  
+  def crcard_add
+  end
+
+  def confirm_purchase
+  end
+
+  def profile
+  end
+
+  def logout
+  end
+
+  def product_details
+  end
+
 end

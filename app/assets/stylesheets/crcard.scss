@@ -19,11 +19,23 @@
 
 .main {
   display: block;
-  .main__container {
+    &__container {
 
-    .main__container__content {
+      &__content {
 
-      .main__container__content__form {
+        &__form {
+
+          .cr-input-form {
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+            width: 90%;
+            margin: 8px 0 0;
+            border-color: #ccc;
+          }
 
         .form-group {
           .expiration {

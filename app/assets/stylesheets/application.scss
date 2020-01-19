@@ -1,3 +1,6 @@
+@import "./reset";
+@import "./mixin/color";
+@import "./mixin/background-color";
 @import "./mypage";
 @import "./top.scss";
 @import "./information.scss";
@@ -5,5 +8,15 @@
 @import "./crcard.scss";
 @import "./login.scss";
 @import "./footer";
-@import "./reset";
 @import "./main";
+@import "./personal";
+@import "./crcard_add";
+@import "./confirm_purchase";
+@import "./profile";
+@import "./logout";
+@import "./exhibition";
+@import "./product_details";
+@import "./pan_bar";
+@import "./main_header_after";
+@import "./phone.scss";
+@import "./address.scss";

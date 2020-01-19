@@ -1,0 +1,27 @@
+.main__header
+  = render "review/main_header_after"
+
+.pan
+  = render "review/pan_bar"
+
+%body.mypage
+  .container
+    = render 'review/side-bar'
+    .container__content
+      .container__content__section
+        .container__content__section__head
+          プロフィール
+        .container__content__section__center
+          .container__content__section__center__icon
+            .container__content__section__center__icon__figure
+              =image_tag "sample.jpg" , size:"60x60"
+            %input.container__content__section__center__icon__text{ placeholder: 'ピコ太郎', type: 'text', value: '' }
+          .container__content__section__center__body
+            %textarea.container__content__section__center__body__textarea{ placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪', value: '' }
+            %button.container__content__section__center__body__btn{ title: "" , type: "submit" , }
+              変更する
+
+.main__exhibit-btn
+  = render "review/main_exbit-btn"
+
+= render "review/footer"
