@@ -23,8 +23,8 @@ class GoodsController < ApplicationController
   end
 
   def index
-    @goods = Good.find(1)
-    @photos = Photo.find(1)
+    @goods = Good.find(2)
+    @photos = Photo.find(3)
   end
 
   private
