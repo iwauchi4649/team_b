@@ -38,7 +38,12 @@
             %ul.main__contents__center__item__ladies__image__ul
               %li.main__contents__center__item__ladies__image__ul__li
                 .main__contents__center__item__ladies__image__ul__li__top-image
-                  =image_tag @photos.image.url
+                  - @lady_goods.zip(@lady_photo) do |photo,goods|
+                    = photo.image.url
+                    = goods.name
+                    = goods.fee
+
+                  -# =image_tag @photos.image.url
                   %area-label
                     = @goods.fee
                 .main__contents__center__item__ladies__image__ul__li__under-text

@@ -23,8 +23,11 @@ class GoodsController < ApplicationController
   end
 
   def index
-    @goods = Good.find(2)
-    @photos = Photo.find(3)
+    @lady_goods_id = Good.where(category_id: 4..10).select(:id)
+    @lady_photos = Photo.where(goods_id: 3).first(1)
+    @lady_goods = Good.where(category_id: 4..10)
+    # @goods = Good.find(1)
+    # @photos = Photo.find(1)
   end
 
   private
