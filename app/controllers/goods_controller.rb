@@ -23,11 +23,10 @@ class GoodsController < ApplicationController
   end
 
   def index
-    @lady_goods_id = Good.where(category_id: 4..10).select(:id)
-    @lady_photos = Photo.where(goods_id: 3).first(1)
-    @lady_goods = Good.where(category_id: 4..10)
-    # @goods = Good.find(1)
-    # @photos = Photo.find(1)
+    @lady_category_id = Category.find_by(name: "レディース").indirect_ids
+    @lady_goods = Good.where(category_id: @lady_category_id)
+    @lady_goods_id = Good.where(category_id: @lady_category_id).pluck(:id)
+    @lady_photo = Photo.where(good_id: @lady_goods_id)
   end
 
   private
