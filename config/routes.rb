@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registration: 'users/registration'
-  }
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions',
+  #   passwords: 'users/passwords',
+  #   registration: 'users/registration'
+  # }
   resources :signup do
     collection do
-    get "step1"
-    get "step2"
-    get "step3"
-    get "step4"
+    get "information"
+    get "phone"
+    get "address"
+    end
+  end
   resources :goods do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -18,13 +19,10 @@ Rails.application.routes.draw do
   end
   resources :review do
     get "top"
-    get "information"
     get "crcard"
     get "login"
     get "footer"
-    get "address"
     get "done"
-    get "phone"
     get "mypage"
     get "main"
     get "personal"
