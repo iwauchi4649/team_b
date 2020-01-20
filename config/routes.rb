@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "information"
     get "phone"
     get "address"
+    get "crcard"
     end
   end
   resources :goods do
