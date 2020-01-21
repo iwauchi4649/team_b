@@ -55,8 +55,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_115315) do
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "card_number", null: false
-    t.date "expiration_date_month", null: false
-    t.date "expiration_date_year", null: false
+    t.date "expiration_date", null: false
     t.bigint "security_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

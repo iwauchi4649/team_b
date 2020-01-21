@@ -4,9 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
   has_many :goods
-  has_many :credit_cards
+  has_one :credit_card
   has_many :evalutions
   has_many :comments
-  has_many :addresses
+  has_one :address
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :credit_card
   validates_uniqueness_of :encrypted_password
 end
