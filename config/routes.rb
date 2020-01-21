@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "phone"
     get "address"
     get "crcard"
-    get "done"
+    post "done"
     end
   end
   resources :goods do
