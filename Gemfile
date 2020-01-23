@@ -78,6 +78,7 @@ gem 'erb2haml'
 gem "font-awesome-rails"
 gem 'devise'
 gem "jquery-rails"
+gem 'jquery-turbolinks'
 gem 'carrierwave'
 gem 'ancestry'
 gem 'fog-aws'
