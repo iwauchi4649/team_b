@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_115315) do
+ActiveRecord::Schema.define(version: 2020_01_25_122148) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "address", limit: 40, null: false
+    t.string "banchi", limit: 40, null: false
     t.bigint "potal_code", null: false
     t.string "prefectures", limit: 40, null: false
     t.string "municipalties", limit: 40, null: false
+    t.string "buildname", limit: 40, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "build_name"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -94,6 +94,14 @@ ActiveRecord::Schema.define(version: 2020_01_20_115315) do
     t.index ["good_id"], name: "index_likes_on_good_id"
   end
 
+  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "number", default: "0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phones_on_user_id"
+  end
+
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "good_id"
     t.string "image", null: false
@@ -104,14 +112,13 @@ ActiveRecord::Schema.define(version: 2020_01_20_115315) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", limit: 40, default: "", null: false
-    t.string "encrypted_password", limit: 40, default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "nickname", limit: 40, default: "", null: false
     t.string "firstname_full", limit: 40, default: "", null: false
     t.string "lastname_full", limit: 40, default: "", null: false
     t.string "firstname_cana", limit: 40, default: "", null: false
     t.string "lastname_cana", limit: 40, default: "", null: false
     t.datetime "birth_day", null: false
-    t.bigint "call_number", default: 0, null: false
     t.bigint "point", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

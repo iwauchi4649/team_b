@@ -8,11 +8,11 @@
       .main__container__head 電話番号の登録
       .main__container__content
         .main__container__content__form
-          = form_with model: @user,url: address_signup_index_path, method: :get,local: true do |f|
+          = form_with model: @phone, local: true do |f|
             .form-group
               -# ニックネーム
               = f.label :'携帯電話の番号'
-              = f.text_field :call_number, autofocus: true, placeholder: "携帯電話の番号を入力", class: 'phone-input-form'
+              = f.text_field :number, autofocus: true, placeholder: "携帯電話の番号を入力", class: 'phone-input-form'
               %ul
                 %li
                   本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。

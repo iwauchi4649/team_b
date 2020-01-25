@@ -5,14 +5,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       ## Database authenticatable
       t.string :email, null:false, unique: true, default: "", limit: 40
-      t.string :encrypted_password, null: false, default: "", limit: 40
+      t.string :encrypted_password, null: false, default: ""
       t.string :nickname, null:false, default: "", limit: 40
       t.string :firstname_full, null:false, default: "", limit: 40
       t.string :lastname_full, null:false, default: "", limit: 40
       t.string :firstname_cana, null:false, default: "", limit: 40
       t.string :lastname_cana, null:false, default: "", limit: 40
       t.datetime :birth_day, null:false, default: 0
-      t.integer :call_number, null:false, unique: true, default: 0, limit: 5
       t.integer :point, null:false, default: 0, limit: 5
       
 

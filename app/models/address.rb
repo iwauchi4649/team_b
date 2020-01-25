@@ -1,9 +1,7 @@
 class Address < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  belongs_to :user
+
+  belongs_to :user, optional: true
+  validates :potal_code, :banchi ,:buildname,:prefectures, :municipalties,presence: true
   enum prefectures:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -16,9 +14,9 @@ class Address < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
      沖縄県:47
    }
-   POTAL_CODE_VALID = /\A\d{3}-\d{4}\z/i
-   validates :potal_code,              presence: true, length: {maximum: 20}, format: { with: POTAL_CODE_VALID }
-   validates :prefectures,             presence: true, length: {maximum: 20}
-   validates :municipalties,           presence: true, length: {maximum: 20}
-   validates :address,                 presence: true, length: {maximum: 20}
+  #  POTAL_CODE_VALID = /\A\d{3}-\d{4}\z/i
+  #  validates :potal_code,               length: {maximum: 20}, format: { with: POTAL_CODE_VALID }
+  #  validates :prefectures,              length: {maximum: 20}
+  #  validates :municipalties,            length: {maximum: 20}
+  #  validates :address,                  length: {maximum: 20}
 end

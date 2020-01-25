@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions',
-  #   passwords: 'users/passwords',
-  #   registration: 'users/registration'
-  # }
-  resources :signup do
-    collection do
-    get "information"
-    get "phone"
-    get "address"
-    get "crcard"
-    post "done"
-    end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+    get 'phones', to: 'users/registrations#new_phone'
+    post 'phones', to: 'users/registrations#create_phone'
+    get 'credit_cards', to:'users/registrations#new_credit_card'
+    post 'credit_cards', to:'users/registrations#create_credit_card'
   end
+
   resources :goods do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
   resources :review do
     get "top"
     get "crcard"
@@ -34,5 +33,5 @@ Rails.application.routes.draw do
     get "logout"
     get "product_details"
   end
-  root "review#main"
+  root "review#index"
 end
