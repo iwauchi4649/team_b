@@ -1,7 +1,7 @@
 .main
   -# ヘッダー
   .main__header
-    = render "review/main_header_after"
+    = render "./review/main_header_after"
 
   -# メイン
   .main__contents
@@ -33,15 +33,18 @@
               レディース新着アイテム
             %a
               もっと見る
+          -# 10個超えた時の処理をどうするか
           .main__contents__center__item__ladies__image
             %ul.main__contents__center__item__ladies__image__ul
-              %li.main__contents__center__item__ladies__image__ul__li
-                .main__contents__center__item__ladies__image__ul__li__top-image
-                  =image_tag "sample.jpg" , size:"188x188"
-                  %area-label="price"
-                .main__contents__center__item__ladies__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @lady_photo.zip(@lady_goods) do |photo, good|
+                %li.main__contents__center__item__ladies__image__ul__li
+                  .main__contents__center__item__ladies__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__item__ladies__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__item__mens
           .main__contents__center__item__mens__title
             %h1
@@ -50,13 +53,15 @@
               もっと見る
           .main__contents__center__item__mens__image
             %ul.main__contents__center__item__mens__image__ul
-              %li.main__contents__center__item__mens__image__ul__li
-                .main__contents__center__item__mens__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__item__mens__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @man_photo.zip(@man_goods) do |photo, good|
+                %li.main__contents__center__item__mens__image__ul__li
+                  .main__contents__center__item__mens__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__item__mens__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__item__electricity
           .main__contents__center__item__electricity__title
             %h1
@@ -65,13 +70,15 @@
               もっと見る
           .main__contents__center__item__electricity__image
             %ul.main__contents__center__item__electricity__image__ul
-              %li.main__contents__center__item__electricity__image__ul__li
-                .main__contents__center__item__electricity__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__item__electricity__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @electricity_photo.zip(@electricity_goods) do |photo, good|
+                %li.main__contents__center__item__electricity__image__ul__li
+                  .main__contents__center__item__electricity__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__item__electricity__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__item__toy
           .main__contents__center__item__toy__title
             %h1
@@ -80,13 +87,15 @@
               もっと見る
           .main__contents__center__item__toy__image
             %ul.main__contents__center__item__toy__image__ul
-              %li.main__contents__center__item__toy__image__ul__li
-                .main__contents__center__item__toy__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__item__toy__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @hobby_photo.zip(@hobby_goods) do |photo, good|
+                %li.main__contents__center__item__toy__image__ul__li
+                  .main__contents__center__item__toy__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__item__toy__image__ul__li__under-text
+                    %span
+                      = good.name
       -# 人気のブランド
       .main__contents__center__popular-brand
         %h1
@@ -111,13 +120,15 @@
               もっと見る
           .main__contents__center__brand__chanel__image
             %ul.main__contents__center__brand__chanel__image__ul
-              %li.main__contents__center__brand__chanel__image__ul__li
-                .main__contents__center__brand__chanel__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__brand__chanel__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @chanel.zip(@photo_chanel_id) do |good, photo|
+                %li.main__contents__center__brand__chanel__image__ul__li
+                  .main__contents__center__brand__chanel__image__ul__li__top-image
+                    =image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__brand__chanel__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__vuitton
           .main__contents__center__brand__vuitton__title
             %h1
@@ -126,13 +137,15 @@
               もっと見る
           .main__contents__center__brand__vuitton__image
             %ul.main__contents__center__brand__vuitton__image__ul
-              %li.main__contents__center__brand__vuitton__image__ul__li
-                .main__contents__center__brand__vuitton__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__brand__vuitton__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @vuitton.zip(@photo_vuitton_id) do |good, photo|
+                %li.main__contents__center__brand__vuitton__image__ul__li
+                  .main__contents__center__brand__vuitton__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__brand__vuitton__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__supreme
           .main__contents__center__brand__supreme__title
             %h1
@@ -141,13 +154,15 @@
               もっと見る
           .main__contents__center__brand__supreme__image
             %ul.main__contents__center__brand__supreme__image__ul
-              %li.main__contents__center__brand__supreme__image__ul__li
-                .main__contents__center__brand__supreme__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__brand__supreme__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @supreme.zip(@photo_supreme_id) do |good, photo|
+                %li.main__contents__center__brand__supreme__image__ul__li
+                  .main__contents__center__brand__supreme__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__brand__supreme__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__nike
           .main__contents__center__brand__nike__title
             %h1
@@ -156,17 +171,19 @@
               もっと見る
           .main__contents__center__brand__nike__image
             %ul.main__contents__center__brand__nike__image__ul
-              %li.main__contents__center__brand__nike__image__ul__li
-                .main__contents__center__brand__nike__image__ul__li__top-image
-                  =image_tag "sample.jpg"
-                  %area-label="price"
-                .main__contents__center__brand__nike__image__ul__li__under-text
-                  %span
-                    サンプルピアス
+              - @nike.zip(@photo_nike_id) do |good, photo|
+                %li.main__contents__center__brand__nike__image__ul__li
+                  .main__contents__center__brand__nike__image__ul__li__top-image
+                    = image_tag "#{photo.image.url}"
+                    %area-label
+                      = good.fee
+                  .main__contents__center__brand__nike__image__ul__li__under-text
+                    %span
+                      = good.name
 
   -# 出品ボタン
   .main__exhibit-btn
-    = render "review/main_exbit-btn"
+    = render "./review/main_exbit-btn"
     
 -# フッター
-= render "review/footer"
+= render "./review/footer"
