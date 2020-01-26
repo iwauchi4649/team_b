@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post 'phones', to: 'users/registrations#create_phone'
     get 'credit_cards', to:'users/registrations#new_credit_card'
     post 'credit_cards', to:'users/registrations#create_credit_card'
+    get "done" , to:'users/registrations#done'
   end
 
   resources :goods do
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     get "crcard"
     get "login"
     get "footer"
-    get "done"
+    
     get "mypage"
     get "main"
     get "personal"
