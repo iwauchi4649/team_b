@@ -43,7 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     session["devise.regist_address"] = {address: @address.attributes}
-    # session["devise.regist_address"][:address]["potal_code","prefecture","municipalties","banchi","buildname"] = params[:address][:potal_code, :prefecture, :municipalties, :banchi, :buildname]
     @credit_card = @user.build_credit_card
     render :new_crcard
   end
@@ -61,12 +60,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_address(@address.attributes)
     @user.build_phone(@phone.attributes)
     @user.build_credit_card(@credit_card.attributes)
-    @user.save
-    
-    sign_in(:user, @user)
+    if @user.save!
+      sign_in(:user, @user)
+      redirect_to "/review/:review_id/main"
+    else
+      render :new_crcard
+    end
   end
   protected
-
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   end
