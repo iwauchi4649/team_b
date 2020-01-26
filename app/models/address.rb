@@ -1,8 +1,7 @@
 class Address < ApplicationRecord
 
   belongs_to :user, optional: true
-  ADDRESS_VALIDATION = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i
-  validates :potal_code, :banchi ,:buildname,:prefectures, :municipalties, length: {maximum: 30},presence: true,format: { with: ADDRESS_VALIDATION }
+  validates :potal_code, :banchi ,:buildname,:prefectures, :municipalties,presence: true
   enum prefectures:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
