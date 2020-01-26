@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     get "logout"
     get "product_details"
   end
-  root "review#index"
+  root "review#main"
 end
