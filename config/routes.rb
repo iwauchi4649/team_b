@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   resources :goods do
     collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get "get_category_children", defaults: { format: "json" }
+      get "get_category_grandchildren", defaults: { format: "json" }
     end
   end
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get "profile"
     get "logout"
     get "product_details"
+    get "crcard_add_input"
   end
-  root "review#main"
+  root "goods#index"
 end
