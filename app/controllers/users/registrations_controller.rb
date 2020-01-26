@@ -2,8 +2,6 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
 
   def new
     @user = User.new
@@ -43,7 +41,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     session["devise.regist_address"] = {address: @address.attributes}
-    # session["devise.regist_address"][:address]["potal_code","prefecture","municipalties","banchi","buildname"] = params[:address][:potal_code, :prefecture, :municipalties, :banchi, :buildname]
     @credit_card = @user.build_credit_card
     render :new_crcard
   end
@@ -55,15 +52,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @credit_card =CreditCard.new(credit_card_params)
     unless @credit_card.valid?
       flash.now[:alert] = @credit_card.errors.full_messages
-      binding.pry
       render :new_crcard and return
     end
     @user.build_address(@address.attributes)
     @user.build_phone(@phone.attributes)
     @user.build_credit_card(@credit_card.attributes)
-    @user.save
-    
-    sign_in(:user, @user)
+
+    if @user.save
+      sign_in(:user, @user)
+      redirect_to  action: 'done'
+    else
+      render :new_crcard
+    end
+
+    def done
+      sign_in User.find(session[:id]) unless user_signed_in?
+    end
   end
   protected
 
