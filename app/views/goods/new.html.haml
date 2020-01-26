@@ -14,7 +14,7 @@
           .upload-box__input
             .upload-box__input__img
               = f.fields_for :photos do |p|
-                = p.file_field :image, class: "upload-box__input__img__box"
+                = p.file_field :image, class: "upload-box__input__img__box" , id:"img-file" , type: 'file' , value:""
               %pre
                 = preserve do
                   :escaped
