@@ -21,6 +21,12 @@ crumb :crcard_add do
   parent :mypage
 end
 
+# ログアウト
+crumb :logout do
+  link "ログアウト", logout_path
+  parent :mypage
+end
+
 # サンプル
 # crumb :sample do
 #   link "サンプル", sample_path
