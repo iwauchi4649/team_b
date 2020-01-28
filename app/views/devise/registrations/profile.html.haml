@@ -1,12 +1,12 @@
 .main__header
-  = render "review/main_header_after"
+  = render "./goods/main_header_after"
 
 .pan
-  = render "review/pan_bar"
+  = render "./goods/pan_bar"
 
 %body.mypage
   .container
-    = render 'review/side-bar'
+    = render './devise/shared/side-bar'
     .container__content
       .container__content__section
         .container__content__section__head
@@ -22,6 +22,6 @@
               変更する
 
 .main__exhibit-btn
-  = render "review/main_exbit-btn"
+  = render "./goods/main_exbit-btn"
 
-= render "review/footer"
+= render "./goods/footer"

@@ -2,7 +2,7 @@
   -# upはメルカリロゴと検索窓
   .main__header__center__up
     .main__header__center__up__mercari-logo
-      = link_to "/review/:review_id/main" do
+      = link_to root_path do
         =image_tag "main_logo.svg" , size:"134x36"
     .main__header__center__up__form
       %input{type:"search" , placeholder: "何かお探しですか？" , class:"main__header__center__up__form__text"}
@@ -22,8 +22,10 @@
           ブランドから探す
     .main__header__center__down__right
       .main__header__center__down__right__member-create-btn
-        %button
-          新規会員登録
+        = link_to new_top_path do
+          %button
+            新規会員登録
       .main__header__center__down__right__login-btn
-        %button
-          ログイン
+        = link_to new_user_session_path do
+          %button
+            ログイン

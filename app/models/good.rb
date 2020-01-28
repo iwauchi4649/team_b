@@ -1,4 +1,5 @@
 class Good < ApplicationRecord
+  belongs_to :user
   belongs_to :category
   has_many :likes, dependent: :destroy
   has_many :photos, dependent: :destroy

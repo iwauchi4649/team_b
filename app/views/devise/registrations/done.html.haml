@@ -1,6 +1,6 @@
 .wrapper
   .header
-    = render './review/top-header'
+    = render './devise/shared/top-header'
     .header__signup-bar
 
   .main
@@ -16,7 +16,8 @@
                 会員登録が完了しました。
           
         .main__container__content__form.low
-          %btn.btn-default
-            メルカリを始める
+          = link_to root_path do
+            %btn.btn-default
+              メルカリを始める
   .top-footer
-    = render './review/top-footer'
+    = render './devise/shared/top-footer'
