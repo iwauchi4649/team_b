@@ -67,6 +67,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def done
       sign_in User.find(session[:id]) unless user_signed_in?
     end
+
+    def mypage
+    end
+
+    def crcard_add
+    end
+
+    def crcard_add_input
+    end
+
+    def logout
+    end
+
+    def personal
+    end
   end
   protected
   def configure_sign_up_params

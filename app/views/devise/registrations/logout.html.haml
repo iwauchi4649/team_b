@@ -1,0 +1,17 @@
+.main__header
+  = render "./goods/main_header_after"
+
+%body.mypage
+  .container
+    = render './devise/shared/side-bar'
+    .container__content
+      .container__content__section
+        .container__content__section__logout
+          = link_to "ログアウト", destroy_user_session_path,method: :delete, class: "container__content__section__logout__btn"
+
+
+
+
+.main__exhibit-btn
+  = render "./goods/main_exbit-btn"
+= render "./goods/footer"

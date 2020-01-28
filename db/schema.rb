@@ -39,11 +39,13 @@ ActiveRecord::Schema.define(version: 2020_01_25_122148) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "good_id"
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["good_id"], name: "index_comments_on_good_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,7 +73,9 @@ ActiveRecord::Schema.define(version: 2020_01_25_122148) do
   end
 
   create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "category_id"
+    t.integer "buyer_id"
     t.string "brand"
     t.string "name"
     t.string "condition"
@@ -84,14 +88,17 @@ ActiveRecord::Schema.define(version: 2020_01_25_122148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_goods_on_category_id"
+    t.index ["user_id"], name: "index_goods_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "good_id"
     t.integer "like", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["good_id"], name: "index_likes_on_good_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,9 +145,12 @@ ActiveRecord::Schema.define(version: 2020_01_25_122148) do
   end
 
   add_foreign_key "comments", "goods"
+  add_foreign_key "comments", "users"
   add_foreign_key "evalutions", "goods"
   add_foreign_key "goods", "categories"
+  add_foreign_key "goods", "users"
   add_foreign_key "likes", "goods"
+  add_foreign_key "likes", "users"
   add_foreign_key "photos", "goods"
   add_foreign_key "wrongs", "goods"
 end

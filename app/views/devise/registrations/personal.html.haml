@@ -1,8 +1,8 @@
 .main__header
-  = render 'main_header'
+  = render './goods/main_header_after'
 %body.mypage
   .container
-    = render 'side-bar'
+    = render './devise/shared/side-bar'
     .container__personal-inf
       .container__personal-inf__regester
         %h2 本人情報の登録
@@ -115,6 +115,6 @@
         .container__personal-inf__box__sections__form-group
           .container__personal-inf__box__sections__form-group__text-right
             %a{ href:"", id: "#" }本人情報の登録について
-  = render 'footer'
+  = render './goods/footer'
 
 
