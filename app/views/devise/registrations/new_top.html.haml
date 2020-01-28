@@ -1,0 +1,21 @@
+.wrapper
+  .header
+    = render './devise/shared/top-header'
+
+  .main
+    .main__container
+      .main__container__head
+        新規会員登録
+      .main__container__inner
+        .main__container__inner__content
+          = link_to new_user_registration_path do
+            %p.btn-default.btn-mail メールアドレスで登録する
+          = fa_icon 'envelope', class: 'icon-mail'
+          %p.btn-default.btn-facebook Facebookで登録する
+          = fa_icon 'facebook-square', class: 'icon-facebook'
+          %p.btn-default.btn-google Googleで登録する
+          = fa_icon 'google', class: 'icon-google'
+
+
+  .top-footer
+    = render './devise/shared/top-footer'

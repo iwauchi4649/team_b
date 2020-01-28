@@ -1,0 +1,23 @@
+.wrapper
+  .header
+    = render './devise/shared/top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head 会員登録完了
+      .main__container__content
+        .main__container__content__form
+          .form-group
+            %ul
+              %li.done-message
+                ありがとうございます。
+                %br
+                会員登録が完了しました。
+          
+        .main__container__content__form.low
+          = link_to root_path do
+            %btn.btn-default
+              メルカリを始める
+  .top-footer
+    = render './devise/shared/top-footer'

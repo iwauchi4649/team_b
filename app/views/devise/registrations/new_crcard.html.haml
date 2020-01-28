@@ -1,0 +1,35 @@
+.wrapper
+  .header
+    = render './devise/shared/top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head 支払い方法
+      .main__container__content
+        .main__container__content__form
+          = form_with model: @credit_card, local: true do |f|
+            .form-group
+              = f.label :'カード番号'
+              %span.form-required  必須
+              = f.text_field :card_number, autofocus: true, placeholder: "半角数字のみ", class: 'cr-input-form'
+              %ul.error
+                %li#card-error.error__text
+                  必須項目です
+              %ul.card-list
+                = image_tag "cardlist.png", size: "300x45", class: "logo"
+            .form-group
+              %label(for="payment")  有効期限
+              %span.form-required  必須
+              .expiration
+                != sprintf(f.date_select(:expiration_date,with_css_classes:'expiration', order:[:month,:year], use_month_numbers:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+            .form-group
+              = f.label :'セキュリティーコード'
+              %span.form-required  必須
+              = f.text_field :security_code, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号", class: 'cr-input-form'
+              %ul.error
+                %li#security-code-error.error__text
+                  必須項目です
+            = f.submit '次へ進む', class: 'btn-default'
+  .top-footer
+    = render './devise/shared/top-footer'

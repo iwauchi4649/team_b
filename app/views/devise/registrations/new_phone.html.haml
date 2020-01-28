@@ -1,0 +1,23 @@
+.wrapper
+  .header
+    = render './devise/shared/top-header'
+    .header__signup-bar
+
+  .main
+    .main__container
+      .main__container__head 電話番号の登録
+      .main__container__content
+        .main__container__content__form
+          = form_with model: @phone, local: true do |f|
+            .form-group
+              -# ニックネーム
+              = f.label :'携帯電話の番号'
+              = f.text_field :number, autofocus: true, placeholder: "携帯電話の番号を入力", class: 'phone-input-form'
+              %ul
+                %li
+                  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+            = f.submit 'SMSを送信する', class: 'btn-default'
+        .low__content
+          %p.low__content__text※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+  .top-footer
+    = render './devise/shared/top-footer'

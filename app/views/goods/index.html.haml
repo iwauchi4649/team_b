@@ -1,7 +1,10 @@
 .main
   -# ヘッダー
   .main__header
-    = render "./review/main_header_after"
+    - if user_signed_in?
+      = render "main_header_after"
+    - else
+      = render 'main_header_before'
 
   -# メイン
   .main__contents
@@ -183,7 +186,7 @@
 
   -# 出品ボタン
   .main__exhibit-btn
-    = render "./review/main_exbit-btn"
+    = render "main_exbit-btn"
     
 -# フッター
-= render "./review/footer"
+= render "footer"

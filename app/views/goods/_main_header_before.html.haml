@@ -1,0 +1,31 @@
+.main__header__center
+  -# upはメルカリロゴと検索窓
+  .main__header__center__up
+    .main__header__center__up__mercari-logo
+      = link_to root_path do
+        =image_tag "main_logo.svg" , size:"134x36"
+    .main__header__center__up__form
+      %input{type:"search" , placeholder: "何かお探しですか？" , class:"main__header__center__up__form__text"}
+      %button.main__header__center__up__form__search-btn{title: "検索", type: "submit"}
+        = link_to "#", class: "main__header__center__up__form__search-btn__icon" do
+          = fa_icon "search"
+  -# downはカテゴリー、新規会員登録ボタン、ログインボタン
+  .main__header__center__down
+    .main__header__center__down__left
+      .main__header__center__down__left__category-search
+        = fa_icon "bars" ,class: "main__header__center__down__left__category-search__icon"
+        %a
+          カテゴリーから探す
+      .main__header__center__down__left__bland-search 
+        = fa_icon "tag" ,class: "main__header__center__down__left__bland-search__icon"
+        %a
+          ブランドから探す
+    .main__header__center__down__right
+      .main__header__center__down__right__member-create-btn
+        = link_to new_top_path do
+          %button
+            新規会員登録
+      .main__header__center__down__right__login-btn
+        = link_to new_user_session_path do
+          %button
+            ログイン

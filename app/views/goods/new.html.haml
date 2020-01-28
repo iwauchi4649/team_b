@@ -1,6 +1,6 @@
 .wrapper
   .header
-    = render '/review/top-header'
+    = render './devise/shared/top-header'
 .exhibition 
   .exhibition__container 
     .exhibition__container__sell
@@ -120,7 +120,7 @@
             = f.submit '出品する', class: "submit-btn"
             = link_to "もどる", "#", class: "gray-btn"
 .top-footer
-  = render '/review/top-footer'
+  = render './devise/shared/top-footer'
 
 
 
