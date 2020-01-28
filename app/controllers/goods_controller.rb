@@ -72,6 +72,9 @@ class GoodsController < ApplicationController
     @nike = Good.where(brand:"ナイキ").order('id DESC')
   end
 
+  def show
+  end
+
   private
 
   def good_params
