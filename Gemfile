@@ -92,6 +92,7 @@ gem 'phony_rails'
 gem 'payjp'
 gem 'ancestry'
 gem 'fog-aws'
+gem 'gretel'
 
 group :development, :test do
   gem 'pry-rails'
