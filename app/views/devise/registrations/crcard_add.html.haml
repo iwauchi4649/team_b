@@ -1,6 +1,11 @@
 .main__header
   = render './goods/main_header_after'
 
+- breadcrumb :crcard_add
+-# config/breadcrumbs.rbに定義したmypageを呼び出し
+.pan
+  = render "./goods/pan_bar"
+
 %body.mypage
 .container
   = render './devise/shared/side-bar'

@@ -5,5 +5,5 @@ class Good < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :evalutions, dependent: :destroy
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos , allow_destroy: true
 end
