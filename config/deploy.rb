@@ -5,6 +5,9 @@ lock '3.11.2'
 # Capistranoのログの表示に利用する
 set :application, 'team_b'
 
+# credentials.yml.enc用のシンボリックリンクを追加
+set :linked_files, %w{ config/credentials.yml.enc }
+
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:hikaru08/team_b.git'
 
@@ -32,4 +35,17 @@ namespace :deploy do
     invoke 'unicorn:stop'
     invoke 'unicorn:start'
   end
+
+  desc 'upload credentials.yml.enc'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc")
+    end
+  end
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
+end
 end
