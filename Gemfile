@@ -99,3 +99,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
 end
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
