@@ -1,8 +1,14 @@
 .main__header
-  = render 'main_header'
+  = render './goods/main_header_after'
+
+- breadcrumb :mypage
+-# config/breadcrumbs.rbに定義したmypageを呼び出し
+.pan
+  = render './goods/pan_bar'
+
 %body.mypage
   .container
-    = render 'side-bar'
+    = render './devise/shared/side-bar'
     .container__content
       .container__content__user-icon
         = link_to "#" do
@@ -47,5 +53,5 @@
             %h3 取引中
           %li
             %h3 過去の取引
-= render 'footer'
+= render './goods/footer'
 
