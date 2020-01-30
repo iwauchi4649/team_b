@@ -125,7 +125,8 @@ ActiveRecord::Schema.define(version: 2020_01_29_111112) do
     t.string "lastname_full", limit: 40, default: "", null: false
     t.string "firstname_cana", limit: 40, default: "", null: false
     t.string "lastname_cana", limit: 40, default: "", null: false
-    t.datetime "birth_day", null: false
+    t.datetime "birth_day"
+    t.datetime "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP"
     t.bigint "point", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
