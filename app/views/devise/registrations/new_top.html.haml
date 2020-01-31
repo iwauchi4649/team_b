@@ -14,8 +14,10 @@
           = link_to user_facebook_omniauth_authorize_path, method: :post do
             = fa_icon 'facebook-square', class: 'icon-facebook'
             %p.btn-default.btn-facebook Facebookで登録する
-          %p.btn-default.btn-google Googleで登録する
-          = fa_icon 'google', class: 'icon-google'
+          = link_to user_google_oauth2_omniauth_authorize_path do
+            = fa_icon 'google', class: 'icon-google'
+            %p.btn-default.btn-google Googleで登録する
+          
 
 
   .top-footer
