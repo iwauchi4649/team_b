@@ -1,10 +1,10 @@
 .wrapper
   .main__header
-    = render "main_header"
+    = render "goods/main_header_after.html.haml"
 
   .item-container
     %h1.item-container__item-name
-      アイテム名
+      = @good.name
     .item-container__content
       .item-container__content__photo
         = image_tag "sample.jpg", size: "300x300", class: "logo"
@@ -16,7 +16,7 @@
           %tr
             %th 出品者
             %td
-              = link_to "ユーザーネーム", "#"
+              = @good.user.nickname
               %div
                 .item-user-ratings
                   = fa_icon 'smile-o', class: "icon-good"
@@ -30,44 +30,47 @@
           %tr
             %th カテゴリー
             %td
-              = link_to "メンズ", "#"
+              = @good.category.name
               = link_to "小物", "#"
               = link_to "本", "#"
           %tr
             %th ブランド
             %td
+              = @good.brand
           %tr
             %th 商品の状態
-            %td 目立った傷や汚れなし
+            %td
+              = @good.condition
           %tr
             %th 配送料の負担
-            %td 送料込み（出品者負担）
+            %td
+              = @good.delivery_type
           %tr
             %th 配送の方法
             %td 未定
           %tr
             %th 配送元の地域
             %td
-              = link_to "大阪府"
+              = @good.prefecture
           %tr
             %th 発送日の目安
-            %td 1〜2日で発送
+            %td
+              = @good.day
 
     .item-container__price.text-center
-      %span.item-container__price__box ¥1,500
+      %span.item-container__price__box
+        = "¥#{@good.fee}"
       %span.item-container__price__tax （税込）
       %span.item-container__price__shipping 送料込み
     .text-center
       .sales-point-message
-        P2,000をお持ちです
+        = "P#{@good.user.point}をお持ちです"
     .item-container__buy-btn
       = link_to "購入画面に進む", "#"
 
     .item-container__description
       %p.item-container__description__inner
-        Ruby on Railsの基礎から応用までを学べる一冊。
-        %br状態
-        汚れや折れなし
+        = @good.discription
     .item-container__button
       .item-container__button__left
         %button.item-container__button__left__box.item-button-like
@@ -154,19 +157,5 @@
               =image_tag "sample.jpg", size: "220x220"
             .relation-item__exhibitions__image__box__under-text
               %span サンプル
-      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  = render "review/footer"
+  = render "goods/footer"

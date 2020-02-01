@@ -1,4 +1,8 @@
 class GoodsController < ApplicationController
+
+  before_action :set_good, only: [:show]
+  # before_action :set_user, only: [:show]
+
   def new
     @good = Good.new
     @good.photos.build()
@@ -73,6 +77,7 @@ class GoodsController < ApplicationController
   end
 
   def show
+    @user_good = Good.find(params[:id])
   end
 
   private
@@ -80,4 +85,16 @@ class GoodsController < ApplicationController
   def good_params
     params.require(:good).permit(:user_id, :category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:id, :image]).merge(user_id: current_user.id)
   end
+
+  def set_good
+    @good = Good.includes([:user, :photos, :category]).find(params[:id])
+  end
+
+  # def get_category
+  #   @parent_category,@children_category,@grand_category = Category.find(@good.category_id,@good.child_category_id,@good.grand_child_category_id)
+  # end
+
+  # def set_user
+  #   @user = User.includes(:goods).find(current_user) if user_signed_in?
+  # end
 end
