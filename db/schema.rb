@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_111112) do
+ActiveRecord::Schema.define(version: 2020_02_02_122513) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -117,6 +117,15 @@ ActiveRecord::Schema.define(version: 2020_01_29_111112) do
     t.index ["good_id"], name: "index_photos_on_good_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", limit: 40, default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -125,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_111112) do
     t.string "lastname_full", limit: 40, default: "", null: false
     t.string "firstname_cana", limit: 40, default: "", null: false
     t.string "lastname_cana", limit: 40, default: "", null: false
-    t.datetime "birth_day"
+    t.date "birth_day"
     t.datetime "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP"
     t.bigint "point", default: 0, null: false
     t.string "reset_password_token"
@@ -157,5 +166,6 @@ ActiveRecord::Schema.define(version: 2020_01_29_111112) do
   add_foreign_key "likes", "goods"
   add_foreign_key "likes", "users"
   add_foreign_key "photos", "goods"
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "wrongs", "goods"
 end
