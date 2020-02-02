@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable,omniauth_providers:  %i(google facebook)
+  # omniauthのコールバック時に呼ばれるメソッド
   has_many :goods
   has_many :credit_cards
   has_many :evalutions
@@ -10,9 +11,10 @@ class User < ApplicationRecord
   has_one :credit_card
   
   protected
-
+  #コールバックを受けた時にユーザが既にアプリケーションの中で認知されているかどうかを判断する
   def self.find_for_google(auth)
     user = User.find_by(email: auth.info.email)
+    #なければユーザーのインスタンス作成
     unless user
       user = User.create(name:     auth.info.name,
                         provider: auth.provider,
