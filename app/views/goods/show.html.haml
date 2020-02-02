@@ -149,12 +149,9 @@
 
     .relation-item__exhibitions
       .relation-item__exhibitions__title
-        %h1 その他の商品
+        %h2
+          = "#{@good.brand}のその他の商品"
         .relation-item__exhibitions__image
-          .relation-item__exhibitions__image__box
-            .relation-item__exhibitions__image__box__top-image
-              =image_tag "sample.jpg", size: "220x220"
-            .relation-item__exhibitions__image__box__under-text
-              %span サンプル
+        = render "brand_other_product"
 
   = render "goods/footer"

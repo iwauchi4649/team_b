@@ -1,6 +1,8 @@
 class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show]
+  # before_action :set_category, only: [:show]
+  # before_action :get_category, only: [:show, :edit]
   # before_action :set_user, only: [:show]
 
   def new
@@ -78,6 +80,7 @@ class GoodsController < ApplicationController
 
   def show
     @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
+    @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
 
   private
