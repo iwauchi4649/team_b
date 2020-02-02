@@ -6,10 +6,11 @@
     %h1.item-container__item-name
       = @good.name
     .item-container__content
-      .item-container__content__photo
-        = image_tag "sample.jpg", size: "300x300", class: "logo"
-        .item-container__content__photo__child
-          = image_tag "sample.jpg", size: "70x90", class: "logo"
+      - @good.photos.each do |i|
+        .item-container__content__photo{ style: 'width:300px'}
+          = image_tag i.image.url
+          .item-container__content__photo__child
+            = image_tag i.image.url size: "70x70"
       
       %table.item-container__content__details
         %tbody
@@ -30,7 +31,7 @@
           %tr
             %th カテゴリー
             %td
-              = @good.category.name
+              = link_to "メンズ", "#"
               = link_to "小物", "#"
               = link_to "本", "#"
           %tr
