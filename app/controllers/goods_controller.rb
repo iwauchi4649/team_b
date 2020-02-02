@@ -77,7 +77,7 @@ class GoodsController < ApplicationController
   end
 
   def show
-    @user_good = Good.find(params[:id])
+    @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
   end
 
   private

@@ -9,7 +9,7 @@
       - @good.photos.each do |i|
         .item-container__content__photo{ style: 'width:300px'}
           = image_tag i.image.url
-          .item-container__content__photo__child
+          .item-container__content__photo__child{ style: 'width:70px'}
             = image_tag i.image.url size: "70x70"
       
       %table.item-container__content__details
@@ -139,15 +139,13 @@
         = fa_icon "paypal", class: "sns-icon"
 
   .relation-item
-    .relation-item__exhibitions
-      .relation-item__exhibitions__title
-        %h1 その他の出品
+    - if @user_good.present?
+      .relation-item__exhibitions
+        .relation-item__exhibitions__title
+          %h2
+            = "#{@good.user.nickname}さんのその他の出品"
       .relation-item__exhibitions__image
-        .relation-item__exhibitions__image__box
-          .relation-item__exhibitions__image__box__top-image
-            =image_tag "sample.jpg", size: "220x220"
-          .relation-item__exhibitions__image__box__under-text
-            %span サンプル
+      = render "user_other_product"
 
     .relation-item__exhibitions
       .relation-item__exhibitions__title

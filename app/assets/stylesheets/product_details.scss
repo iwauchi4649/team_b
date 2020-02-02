@@ -309,7 +309,7 @@
   margin: 0 auto;
 
   &__exhibitions {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     &__title {
       font-size: 22px;
@@ -321,21 +321,22 @@
       width: auto;
 
       &__box {
-        width: 220px;
-        margin: 0 20px 20px 0;
+        max-width: 220px;
         position: relative;
+        display: inline-block;
 
         &__top-image {
           visibility: visible;
           transition: all 0.5s ease 0s;
           opacity: 1;
-          width: 240px;
+          width: 220px;
           padding: 10px;
           box-sizing: border-box;
           position: relative;
 
           img {
-            width: 220px;
+            width: 260px;
+            height: 220px;
             margin: 0 20px 20px 0;
           }
         }
@@ -344,7 +345,7 @@
           box-sizing: border-box;
           color: #222;
           font-size: 14px;
-          width: 220px;
+          width: 260px;
           height: 64px;
           line-height: 1.4em;
           padding: 0 12px;
@@ -354,7 +355,7 @@
           align-items: center;
           background-color: white;
           position: absolute;
-          top:220px;
+          top:150px;
           left: 10px;
           }
         }
