@@ -144,14 +144,14 @@
         .relation-item__exhibitions__title
           %h2
             = "#{@good.user.nickname}さんのその他の出品"
-      .relation-item__exhibitions__image
-      = render "user_other_product"
+        .relation-item__exhibitions__image
+          = render "user_other_product"
 
     .relation-item__exhibitions
       .relation-item__exhibitions__title
         %h2
           = "#{@good.brand}のその他の商品"
-        .relation-item__exhibitions__image
+      .relation-item__exhibitions__image
         = render "brand_other_product"
 
   = render "goods/footer"

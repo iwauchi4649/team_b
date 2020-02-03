@@ -309,7 +309,6 @@
   margin: 0 auto;
 
   &__exhibitions {
-    margin-bottom: 20px;
 
     &__title {
       font-size: 22px;
@@ -319,11 +318,16 @@
 
     &__image {
       width: auto;
+      position: relative;
+      margin-bottom: 30px;
 
       &__box {
-        max-width: 220px;
+        width: 220px;
         position: relative;
         display: inline-block;
+        top: 0;
+        margin: 20px 20px 20px 0;
+
 
         &__top-image {
           visibility: visible;
@@ -335,9 +339,8 @@
           position: relative;
 
           img {
-            width: 260px;
+            width: 220px;
             height: 220px;
-            margin: 0 20px 20px 0;
           }
         }
         &__under-text {
@@ -345,7 +348,7 @@
           box-sizing: border-box;
           color: #222;
           font-size: 14px;
-          width: 260px;
+          width: 220px;
           height: 64px;
           line-height: 1.4em;
           padding: 0 12px;
