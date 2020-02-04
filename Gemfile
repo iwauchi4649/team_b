@@ -88,7 +88,7 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
-gem 'phony_rails' 
+gem 'phony_rails'
 gem 'payjp'
 gem 'ancestry'
 gem 'fog-aws'
