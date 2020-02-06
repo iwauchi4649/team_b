@@ -1,15 +1,18 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.new(user_id: @current_user.id, good_id: params[:good_id])
-    @like.save
-    @good = Good.find_by(id: @like.good_id)
-    @like_count = Like.where(good_id: params[:good_id]).count
+    @like = Like.create(user_id: current_user.id, good_id: params[:good_id])
+    @likes = Like.where(good_id: params[:good_id])
+    get_good
   end
 
-  def delete
-    @like = Like.find_by(user_id: @current_user.id, good_id: params[:good_id])
-    @good = Good.find_by(id: @like.good_id)
+  def destroy
+    @like = Like.find_by(user_id: current_user.id, good_id: params[:good_id])
     @like.destroy
-    @like_count = Like.where(good_id: params[:good_id]).count
+    @likes = Like.where(good_id: params[:good_id])
+    get_good
+  end
+
+  def get_good
+    @good = Good.find(params[:good_id])
   end
 end

@@ -74,11 +74,14 @@
         = @good.discription
     .item-container__button
       .item-container__button__left
-        %button.item-container__button__left__box.item-button-like
-          = fa_icon "heart-o"
-          %span いいね!
-          %span 3
-        .item-container__button__left__box.item-button-report
+        = render partial: 'likes/like', locals: { good: @good, goods: @goods, likes: @likes, like: @like}
+        
+        -#%button.item-container__button__left__box.item-button-like
+          -#= fa_icon "heart-o"
+          -#%span いいね!
+          -#%span 3
+        
+          .item-container__button__left__box.item-button-report
           = fa_icon "flag"
           = link_to "不適切な商品の報告"
       .item-container__button__right

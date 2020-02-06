@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_one :address
   has_one :phone
   has_one :credit_card
+  has_many :likes, dependent: :destroy
 end

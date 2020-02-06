@@ -1,8 +1,22 @@
-<div class="like_button_on">
-    <%= link_to "いいね済み", likes_delete_path(food_id: @food.id), {method: "post", remote: true} %>
-    <%= @like_count %>
-</div>
-<div class="like_button">
-    <%= link_to "いいね", likes_create_path(food_id: @food.id), {method: "post", remote: true} %>
-    <%= @like_count %>
-</div>
+-#ユーザーがサインインしているかどうか
+- if user_signed_in?
+  -#ログインしているユーザーがすでに「いいね」しているかどうか
+  - if good.like_user(current_user.id)
+    .item-button-container__left__dislike
+      =link_to user_session_path(current_user, good, like), method: "DELETE", remote: true do
+        %i.fas.fa-heart
+        %span いいね！
+        %span
+          = good.likes_count
+  - else
+    .item-button-container__left__like
+      =link_to user_session_path(current_user, good), method: "POST", remote: true do
+        %i.fas.fa-heart
+        %span いいね！
+        %span
+          = good.likes_count
+-else
+  .item-button-container__left__like
+    %i.fas.fa-heart
+      %span いいね！
+      %span = good.like_count
