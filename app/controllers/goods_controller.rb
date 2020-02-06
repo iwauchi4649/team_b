@@ -1,8 +1,13 @@
 class GoodsController < ApplicationController
+  before_action :set_good, only: [:show, :edit, :update, :destroy]
+
   def new
     @good = Good.new
     @good.photos.build()
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+  end
+
+  def edit
   end
 
   def get_category_children
@@ -76,5 +81,9 @@ class GoodsController < ApplicationController
 
   def good_params
     params.require(:good).permit(:user_id, :category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:id, :image]).merge(user_id: current_user.id)
+  end
+
+  def set_good
+    @good = Good.includes([:user, :photos, :category]).find(params[:id])
   end
 end
