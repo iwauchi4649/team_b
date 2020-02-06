@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/public/uploads/photo/image/
+/public/uploads/photo/
 
 # Ignore uploaded files in development
 /storage/*
@@ -27,3 +27,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 config/secrets.yml
+
+/.env
