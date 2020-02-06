@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :lastname_full, null:false, default: "", limit: 40
       t.string :firstname_cana, null:false, default: "", limit: 40
       t.string :lastname_cana, null:false, default: "", limit: 40
-      t.datetime :birth_day, null:false
+      t.datetime :birth_day, 'DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP'
       t.integer :point, null:false, default: 0, limit: 5
       
 
