@@ -8,6 +8,22 @@ class GoodsController < ApplicationController
   end
 
   def edit
+    @category_id = @good.category_id
+    @category_parents_array = Category.where(ancestry: nil).pluck(:name)
+    @category_parent = Category.find(@category_id).parent.parent
+    @category_children_array = @category_parent.children.pluck(:name)
+    @category_child = Category.find(@category_id).parent
+    @category_grandchildren_array = @category_child.children.pluck(:name, :id)
+    @category_grandchild = Category.find(@category_id)
+  end
+
+  def update
+    @good.update(good_params)
+    if @good.save!
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def get_category_children

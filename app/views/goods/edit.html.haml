@@ -45,9 +45,31 @@
             .upload-box__input
               .upload-box__input__select-category
                 .parents
+                  = f.select :category, @category_parents_array, {selected: @category_parent.name}, {class: 'category', id: 'parent_category'}
                 .children
+                  .children__box
+                    = f.select :category, @category_children_array, {selected: @category_child.name}, {class: 'category', id: 'child_category'}
                 .grandchildren
+                  .grandchildren__box
+                    = f.select :category_id, @category_grandchildren_array, {selected: @category_grandchild.name}, {class: 'category', id: 'grandchild_category'}
             .append-box
+              .append-box__wrapper
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    サイズ
+                  %span
+                    必須
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.select :size, [["S", "S"], ["M", "M"],["L", "L"]], {selected: @good.size}
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    ブランド
+                  %span.brand-span
+                    任意
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.text_field :brand, placeholder: "例)シャネル"
             .upload-box__head.upload-box__condition
               %h3.smaller 商品の状態
               %span 必須
