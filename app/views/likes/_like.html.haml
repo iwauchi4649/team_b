@@ -3,20 +3,20 @@
   -#ログインしているユーザーがすでに「いいね」しているかどうか
   - if good.like_user(current_user.id)
     .item-button-container__left__dislike
-      =link_to user_session_path(current_user, good, like), method: "DELETE", remote: true do
-        %i.fas.fa-heart
+      =link_to user_good_like_path(current_user, good, like), method: "DELETE", remote: true do
+        = fa_icon "heart"
         %span いいね！
         %span
           = good.likes_count
   - else
     .item-button-container__left__like
-      =link_to user_session_path(current_user, good), method: "POST", remote: true do
-        %i.fas.fa-heart
+      =link_to user_good_likes_path(current_user, good), method: "POST", remote: true do
+        = fa_icon "heart-o"
         %span いいね！
         %span
           = good.likes_count
 -else
   .item-button-container__left__like
-    %i.fas.fa-heart
-      %span いいね！
-      %span = good.like_count
+    = fa_icon "heart"
+    %span いいね！
+    %span = good.likes_count

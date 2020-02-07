@@ -3,6 +3,6 @@ class Like < ApplicationRecord
   belongs_to :good, counter_cache: :likes_count
 
   validates :user_id, presence: true
-  validates :product_id, presence: true
-  validates_uniqueness_of :product_id, scope: :user_id
+  validates :good_id, presence: true
+  validates_uniqueness_of :good_id, scope: :user_id
 end
