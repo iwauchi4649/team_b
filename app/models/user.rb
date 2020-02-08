@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_one :address
   has_one :phone
   has_one :credit_card
+  validate :nickname, length:{maximum: 20}
+  validate :firstname_full, length:{maximum: 20}
+  validate :lastname_full, length:{maximum: 20}
+  validate :firstname_cana, length:{maximum: 20}
+  validate :lastname_cana, length:{maximum: 20}
+
   
   protected
   #コールバックを受けた時にユーザが既にアプリケーションの中で認知されているかどうかを判断する

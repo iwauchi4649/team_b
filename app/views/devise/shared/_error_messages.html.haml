@@ -7,3 +7,9 @@
     %ul
       - resource.errors.full_messages.each do |message|
         %li= message
+
+  - if @user.errors.any
+    %div
+    %ul{style: "color: red"}
+      - @task.errors.full_messages.each do |message|
+        %li= 

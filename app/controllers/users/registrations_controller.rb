@@ -9,6 +9,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
+    respond_to do |format|
+      if @item.save
+        format.html
+        format.js
+      else
+        format.html
+        format.js { render 'new' }
+      end
+    end
     unless @user.valid?
       flash.now[:alert] = @user.errors.full_messages
       render :new and return

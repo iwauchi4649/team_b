@@ -117,15 +117,6 @@ ActiveRecord::Schema.define(version: 2020_02_02_122513) do
     t.index ["good_id"], name: "index_photos_on_good_id"
   end
 
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", limit: 40, default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -166,6 +157,5 @@ ActiveRecord::Schema.define(version: 2020_02_02_122513) do
   add_foreign_key "likes", "goods"
   add_foreign_key "likes", "users"
   add_foreign_key "photos", "goods"
-  add_foreign_key "sns_credentials", "users"
   add_foreign_key "wrongs", "goods"
 end
