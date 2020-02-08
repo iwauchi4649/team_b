@@ -7,9 +7,10 @@
       = @good.name
     .item-container__content
       - @good.photos.each do |i|
-        .item-container__content__photo{ style: 'width:300px'}
-          = image_tag i.image.url
-          .item-container__content__photo__child{ style: 'width:70px'}
+        - if i.image.present?
+          .item-container__content__photo
+            = image_tag i.image.url
+          .item-container__content__child-photo
             = image_tag i.image.url size: "70x70"
       
       %table.item-container__content__details
