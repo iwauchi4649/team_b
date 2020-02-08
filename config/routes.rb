@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       get "get_category_children", defaults: { format: "json" }
       get "get_category_grandchildren", defaults: { format: "json" }
     end
-    # resources :likes, only: [:create, :destroy]
   end
 
   resources :review do
@@ -42,7 +41,7 @@ Rails.application.routes.draw do
   post "likes/:good_id/delete", to: "likes#delete", constraints: { good_id: /\d+/ }, as: :likes_delete
   root "goods#index"
 
-  resources :users, only: [:show, :edit, :update] 
+  resources :users, only: [:show, :edit, :update]
   resources :goods, only: [:new, :create, :show] do
     resources :likes, only: [:create, :destroy]
   end

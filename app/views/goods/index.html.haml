@@ -42,11 +42,12 @@
               - @lady_photo.zip(@lady_goods) do |photo, good|
                 %li.main__contents__center__item__ladies__image__ul__li
                   .main__contents__center__item__ladies__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__item__ladies__image__ul__li__under-text
-                    %span
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__item__ladies__image__ul__li__under-text
+                      %span
                       = good.name
         .main__contents__center__item__mens
           .main__contents__center__item__mens__title
