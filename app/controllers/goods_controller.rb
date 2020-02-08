@@ -83,6 +83,11 @@ class GoodsController < ApplicationController
     @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
 
+  def destroy
+    @good = Good.find_by(id: params[:id])
+    @good.destroy if @good.user_id == current_user.id
+    redirect_to("/")
+  end
   private
 
   def good_params

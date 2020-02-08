@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   post "likes/:good_id/create", to: "likes#create", constraints: { good_id: /\d+/ }, as: :likes_create
   post "likes/:good_id/delete", to: "likes#delete", constraints: { good_id: /\d+/ }, as: :likes_delete
+  post 'goods/:id/destroy' => 'goods#destroy'
   root "goods#index"
 
   resources :users, only: [:show, :edit, :update]
