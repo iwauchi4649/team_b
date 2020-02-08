@@ -57,7 +57,11 @@
             %th 発送日の目安
             %td
               = @good.day
-
+    - if user_signed_in? && current_user.id == @good.user_id
+      = link_to("/goods/#{@good.id}/destroy",{method:"post"}) do
+        %button.btn.btn-outline-primary{type: "button"}
+          %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
+          削除
     .item-container__price.text-center
       %span.item-container__price__box
         = "¥#{@good.fee}"
