@@ -3,14 +3,14 @@
   -#ログインしているユーザーがすでに「いいね」しているかどうか
   - if good.like_user(current_user.id)
     .item-button-container__left__dislike
-      =link_to user_good_like_path(current_user, good, like), method: "DELETE", remote: true do
+      =link_to good_like_path(current_user, good, like), method: "DELETE", remote: true do
         = fa_icon "heart"
         %span いいね！
         %span
           = good.likes_count
   - else
     .item-button-container__left__like
-      =link_to user_good_likes_path(current_user, good), method: "POST", remote: true do
+      =link_to good_likes_path(current_user, good), method: "POST", remote: true do
         = fa_icon "heart-o"
         %span いいね！
         %span

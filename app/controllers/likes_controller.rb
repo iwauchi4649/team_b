@@ -1,18 +1,20 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.create(user_id: current_user.id, good_id: params[:good_id])
-    @likes = Like.where(good_id: params[:good_id])
-    get_good
+    @like = current_user.likes.create(good_id: params[:good_id])
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    @like = Like.find_by(user_id: current_user.id, good_id: params[:good_id])
+    @like = Like.find_by(good_id: params[:good_id], user_id: current_user.id)
     @like.destroy
-    @likes = Like.where(good_id: params[:good_id])
-    get_good
+    redirect_back(fallback_location: root_path)
   end
 
-  def get_good
+  private
+
+  def set_variables
     @good = Good.find(params[:good_id])
+    @id_name = "#like-link-#{@good.id}"
   end
+
 end

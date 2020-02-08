@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_one :phone
   has_one :credit_card
   has_many :likes, dependent: :destroy
+  has_many :liked_goods, through: :likes, source: :post
 end
