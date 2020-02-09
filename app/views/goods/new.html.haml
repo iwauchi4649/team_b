@@ -5,29 +5,26 @@
   .exhibition__container 
     .exhibition__container__sell
       %h2 商品の情報を入力
-      = form_for @good do |f|
+      = form_for @good , html: {id: "item-dropzone"} do |f|
         .upload-box
           .upload-box__head
             %h3.bigger 出品画像
             %span 必須
-          %p.discription 最大5枚までアップロードできます
+          %p.discription 最大10枚までアップロードできます
 
           -# ここからが複数画像出品の部分です
-          .post__drop__box__container
-            .prev-content
-            .label-content
-              %label{for: "good_photos_attributes_0_image", class: "label-box", id: "label-box--0"}
-                %pre.label-box__text-visible クリックしてファイルをアップロード
-            .hidden-content
-              = f.fields_for :photos do |p|
-                = p.file_field :image, class: "hidden-field" , type: 'file' , value:""
-                %input{class:"hidden-field", type: "file", name: "good[photos_attributes][1][image]", id: "good_photos_attributes_1_image" }
-                %input{class:"hidden-field", type: "file", name: "good[photos_attributes][2][image]", id: "good_photos_attributes_2_image" }
-                %input{class:"hidden-field", type: "file", name: "good[photos_attributes][3][image]", id: "good_photos_attributes_3_image" }
-                %input{class:"hidden-field", type: "file", name: "good[photos_attributes][4][image]", id: "good_photos_attributes_4_image" }
-                -# ⬆︎インプットタグが4つしか無いですがfile_fieldのデフォルトで計5つになります
-                  <input>とは、<form>タグで作成したフォームの中でテキスト入力欄やボタンなどの部品を作成する要素です。
-                  部品はtype属性の値に指定することが可能で、一行テキストボックス、チェックボックス、ラジオボタン、実行ボタン、リセットボタンなどの部品を作成することができます。
+          = f.fields_for :photos do |image|
+            .dropzone-container.clearfix
+              #preview
+              .dropzone-area
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = image.file_field :image, multiple: true, name: 'good_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                  %p ここをクリックしてください
+              #preview2
+              .dropzone-area2
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  %p ここをクリックしてください
           -# 複数画像出品終わり
 
         .upload-box
