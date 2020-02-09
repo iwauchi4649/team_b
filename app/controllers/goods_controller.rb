@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show]
   # before_action :set_category, only: [:show]
-  # before_action :get_category, only: [:show, :edit]
+  before_action :get_category, only: [:show, :edit]
   # before_action :set_user, only: [:show]
 
   def new
@@ -98,9 +98,11 @@ class GoodsController < ApplicationController
     @good = Good.includes([:user, :photos, :category]).find(params[:id])
   end
 
-  # def get_category
-  #   @parent_category,@children_category,@grand_category = Category.find(@good.category_id,@good.child_category_id,@good.grand_child_category_id)
-  # end
+  def get_category
+    @grand_category = Category.find(@good.category_id,)
+    @child_category = @grand_category.parent
+    @prent_category = @child_category.parent
+  end
 
   # def set_user
   #   @user = User.includes(:goods).find(current_user) if user_signed_in?

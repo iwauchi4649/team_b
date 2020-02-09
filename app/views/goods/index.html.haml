@@ -60,12 +60,13 @@
               - @man_photo.zip(@man_goods) do |photo, good|
                 %li.main__contents__center__item__mens__image__ul__li
                   .main__contents__center__item__mens__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__item__mens__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__item__mens__image__ul__li__under-text
+                      %span
+                        = good.name
         .main__contents__center__item__electricity
           .main__contents__center__item__electricity__title
             %h1
@@ -77,12 +78,13 @@
               - @electricity_photo.zip(@electricity_goods) do |photo, good|
                 %li.main__contents__center__item__electricity__image__ul__li
                   .main__contents__center__item__electricity__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__item__electricity__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__item__electricity__image__ul__li__under-text
+                      %span
+                        = good.name
         .main__contents__center__item__toy
           .main__contents__center__item__toy__title
             %h1
@@ -94,12 +96,13 @@
               - @hobby_photo.zip(@hobby_goods) do |photo, good|
                 %li.main__contents__center__item__toy__image__ul__li
                   .main__contents__center__item__toy__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__item__toy__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__item__toy__image__ul__li__under-text
+                      %span
+                        = good.name
       -# 人気のブランド
       .main__contents__center__popular-brand
         %h1
@@ -127,12 +130,13 @@
               - @chanel.zip(@photo_chanel_id) do |good, photo|
                 %li.main__contents__center__brand__chanel__image__ul__li
                   .main__contents__center__brand__chanel__image__ul__li__top-image
-                    =image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__brand__chanel__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      =image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__brand__chanel__image__ul__li__under-text
+                      %span
+                        = good.name
         .main__contents__center__brand__vuitton
           .main__contents__center__brand__vuitton__title
             %h1
@@ -144,12 +148,13 @@
               - @vuitton.zip(@photo_vuitton_id) do |good, photo|
                 %li.main__contents__center__brand__vuitton__image__ul__li
                   .main__contents__center__brand__vuitton__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__brand__vuitton__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__brand__vuitton__image__ul__li__under-text
+                      %span
+                        = good.name
         .main__contents__center__brand__supreme
           .main__contents__center__brand__supreme__title
             %h1
@@ -161,12 +166,13 @@
               - @supreme.zip(@photo_supreme_id) do |good, photo|
                 %li.main__contents__center__brand__supreme__image__ul__li
                   .main__contents__center__brand__supreme__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = good.fee
-                  .main__contents__center__brand__supreme__image__ul__li__under-text
-                    %span
-                      = good.name
+                    = link_to good_path(good.id) do
+                      = image_tag "#{photo.image.url}"
+                      %area-label
+                        = good.fee
+                    .main__contents__center__brand__supreme__image__ul__li__under-text
+                      %span
+                        = good.name
         .main__contents__center__brand__nike
           .main__contents__center__brand__nike__title
             %h1
