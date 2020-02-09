@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_one :address
   has_one :phone
   has_one :credit_card
+  has_many :likes, dependent: :destroy
+  has_many :liked_goods, through: :likes, source: :post
   
   protected
   #コールバックを受けた時にユーザが既にアプリケーションの中で認知されているかどうかを判断する
@@ -42,5 +44,4 @@ class User < ApplicationRecord
     end
     user
   end
-
 end
