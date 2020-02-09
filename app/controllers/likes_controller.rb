@@ -1,5 +1,8 @@
 class LikesController < ApplicationController
+  before_action :set_variables
+
   def create
+    @like = Like.new
     @like = current_user.likes.create(good_id: params[:good_id])
     redirect_back(fallback_location: root_path)
   end
@@ -16,5 +19,4 @@ class LikesController < ApplicationController
     @good = Good.find(params[:good_id])
     @id_name = "#like-link-#{@good.id}"
   end
-
 end
