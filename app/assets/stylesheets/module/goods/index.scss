@@ -189,23 +189,28 @@
   }
 
   // 真ん中のコンテンツ
+  &__image-slyde{
+    height: 100%;
+    position: relative;
+    top: 0px;
+    overflow: hidden;
+    width: 100%;
+
+    img{
+      width: inherit;
+    }
+  }
   &__contents {
     width: 100%;
     margin: 0px auto;
     max-width: 1020px;
 
+    
+
     &__center {
       position: relative;
 
-      &__image-slyde{
-        height: 390px;
-        left: 50%;
-        margin-left: -50vw;
-        position: relative;
-        top: 0px;
-        width: 100vw;
-        overflow: hidden;
-      }
+      
 
       &__popular-category{
         background-color: rgb(255, 255, 255);
