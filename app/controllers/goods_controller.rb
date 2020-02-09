@@ -83,8 +83,12 @@ class GoodsController < ApplicationController
 
   def destroy
     @good = Good.find_by(id: params[:id])
-    @good.destroy if @good.user_id == current_user.id
-    redirect_to("/")
+    if @good.destroy
+      @good.user_id == current_user.id
+      redirect_to("/")
+      else
+      render "show"
+      end
   end
   private
 
