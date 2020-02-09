@@ -1,48 +1,33 @@
-$(document).on('turbolinks:load', function(){
-  const inputForm = $('#searching-form');
-  const url = location.href;
-  const searchResult = $('.result ul');
+$('#searching-form').on('keyup', function(e){
+  var input = $("#searching-form").val();
 
-  function builtHTML(data){
-    let html = `
-    <li>${data.name}</li>
-    `
-    searchResult.append(html);
-  }
+  $.ajax({
+      type: 'GET',                // HTTPメソッドはGETで
+      url:  '/posts',             // /usersのURLに (これによりusersコントローラのindexアクションが起動)
+      data: { keyword: input},    // keyword: inputを送信する
+      dataType: 'json'            // サーバから値を返す際はjsonである
+  })
 
-  function NoResult(message){
-    let html = `
-    <li>${message}</li>
-    `
-    searchResult.append(html);
-  }
+  .done(function(users){                // usersにjson形式のuser変数が代入される。複数形なので配列型で入ってくる
 
-  // フォームに入力すると発火する
-  inputForm.on('keyup', function(){
-    const target = $(this).val();
-    search(target);
-  });
+      if (input.length === 0) {         // フォームの文字列長さが0であれば、インクリメンタルサーチ結果を表示しないようにする
+          $('#user-search-result').empty();
+        }
 
-  // ajax処理
-  function search(target){
-    $.ajax({
-      type: 'GET',
-      url: 'goods/search',
-      data: {keyword: target},
-      dataType: 'json'
-    })
-    .done(function(data){
-      searchResult.empty(); //再度検索した際に前のデータを消す処理
-      if (data.length !== 0) {
-        data.forEach(function(data) { //dataは配列型に格納されているのでEach文で回す
-          builtHTML(data)
-        });
-      } else {
-        NoResult('該当する商品はありません')
+      else if (input.length !== 0){     // 値が等しくないもしくは型が等しくなければtrueを返す。
+          $('#user-search-result').empty();
+          users.forEach(function(user){ // users情報をひとつずつとりだしてuserに代入
+              appendUser(user)
+          });
       }
-    })
-    .fail(function(data){
-      alert('非同期通信に失敗しました');
-    })
-  }
+
+      else {
+          $('#user-search-result').empty(); // ユーザーが見つからなければ「見つからない」を返す。
+          appendErrMsgToHTML("一致するユーザーが見つかりません");
+      }
+  })
+
+  .fail(function() {
+      alert('ユーザー検索に失敗しました');
+  });
 });
