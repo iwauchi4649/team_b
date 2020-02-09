@@ -1,22 +1,9 @@
--#ユーザーがサインインしているかどうか
-- if user_signed_in?
-  -#ログインしているユーザーがすでに「いいね」しているかどうか
-  - if good.like_user(current_user.id)
-    .item-button-container__left__dislike
-      =link_to good_like_path(current_user, good, like), method: "DELETE", remote: true do
-        = fa_icon "heart"
-        %span いいね！
-        %span
-          = good.likes_count
+.like-link{:id => “like-link-#{good.id}“}
+  - if current_user.likes.find_by(good_id: good.id)
+    = link_to good_like_path(good.id), method: :delete, remote: true do
+      .iine__button
+        ❤️#{good.likes.count}
   - else
-    .item-button-container__left__like
-      =link_to good_likes_path(current_user, good), method: "POST", remote: true do
-        = fa_icon "heart-o"
-        %span いいね！
-        %span
-          = good.likes_count
--else
-  .item-button-container__left__like
-    = fa_icon "heart"
-    %span いいね！
-    %span = good.likes_count
+    = link_to good_likes_path(good.id), method: :post, remote: true do
+      .iine__button
+        ♡️#{good.likes.count}

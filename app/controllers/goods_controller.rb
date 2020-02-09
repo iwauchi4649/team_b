@@ -95,7 +95,7 @@ class GoodsController < ApplicationController
   end
 
   def set_good
-    @good = Good.includes([:user, :photos, :category]).find(params[:id])
+    @good = Good.includes([:user, :photos, :category,]).find(params[:id])
   end
 
   def get_category
