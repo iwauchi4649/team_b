@@ -71,7 +71,15 @@ class GoodsController < ApplicationController
     @photo_nike_id = Photo.where(good_id: @good_nike_id).limit(10).order('id DESC')
     @nike = Good.where(brand:"ナイキ").order('id DESC')
   end
-
+  
+  def search
+    # @goodsは次に紹介するjbuilderで必要になるインスタンス変数
+    @goods = Good.where('name LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html 
+      format.json 
+    end
+  end
   private
 
   def good_params
