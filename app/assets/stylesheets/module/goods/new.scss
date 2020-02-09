@@ -1,9 +1,8 @@
 //image投稿欄のCSS
-.dropzone-container.clearfix{
+.dropzone-container{
   display: block;
   margin: 16px auto 0;
   display: flex;
-  flex-wrap: wrap;
 
   //プレビュー表示欄のCSS
   #preview {
