@@ -261,6 +261,15 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  #環境変数は.envに記載している。githubには記載されないようにしています。
+  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET_KEY'],token_params: { parse: :json }
+  require 'devise/orm/active_record'
+  config.omniauth :google_oauth2,
+  ENV["GOOGLE_CLIENT_ID"],
+  ENV["GOOGLE_CLIENT_SECRET"],
+  name: :google,
+  scope: %w(email),
+  skip_jwt: true
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

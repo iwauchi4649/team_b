@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-                       registrations: "users/registrations",
-                     }
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+    }
+
   devise_scope :user do
     get "new_top", to: "users/registrations#new_top"
     get "addresses", to: "users/registrations#new_address"

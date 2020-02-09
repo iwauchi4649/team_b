@@ -11,11 +11,11 @@
           = link_to new_user_registration_path do
             %p.btn-default.btn-mail メールアドレスで登録する
           = fa_icon 'envelope', class: 'icon-mail'
-          %p.btn-default.btn-facebook Facebookで登録する
-          = fa_icon 'facebook-square', class: 'icon-facebook'
-          %p.btn-default.btn-google Googleで登録する
-          = fa_icon 'google', class: 'icon-google'
-
-
+          = link_to user_facebook_omniauth_authorize_path, method: :post do
+            = fa_icon 'facebook-square', class: 'icon-facebook'
+            %p.btn-default.btn-facebook Facebookで登録する
+          = link_to user_google_omniauth_authorize_path, method: :post do
+            = fa_icon 'google', class: 'icon-google'
+            %p.btn-default.btn-google Googleで登録する
   .top-footer
     = render './devise/shared/top-footer'
