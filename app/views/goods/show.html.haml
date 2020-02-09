@@ -147,13 +147,13 @@
           %h2
             = "#{@good.user.nickname}さんのその他の出品"
         .relation-item__exhibitions__image
-          = render "user_other_product"
+          = render partial: 'user_other_product', collection: @user_good, as: "good"
 
     .relation-item__exhibitions
       .relation-item__exhibitions__title
         %h2
           = "#{@good.brand}のその他の商品"
       .relation-item__exhibitions__image
-        = render "brand_other_product"
+        = render partial: 'brand_other_product', collection: @brand_good, as: "good"
 
   = render "goods/footer"
