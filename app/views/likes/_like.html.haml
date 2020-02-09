@@ -1,9 +1,9 @@
-.like-link{:id => "like-link-#{good.id}"}
+.like-link{id: "like-link-#{good.id}"}
   - if current_user.likes.find_by(good_id: good.id)
     = link_to good_like_path(good.id), method: :delete, remote: true do
       .iine__button
-        ❤️#{good.likes.count}
+        ❤️いいね#{good.likes.count}
   - else
     = link_to good_likes_path(good.id), method: :post, remote: true do
       .iine__button
-        ♡️#{good.likes.count}
+        ♡️いいね#{good.likes.count}
