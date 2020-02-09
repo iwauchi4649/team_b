@@ -9,8 +9,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by(good_id: params[:good_id], user_id: current_user.id)
-    if @like.user_id == current_user.id
-      @like.destroy
+    if @like.user_id == current_user.id && @like.destroy
       redirect_back(fallback_location: root_path)
     else
       render "show"
