@@ -1,9 +1,7 @@
 class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show]
-  # before_action :set_category, only: [:show]
   before_action :get_category, only: [:show, :edit]
-  # before_action :set_user, only: [:show]
 
   def new
     @good = Good.new
@@ -103,8 +101,4 @@ class GoodsController < ApplicationController
     @child_category = @grand_category.parent
     @prent_category = @child_category.parent
   end
-
-  # def set_user
-  #   @user = User.includes(:goods).find(current_user) if user_signed_in?
-  # end
 end

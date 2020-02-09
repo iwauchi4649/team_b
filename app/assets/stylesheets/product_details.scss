@@ -146,7 +146,7 @@
 
       &__box {
         display: inline-block;
-        padding: 8px 16px;
+        padding: 0 16px;
         border-radius: 40px;
         -webkit-transition: all ease-out .3s;
         transition: all ease-out .3s;
@@ -172,7 +172,6 @@
       }
     }
     &__right {
-      margin: 8px 0 0;
       float: right;
 
       a {
