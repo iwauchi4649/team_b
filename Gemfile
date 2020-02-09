@@ -88,7 +88,7 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
-gem 'phony_rails' 
+gem 'phony_rails'
 gem 'payjp'
 gem 'ancestry'
 gem 'fog-aws'
@@ -99,3 +99,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
 end
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2'
