@@ -28,6 +28,12 @@ crumb :logout do
 end
 
 # サンプル
+crumb :personal do
+  link "本人情報", personal_path
+  parent :mypage
+end
+
+# サンプル
 # crumb :sample do
 #   link "サンプル", sample_path
 #   parent : 

@@ -1,0 +1,8 @@
+- @brand_good.each do |good|
+  .relation-item__exhibitions__image__box
+    = link_to good_path(good) do
+      .relation-item__exhibitions__image__box__top-image
+        = image_tag good.photos.first.image.url
+      .relation-item__exhibitions__image__box__under-text
+        %span
+          = good.name

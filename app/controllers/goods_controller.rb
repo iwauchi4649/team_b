@@ -1,5 +1,6 @@
 class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
+  before_action :get_category, only: [:show, :edit]
 
   def new
     @good = Good.new
@@ -36,10 +37,16 @@ class GoodsController < ApplicationController
 
   def create
     @good = Good.new(good_params)
-    if @good.save!
-      redirect_to root_path
-    else
-      render :new
+    respond_to do |format|
+      if @good.save!
+          params[:good_photos][:image].each do |image|
+            @good.photos.create(image: image, good_id: @good.id)
+          end
+        format.html{redirect_to root_path}
+      else
+        @good.photos.build
+        format.html{render action: 'new'}
+      end
     end
   end
 
@@ -93,10 +100,33 @@ class GoodsController < ApplicationController
     @nike = Good.where(brand:"ナイキ").order('id DESC')
   end
 
+  def show
+    @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
+    @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
+  end
+
+  def destroy
+    @good = Good.find_by(id: params[:id])
+    if @good.user_id == current_user.id && @good.destroy
+      redirect_to(root_path)
+      else
+        render "show"
+      end
+  end
   private
 
   def good_params
-    params.require(:good).permit(:user_id, :category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:id, :image]).merge(user_id: current_user.id)
+    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def set_good
+    @good = Good.includes([:user, :photos, :category,]).find(params[:id])
+  end
+
+  def get_category
+    @grand_category = Category.find(@good.category_id,)
+    @child_category = @grand_category.parent
+    @prent_category = @child_category.parent
   end
 
   def set_good
