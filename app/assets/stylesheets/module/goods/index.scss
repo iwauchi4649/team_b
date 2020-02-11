@@ -1,3 +1,17 @@
+
+@media screen and (max-width:639px) {
+  /*スマホ用のcssを記述*/
+  li{
+    color: red;}
+  }
+
+@media only screen and (min-width:640px) and (max-width:1023px) {
+/*tablet用のcssを記述*/
+}
+    
+@media screen and (min-width:1024px) {
+/*pc用のcssを記述*/
+}
 .main {
   position: relative;
   min-height: 100%;

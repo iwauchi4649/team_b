@@ -1,3 +1,15 @@
+@media screen and (max-width:639px) {
+  /*スマホ用のcssを記述*/
+  
+  }
+
+@media only screen and (min-width:640px) and (max-width:1023px) {
+/*tablet用のcssを記述*/
+}
+    
+@media screen and (min-width:1024px) {
+/*pc用のcssを記述*/
+}
 // new.html.hamlの複数画像出品意外の部分
 body{
   background-color: #f3f0f0;
@@ -14,7 +26,7 @@ body{
 
         h2{
           padding: 32px 8px;
-          font-size: 22px;
+          font-size: 137.5%;
           font-weight: bold;
           line-height: 1.5;
           text-align: center;
