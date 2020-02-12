@@ -20,14 +20,19 @@ class GoodsController < ApplicationController
   def create
     @good = Good.new(good_params)
     respond_to do |format|
-      if @good.save!
-          params[:good_photos][:image].each do |image|
-            @good.photos.create(image: image, good_id: @good.id)
-          end
-        format.html{redirect_to root_path}
+      if params[:good_photos][:image].nil
+        if @good.save
+            params[:good_photos][:image].each do |image|
+              @good.photos.create(image: image, good_id: @good.id)
+            end
+          format.html{redirect_to root_path}
+        else
+          @good.photos.build
+          format.html{redirect_to root_path}
+        end
       else
         @good.photos.build
-        format.html{render action: 'new'}
+        format.html{redirect_to root_path}
       end
     end
   end
@@ -98,7 +103,7 @@ class GoodsController < ApplicationController
   private
 
   def good_params
-    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:image,:good_id]).merge(user_id: current_user.id)
   end
 
   def set_good
