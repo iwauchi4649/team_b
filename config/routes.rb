@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
-    }
+  get "card/new"
+  get "card/show"
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks",
+                          registrations: "users/registrations" }
 
   devise_scope :user do
     get "new_top", to: "users/registrations#new_top"
@@ -40,11 +41,19 @@ Rails.application.routes.draw do
 
   post "likes/:good_id/create", to: "likes#create", constraints: { good_id: /\d+/ }, as: :likes_create
   post "likes/:good_id/delete", to: "likes#delete", constraints: { good_id: /\d+/ }, as: :likes_delete
-  post 'goods/:id/destroy' => 'goods#destroy'
+  post "goods/:id/destroy" => "goods#destroy"
   root "goods#index"
 
   resources :users, only: [:show, :edit, :update]
   resources :goods, only: [:new, :create, :show] do
     resources :likes, only: [:create, :destroy]
+  end
+
+  resources :card, only: [:new, :show] do
+    collection do
+      post "show", to: "card#show"
+      post "pay", to: "card#pay"
+      post "delete", to: "card#delete"
+    end
   end
 end
