@@ -20,7 +20,7 @@ class GoodsController < ApplicationController
   def create
     @good = Good.new(good_params)
     respond_to do |format|
-      if params[:good_photos][:image].nil
+      if (params[:good_photos][:image]).length != 0
         if @good.save
             params[:good_photos][:image].each do |image|
               @good.photos.create(image: image, good_id: @good.id)
