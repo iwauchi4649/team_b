@@ -2,6 +2,7 @@ class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show]
   before_action :get_category, only: [:show, :edit]
+  before_action :index_category_set, only: :index
 
   def new
     @good = Good.new
@@ -33,13 +34,13 @@ class GoodsController < ApplicationController
   end
 
   def index
-    # レディース新着アイテム
-    # 写真とgood_idを紐付ける
-    @lady_category_id = Category.find_by(name: "レディース").indirect_ids
-    @lady_goods = Good.where(category_id: @lady_category_id).order('id DESC')
-    @lady_goods_id = Good.where(category_id: @lady_category_id).pluck(:id)
-    # nameとfee用
-    @lady_photo = Photo.where(good_id: @lady_goods_id).limit(10).order('id DESC')
+    # # レディース新着アイテム
+    # # 写真とgood_idを紐付ける
+    # @lady_category_id = Category.find_by(name: "レディース").indirect_ids
+    # @lady_goods = Good.where(category_id: @lady_category_id).order('id DESC')
+    # @lady_goods_id = Good.where(category_id: @lady_category_id).pluck(:id)
+    # # nameとfee用
+    # @lady_photo = Photo.where(good_id: @lady_goods_id).limit(10).order('id DESC')
 
     # メンズ新着アイテム
     @man_category_id = Category.find_by(name: "メンズ").indirect_ids
@@ -110,4 +111,18 @@ class GoodsController < ApplicationController
     @child_category = @grand_category.parent
     @prent_category = @child_category.parent
   end
+
+  def index_category_set
+    array = [1, 2, 3, 4]
+    for num in array do
+      search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
+      ids = []
+      search_anc.each do |i|
+        ids << i[:id]
+      end
+      goods = Good.where(category_id: ids).order("id DESC").limit(10)
+      instance_variable_set("@cat_no#{num}", goods)
+    end
+  end
+
 end
