@@ -73,14 +73,16 @@ class GoodsController < ApplicationController
   end
   
   def search
-    @goods = Post.search(params[:search])
-    # @goodsは次に紹介するjbuilderで必要になるインスタンス変数
     @goods = Good.where('name LIKE(?)', "%#{params[:keyword]}%")
     respond_to do |format|
-      format.html 
+      format.html #htmlを読み込んであげないとエラーが出るのでしっかりと記述
       format.json 
     end
   end
+
+  def search_result
+  end
+  
   private
 
   def good_params

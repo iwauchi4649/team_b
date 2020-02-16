@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :goods do
     collection do
       get 'search'
+      get 'search_result'
       get "get_category_children", defaults: { format: "json" }
       get "get_category_grandchildren", defaults: { format: "json" }
     end

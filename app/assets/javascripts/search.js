@@ -1,33 +1,55 @@
-$('#searching-form').on('keyup', function(e){
-  var input = $("#searching-form").val();
 
-  $.ajax({
-      type: 'GET',                // HTTPメソッドはGETで
-      url:  '/posts',             // /usersのURLに (これによりusersコントローラのindexアクションが起動)
-      data: { keyword: input},    // keyword: inputを送信する
-      dataType: 'json'            // サーバから値を返す際はjsonである
-  })
+$(document).on('turbolinks:load', function(){
+// searching-formを定義するよ
+const inputForm = $('#searching-form');
+// location.hrefはURLの取得、画面遷移
+const url = location.href;
+// .result ul を定義
+const searchResult = $('.result ul');
 
-  .done(function(users){                // usersにjson形式のuser変数が代入される。複数形なので配列型で入ってくる
+function builtHTML(data){
+    let html = `
+    <li>${data.name}</li>
+    `
+    searchResult.append(html);
+    }
 
-      if (input.length === 0) {         // フォームの文字列長さが0であれば、インクリメンタルサーチ結果を表示しないようにする
-          $('#user-search-result').empty();
+    function NoResult(message){
+    let html = `
+    <li>${message}</li>
+    `
+    searchResult.append(html);
+}
+
+    // フォームに入力すると発火する
+    inputForm.on('keyup', function(){
+        const target = $(this).val();
+        search(target);
+    });
+
+    // ajax処理
+    function search(target){
+    $.ajax({
+        type: 'GET',
+        url: 'goods/search',
+        data: {keyword: target},
+        dataType: 'json'
+    })
+    .done(function(data){
+        searchResult.empty(); //再度検索した際に前のデータを消す処理
+        if (data.length === 0){
+            searchResult.empty();
         }
-
-      else if (input.length !== 0){     // 値が等しくないもしくは型が等しくなければtrueを返す。
-          $('#user-search-result').empty();
-          users.forEach(function(user){ // users情報をひとつずつとりだしてuserに代入
-              appendUser(user)
-          });
-      }
-
-      else {
-          $('#user-search-result').empty(); // ユーザーが見つからなければ「見つからない」を返す。
-          appendErrMsgToHTML("一致するユーザーが見つかりません");
-      }
-  })
-
-  .fail(function() {
-      alert('ユーザー検索に失敗しました');
-  });
+        else if(data.length !== 0) {
+        data.forEach(function(data) { //dataは配列型に格納されているのでEach文で回す
+            builtHTML(data)
+        });
+        } else  {
+        NoResult('該当する商品はありません')
+        }
+    })
+    .fail(function(data){
+        alert('非同期通信に失敗しました');
+    })
+    }
 });

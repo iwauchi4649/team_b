@@ -1,0 +1,91 @@
+.main__header
+  - if user_signed_in?
+    = render "main_header_after"
+  - else
+    = render 'main_header_before'
+.search-container.l-container.clearflex
+  .l-content
+    .hidden-large.search-nav.clearflex
+  .l-side
+    = form_tag "#" do
+      .search-sort
+        .form-group
+          .select.wrap
+          = fa_icon "#"
+          = select_tag "#", {}
+      .search-dropdown-content.search-extend
+        %h3.visible-large 商品検索
+        .form-group
+          %label
+            = fa_icon "icon-plus"
+            %span キーワードを検索する
+            %input.input-default
+        .form-group
+          %label
+            = fa_icon "icon-list"
+            %span カテゴリーを選択する
+          .select-wrap
+            = fa_icon "icon-arrow-bottom"
+            %select.select-default
+        .form-group.search-extend
+          %label
+            = fa_icon "icon-tag"
+            %span ブランド名から探す
+          %input.input-default
+        .form-group
+          %label
+            = fa_icon "icon-size"      
+            %span サイズを指定する
+          .select-wrap
+            = fa_icon "icon-arrow-bottom"
+            %select.select-default
+        .form-group.search-price
+          %label
+            = fa_icon "icon-coin"
+            %span 価格
+          .select-wrap
+            = fa_icon "arrow-down"
+            %select.select-default
+              %option(value="選択してください")
+            %input.input-default
+            %span ~
+            %input.input-default
+              %label
+                = fa_icon "icon-star"
+                %span 商品の状態
+              .div
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label すべて
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label 新品、未使用
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label 未使用に近い
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label 目立った傷や汚れなし
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label やや傷や汚れあり
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label 傷や汚れあり
+                .checkbox-dafault
+                  %input
+                    = fa_icon "icon-check"
+                  %label 全体的に状態が悪い
+        .form-group.clearfix
+          %label
+        .form-group.clearfix
+        .form-group.clearfix
+        .search-extend-btn-empty
+        .search-extend-btn-empty
+
