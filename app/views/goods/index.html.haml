@@ -40,7 +40,7 @@
                 %li.main__contents__center__item__ladies__image__ul__li
                   .main__contents__center__item__ladies__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      -# = image_tag "#{good.image}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__item__ladies__image__ul__li__under-text
@@ -58,7 +58,7 @@
                 %li.main__contents__center__item__mens__image__ul__li
                   .main__contents__center__item__mens__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      -# = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__item__mens__image__ul__li__under-text
@@ -76,7 +76,7 @@
                 %li.main__contents__center__item__electricity__image__ul__li
                   .main__contents__center__item__electricity__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__item__electricity__image__ul__li__under-text
@@ -94,7 +94,7 @@
                 %li.main__contents__center__item__toy__image__ul__li
                   .main__contents__center__item__toy__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__item__toy__image__ul__li__under-text

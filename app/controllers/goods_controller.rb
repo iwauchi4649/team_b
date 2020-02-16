@@ -124,7 +124,7 @@ class GoodsController < ApplicationController
       goods_id = Good.where(category_id: ids).pluck(:id)
       goods_images = []
       goods_id.each do |i|
-        goods_images << Photo.where(good_id: i).first(1)
+        goods_images << Photo.where(good_id: i).order("id DESC")
       end
       instance_variable_set("@cat_no#{num}", goods)
       instance_variable_set("@img_no#{num}", goods_images)
