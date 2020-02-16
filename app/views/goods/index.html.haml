@@ -72,7 +72,7 @@
               もっと見る
           .main__contents__center__item__electricity__image
             %ul.main__contents__center__item__electricity__image__ul
-              - @electricity_photo.zip(@electricity_goods) do |photo, good|
+              - @cat_no3.zip(@img_no3) do |good,photo|
                 %li.main__contents__center__item__electricity__image__ul__li
                   .main__contents__center__item__electricity__image__ul__li__top-image
                     = link_to good_path(good.id) do
@@ -90,7 +90,7 @@
               もっと見る
           .main__contents__center__item__toy__image
             %ul.main__contents__center__item__toy__image__ul
-              - @hobby_photo.zip(@hobby_goods) do |photo, good|
+              - @cat_no4.zip(@img_no4) do |good,photo|
                 %li.main__contents__center__item__toy__image__ul__li
                   .main__contents__center__item__toy__image__ul__li__top-image
                     = link_to good_path(good.id) do
@@ -124,11 +124,11 @@
               もっと見る
           .main__contents__center__brand__chanel__image
             %ul.main__contents__center__brand__chanel__image__ul
-              - @chanel.zip(@photo_chanel_id) do |good, photo|
+              - @brand_noシャネル.zip(@img_noシャネル) do |good,photo|
                 %li.main__contents__center__brand__chanel__image__ul__li
                   .main__contents__center__brand__chanel__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__brand__chanel__image__ul__li__under-text
@@ -142,11 +142,11 @@
               もっと見る
           .main__contents__center__brand__vuitton__image
             %ul.main__contents__center__brand__vuitton__image__ul
-              - @vuitton.zip(@photo_vuitton_id) do |good, photo|
+              - @brand_noルイヴィトン.zip(@img_noルイヴィトン) do |good,photo|
                 %li.main__contents__center__brand__vuitton__image__ul__li
                   .main__contents__center__brand__vuitton__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__brand__vuitton__image__ul__li__under-text
@@ -160,11 +160,11 @@
               もっと見る
           .main__contents__center__brand__supreme__image
             %ul.main__contents__center__brand__supreme__image__ul
-              - @supreme.zip(@photo_supreme_id) do |good, photo|
+              - @brand_noシュプリーム.zip(@img_noシュプリーム) do |good,photo|
                 %li.main__contents__center__brand__supreme__image__ul__li
                   .main__contents__center__brand__supreme__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
                   .main__contents__center__brand__supreme__image__ul__li__under-text
@@ -178,16 +178,16 @@
               もっと見る
           .main__contents__center__brand__nike__image
             %ul.main__contents__center__brand__nike__image__ul
-              - @nike.zip(@photo_nike_id) do |good, photo|
+              - @brand_noナイキ.zip(@img_noナイキ) do |good,photo|
                 %li.main__contents__center__brand__nike__image__ul__li
                   .main__contents__center__brand__nike__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{photo[0].image.url}"
                       %area-label
                         = "¥#{good.fee}"
-                    .main__contents__center__brand__nike__image__ul__li__under-text
-                      %span
-                        = good.name
+                  .main__contents__center__brand__nike__image__ul__li__under-text
+                    %span
+                      = good.name
 
   -# 出品ボタン
   .main__exhibit-btn
