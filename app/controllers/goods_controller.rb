@@ -16,14 +16,64 @@ class GoodsController < ApplicationController
     @category_child = Category.find(@category_id).parent
     @category_grandchildren_array = @category_child.children.pluck(:name, :id)
     @category_grandchild = Category.find(@category_id)
+    
+    gon.good = @good
+    gon.good_images = Photo.where(good_id: @good.id).pluck(:image)
+    @images = Photo.where(good_id: @good.id).pluck(:image)
+
+    # @item.item_imagse.image_urlをバイナリーデータにしてビューで表示できるようにする
+    require 'base64'
+
+    gon.good_images_binary_datas = []
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+                             region: 'ap-northeast-1',
+                             access_key_id: Rails.application.credentials.aws[:access_key_id],
+                             secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+                             )
+      @images.each do |image|
+        binary_data = client.get_object(bucket: 'teamb', key: image.image_url.file.path).body.read
+        gon.good_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    else
+      @images.each do |image|
+        binary_data = File.read(image.image_url.file.file)
+        gon.good_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    end
   end
 
   def update
-    @good.update(good_params)
-    if @good.save!
-      redirect_to root_path
+    ids = @images.map{|image| image.id }
+    # 登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
+    exist_ids = registered_image_params[:ids].map(&:to_i)
+    # 登録済画像が残っていない場合(配列に０が格納されている)、配列を空にする
+    exist_ids.clear if exist_ids[0] == 0
+
+    if (exist_ids.length != 0 || new_image_params[:images][0] != " ") && @good.update(good_params)
+
+      # 登録済画像のうち削除ボタンをおした画像を削除
+      unless ids.length == exist_ids.length
+        # 削除する画像のidの配列を生成
+        delete_ids = ids - exist_ids
+        delete_ids.each do |id|
+          @good.good_images.find(id).destroy
+        end
+      end
+
+      # 新規登録画像があればcreate
+      unless new_image_params[:images][0] == " "
+        new_image_params[:images].each do |image|
+          @images.create(image_url: image, item_id: @good.id)
+        end
+      end
+
+      flash[:notice] = '編集が完了しました'
+      redirect_to good_path(@good), data: {turbolinks: false}
+
     else
-      render :edit
+      flash[:alert] = '未入力項目があります'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -121,6 +171,10 @@ class GoodsController < ApplicationController
 
   def set_good
     @good = Good.includes([:user, :photos, :category,]).find(params[:id])
+  end
+
+  def registered_image_params
+    params.require(:registered_images_ids).permit({ids: []})
   end
 
   def get_category
