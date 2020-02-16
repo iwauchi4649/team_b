@@ -1,6 +1,6 @@
 .wrapper
   .header
-    = render 'top-header'
+    = render 'devise/shared/top-header'
 
   .purchase-main
     .purchase-main__container
@@ -11,17 +11,19 @@
           = image_tag "sample.jpg", size: "100x100", class: "logo"
         .purchase-main__container__content__text
           %ul
-            %li Ruby on Rails 5
-            %li ¥ 2500 （税込）送料込み
+            %li
+              = @good.name
+            %li
+              = "¥ #{@good.fee}（税込）送料込み"
       .purchase-main__container__content
         %ul.price
           %li.purchase-main__container__content__price
             支払い金額
           %li.purchase-main__container__content__money
-            ¥ 2500
+            = "¥ #{@good.fee}"
           %li.purchase-main__container__content__point
             =check_box_tag :check1
-            =label_tag :check1, "ポイントを使用（所持ポイント：P0）"
+            =label_tag :check1, "ポイントを使用（所持ポイント：P#{@good.user.point}）"
       .purchase-main__container__content
         %ul.purchase-main__container__content__info
           %li 支払い方法
@@ -33,21 +35,13 @@
       .purchase-main__container__content
         %ul.purchase-main__container__content__info
           %li 配送先
-          %li 〒555-5555
+          %li "〒#{@addrees.potal_code}"
           %li 大阪府大阪市中央区
           %li 目流狩 太郎
         =link_to "変更する", "#", class: 'change'
       .purchase-main__container__content
-        .btn-default 購入する
-
-
-
-
-
-
-
-
-
+        = form_tag(action: :pay, method: :post) do
+          %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_e579b1891a89f25b71a557c8"}
 
   .top-footer
-    = render 'top-footer'
+    = render 'devise/shared/top-footer'

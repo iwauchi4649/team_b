@@ -62,11 +62,19 @@ Rails.application.routes.draw do
   end
 
   # 商品購入
-  resources :purchase, only: [:index] do
+  # resources :purchase, only: [:index] do
+  #   collection do
+  #     get "index", to: "purchase#index"
+  #     post "pay", to: "purchase#pay"
+  #     get "done", to: "purchase#done"
+  #   end
+  # end
+
+  resources :goods do
     collection do
-      get "index", to: "purchase#index"
-      post "pay", to: "purchase#pay"
-      get "done", to: "purchase#done"
+      get "purchase/:id" => "goods#purchase", as: "purchase"
+      post "pay/:id" => "goods#pay", as: "pay" #httpメソッドはpostなので注意
+      get "done" => "goods#done", as: "done"
     end
   end
 end
