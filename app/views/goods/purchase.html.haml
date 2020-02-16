@@ -35,9 +35,12 @@
       .purchase-main__container__content
         %ul.purchase-main__container__content__info
           %li 配送先
-          %li "〒#{@addrees.potal_code}"
-          %li 大阪府大阪市中央区
-          %li 目流狩 太郎
+          %li
+            = "〒 #{@address.potal_code}"
+          %li
+            = @address.municipalties
+          %li
+            = @good.user.nickname
         =link_to "変更する", "#", class: 'change'
       .purchase-main__container__content
         = form_tag(action: :pay, method: :post) do

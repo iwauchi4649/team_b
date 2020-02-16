@@ -2,6 +2,10 @@ class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show, :purchase, :pay]
   before_action :get_category, only: [:show, :edit]
+  before_action :set_address, only: [:purchase, :pay]
+
+  def done
+  end
 
   def new
     @good = Good.new
@@ -101,15 +105,14 @@ class GoodsController < ApplicationController
 
   def pay
     @good = Good.find(params[:id])
+    @good.update(buyer_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     charge = Payjp::Charge.create(
     amount: @good.fee,
     card: params['payjp-token'],
     currency: 'jpy'
     )
-  end
-
-  def done
+    redirect_to done_goods_path
   end
 
   private
@@ -122,8 +125,12 @@ class GoodsController < ApplicationController
     @good = Good.includes([:user, :photos, :category]).find(params[:id])
   end
 
-  def adsress_params
+  def address_params
     params.require(:address).permit(:user_id, :banchi, :potal_code, :municipalties, :buildname).merge(user_id: current_user.id)
+  end
+
+  def set_address
+    @address = Address.find(params[:id])
   end
 
   def get_category

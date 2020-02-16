@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     collection do
       get "get_category_children", defaults: { format: "json" }
       get "get_category_grandchildren", defaults: { format: "json" }
+      get "done" => "goods#done", as: "done"
+      get "purchase/:id" => "goods#purchase", as: "purchase"
+      post "pay/:id" => "goods#pay", as: "pay" #httpメソッドはpostなので注意
     end
   end
 
@@ -69,12 +72,4 @@ Rails.application.routes.draw do
   #     get "done", to: "purchase#done"
   #   end
   # end
-
-  resources :goods do
-    collection do
-      get "purchase/:id" => "goods#purchase", as: "purchase"
-      post "pay/:id" => "goods#pay", as: "pay" #httpメソッドはpostなので注意
-      get "done" => "goods#done", as: "done"
-    end
-  end
 end
