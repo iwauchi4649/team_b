@@ -2,6 +2,8 @@ class GoodsController < ApplicationController
 
   before_action :set_good, only: [:show]
   before_action :get_category, only: [:show, :edit]
+  before_action :index_category_set, only: :index
+  before_action :index_brand_set, only: :index
 
   def new
     @good = Good.new
@@ -33,32 +35,6 @@ class GoodsController < ApplicationController
   end
 
   def index
-    # レディース新着アイテム
-    # 写真とgood_idを紐付ける
-    @lady_category_id = Category.find_by(name: "レディース").indirect_ids
-    @lady_goods = Good.where(category_id: @lady_category_id).order('id DESC')
-    @lady_goods_id = Good.where(category_id: @lady_category_id).pluck(:id)
-    # nameとfee用
-    @lady_photo = Photo.where(good_id: @lady_goods_id).limit(10).order('id DESC')
-
-    # メンズ新着アイテム
-    @man_category_id = Category.find_by(name: "メンズ").indirect_ids
-    @man_goods = Good.where(category_id: @man_category_id).order('id DESC')
-    @man_goods_id = Good.where(category_id: @man_category_id).pluck(:id)
-    @man_photo = Photo.where(good_id: @man_goods_id).limit(10).order('id DESC')
-
-    # 家電・スマホ・カメラ新着アイテム
-    @electricity_category_id = Category.find_by(name: "家電・スマホ・カメラ").indirect_ids
-    @electricity_goods = Good.where(category_id: @electricity_category_id).order('id DESC')
-    @electricity_goods_id = Good.where(category_id: @electricity_category_id).pluck(:id)
-    @electricity_photo = Photo.where(good_id: @electricity_goods_id).limit(10).order('id DESC')
-
-    # おもちゃ・ホビー・グッズ新着アイテム
-    @hobby_category_id = Category.find_by(name: "おもちゃ・ホビー・グッズ").indirect_ids
-    @hobby_goods = Good.where(category_id: @hobby_category_id).order('id DESC')
-    @hobby_goods_id = Good.where(category_id: @hobby_category_id).pluck(:id)
-    @hobby_photo = Photo.where(good_id: @hobby_goods_id).limit(10).order('id DESC')
-
     # シャネル新着アイテム
     # 写真とgood_idを紐付ける
     @good_chanel_id = Good.where(brand:"シャネル").pluck(:id)
@@ -109,5 +85,38 @@ class GoodsController < ApplicationController
     @grand_category = Category.find(@good.category_id,)
     @child_category = @grand_category.parent
     @prent_category = @child_category.parent
+  end
+
+  def index_category_set
+  array = [1, 2, 3, 4]
+    for num in array do
+      search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
+      ids = []
+      search_anc.each do |i|
+        ids << i[:id]
+      end
+      goods = Good.where(category_id: ids).order("id DESC").limit(10)
+      goods_id = Good.where(category_id: ids).pluck(:id)
+      goods_images = []
+      goods_id.each do |i|
+        goods_images << Photo.where(good_id: i).order("id DESC")
+      end
+      instance_variable_set("@cat_no#{num}", goods)
+      instance_variable_set("@img_no#{num}", goods_images)
+    end
+  end
+
+  def index_brand_set
+    array = ["シャネル","ルイヴィトン","シュプリーム","ナイキ"]
+      for string in array do
+        brands = Good.where(brand: string).order("id DESC").limit(10)
+        brands_id = Good.where(brand: string).pluck(:id)
+        brands_images = []
+        brands_id.each do |i|
+          brands_images << Photo.where(good_id: i).order("id DESC")
+      end
+      instance_variable_set("@brand_no#{string}", brands)
+      instance_variable_set("@img_no#{string}", brands_images)
+    end
   end
 end
