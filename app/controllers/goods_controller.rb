@@ -19,10 +19,10 @@ class GoodsController < ApplicationController
     
     gon.good = @good
     gon.good_images = Photo.where(good_id: @good.id).pluck(:image)
-    @images = Photo.where(good_id: @good.id).pluck(:image)
 
     # @item.item_imagse.image_urlをバイナリーデータにしてビューで表示できるようにする
     require 'base64'
+    require 'aws-sdk'
 
     gon.good_images_binary_datas = []
     if Rails.env.production?
@@ -31,14 +31,13 @@ class GoodsController < ApplicationController
                              access_key_id: Rails.application.credentials.aws[:access_key_id],
                              secret_access_key: Rails.application.credentials.aws[:secret_access_key],
                              )
-      @images.each do |image|
+      gon.good_images.each do |image|
         binary_data = client.get_object(bucket: 'teamb', key: image.image_url.file.path).body.read
-        gon.good_images_binary_datas << Base64.strict_encode64(binary_data)
+        gon.good_images_binary_datas << Base64.strict_encode64(image)
       end
     else
-      @images.each do |image|
-        binary_data = File.read(image.image_url.file.file)
-        gon.good_images_binary_datas << Base64.strict_encode64(binary_data)
+      gon.good_images.each do |image|
+        gon.good_images_binary_datas << Base64.encode64(image)
       end
     end
   end
