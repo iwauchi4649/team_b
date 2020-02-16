@@ -113,7 +113,7 @@ class GoodsController < ApplicationController
   end
 
   def index_category_set
-    array = [1, 2, 3, 4]
+  array = [1, 2, 3, 4]
     for num in array do
       search_anc = Category.where('ancestry LIKE(?)', "#{num}/%")
       ids = []
@@ -121,8 +121,13 @@ class GoodsController < ApplicationController
         ids << i[:id]
       end
       goods = Good.where(category_id: ids).order("id DESC").limit(10)
+      goods_id = Good.where(category_id: ids).pluck(:id)
+      goods_images = []
+      goods_id.each do |i|
+        goods_images << Photo.where(good_id: i).first(1)
+      end
       instance_variable_set("@cat_no#{num}", goods)
+      instance_variable_set("@img_no#{num}", goods_images)
     end
   end
-
 end

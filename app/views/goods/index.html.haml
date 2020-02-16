@@ -36,7 +36,7 @@
               もっと見る
           .main__contents__center__item__ladies__image
             %ul.main__contents__center__item__ladies__image__ul
-              - @cat_no1.each do |good|
+              - @cat_no1.zip(@img_no1) do |good,photo|
                 %li.main__contents__center__item__ladies__image__ul__li
                   .main__contents__center__item__ladies__image__ul__li__top-image
                     = link_to good_path(good.id) do
@@ -54,7 +54,7 @@
               もっと見る
           .main__contents__center__item__mens__image
             %ul.main__contents__center__item__mens__image__ul
-              - @cat_no2.each do |good|
+              - @cat_no2.zip(@img_no2) do |good,photo|
                 %li.main__contents__center__item__mens__image__ul__li
                   .main__contents__center__item__mens__image__ul__li__top-image
                     = link_to good_path(good.id) do
