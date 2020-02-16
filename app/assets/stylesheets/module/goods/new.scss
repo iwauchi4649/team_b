@@ -5,7 +5,7 @@
   display: flex;
 
   //プレビュー表示欄のCSS
-  #preview {
+  #preview , #preview2{
     display: flex;
 
     .img_view {
@@ -46,7 +46,7 @@
     }
 
   //投稿クリックエリアのCSS
-  .dropzone-area{
+  .dropzone-area {
     margin-bottom: 10px;
     width: 620px;
 
@@ -79,48 +79,6 @@
       }
     }
   }
-
-  //プレビュー表示欄のCSS
-  #preview2 {
-    display: flex;
-
-    .img_view {
-      height: 162px;
-      width: 112px;
-      margin: 0 15px 10px 0;
-
-        img{
-          width: 112px;
-          height: 112px;
-        }
-      }
-
-      .btn_wrapper {
-        display: flex;
-        text-align: center;
-
-        .btn.edit {
-          color: #00b0ff;
-          width: 50%;
-          height: 50px;
-          line-height: 50px;
-          border: 1px solid #eee;
-          background: #f5f5f5;
-          cursor: pointer;
-        }
-
-        .btn.delete {
-          color: #00b0ff;
-          width: 50%;
-          height: 50px;
-          line-height: 50px;
-          border: 1px solid #eee;
-          background: #f5f5f5;
-          cursor: pointer;
-        }
-      }
-    }
-
   //投稿クリックエリアのCSS
   .dropzone-area2{
     display: none;
