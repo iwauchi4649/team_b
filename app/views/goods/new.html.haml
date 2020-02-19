@@ -11,22 +11,18 @@
             %h3.bigger 出品画像
             %span 必須
           %p.discription 最大10枚までアップロードできます
-
-          -# ここからが複数画像出品の部分です
+          
           = f.fields_for :photos do |image|
             .dropzone-container
-              #preview
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, multiple: true, name: 'good_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ここをクリックしてください
-            .dropzone-container
-              #preview2
-              .dropzone-area2
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  %p ここをクリックしてください
-          -# 複数画像出品終わり
+              -# 写真のプレビューとインプットボタンのul
+              %ul#previews
+                %li.input
+                  -# 画像を取り込むインプットボタン
+                  %label.upload-label
+                    .upload-label__text
+                      クリックしてファイルをアップロード
+                      .input-area
+                        = image.file_field :image, class: "hidden image_upload"
 
         .upload-box
           .upload-box__head

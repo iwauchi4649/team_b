@@ -12,20 +12,23 @@
             %span 必須
           %p.discription 最大10枚までアップロードできます
 
-          -# ここからが複数画像出品の部分です
-          = f.fields_for :photos do |image|
-            .dropzone-container
-              #preview
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, multiple: true, name: 'good_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ここをクリックしてください
-            .dropzone-container
-              #preview2
-              .dropzone-area2
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  %p ここをクリックしてください
+          .dropzone-container
+            %ul#previews
+              = f.fields_for :photos do |p|
+                - @good.photos.each_with_index do |img, i|
+                  %li.image-preview
+                    %label.upload-label{style:"display: none;"}
+                      .upload-label__text
+                        クリックしてファイルをアップロード
+                        .input-area
+                          = p.file_field :name, value: img.image ,class: "hidden image_upload"
+                          = p.hidden_field :id, value: img.id, name:"good[photo][#{i}]"
+                    .image-preview__wapper
+                      = image_tag img.image.url, class:"preview"
+                    .image-preview_btn
+                      .image-preview_btn_edit 編集
+                      .image-preview_btn_delete 削除
+                      
         .upload-box
           .upload-box__head
             %h3.smaller 商品名
