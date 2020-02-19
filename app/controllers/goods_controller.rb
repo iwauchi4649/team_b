@@ -76,27 +76,7 @@ class GoodsController < ApplicationController
   end
 
   def index
-    # シャネル新着アイテム
-    # 写真とgood_idを紐付ける
-    @good_chanel_id = Good.where(brand:"シャネル").pluck(:id)
-    @photo_chanel_id = Photo.where(good_id: @good_chanel_id).limit(10).order('id DESC')
-    # nameとfee用
-    @chanel = Good.where(brand:"シャネル").order('id DESC')
-
-    # ルイヴィトン新着アイテム
-    @good_vuitton_id = Good.where(brand:"ルイヴィトン").pluck(:id)
-    @photo_vuitton_id = Photo.where(good_id: @good_vuitton_id).limit(10).order('id DESC')
-    @vuitton = Good.where(brand:"ルイヴィトン").order('id DESC')
-
-    # シュプリーム新着アイテム
-    @good_supreme_id = Good.where(brand:"シュプリーム").pluck(:id)
-    @photo_supreme_id = Photo.where(good_id: @good_supreme_id).limit(10).order('id DESC')
-    @supreme = Good.where(brand:"シュプリーム").order('id DESC')
-
-    # ナイキ新着アイテム
-    @good_nike_id = Good.where(brand:"ナイキ").pluck(:id)
-    @photo_nike_id = Photo.where(good_id: @good_nike_id).limit(10).order('id DESC')
-    @nike = Good.where(brand:"ナイキ").order('id DESC')
+    
   end
 
   def show
@@ -145,13 +125,7 @@ class GoodsController < ApplicationController
         ids << i[:id]
       end
       goods = Good.where(category_id: ids).order("id DESC").limit(10)
-      goods_id = Good.where(category_id: ids).pluck(:id)
-      goods_images = []
-      goods_id.each do |i|
-        goods_images << Photo.where(good_id: i).order("id DESC")
-      end
       instance_variable_set("@cat_no#{num}", goods)
-      instance_variable_set("@img_no#{num}", goods_images)
     end
   end
 
@@ -159,13 +133,7 @@ class GoodsController < ApplicationController
     array = ["シャネル","ルイヴィトン","シュプリーム","ナイキ"]
       for string in array do
         brands = Good.where(brand: string).order("id DESC").limit(10)
-        brands_id = Good.where(brand: string).pluck(:id)
-        brands_images = []
-        brands_id.each do |i|
-          brands_images << Photo.where(good_id: i).order("id DESC")
-      end
-      instance_variable_set("@brand_no#{string}", brands)
-      instance_variable_set("@img_no#{string}", brands_images)
+        instance_variable_set("@brand_no#{string}", brands)
     end
   end
 end
