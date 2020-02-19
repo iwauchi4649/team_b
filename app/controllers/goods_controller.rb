@@ -151,13 +151,7 @@ class GoodsController < ApplicationController
         ids << i[:id]
       end
       goods = Good.where(category_id: ids).order("id DESC").limit(10)
-      goods_id = Good.where(category_id: ids).pluck(:id)
-      goods_images = []
-      goods_id.each do |i|
-        goods_images << Photo.where(good_id: i).order("id DESC")
-      end
       instance_variable_set("@cat_no#{num}", goods)
-      instance_variable_set("@img_no#{num}", goods_images)
     end
   end
 
@@ -165,13 +159,7 @@ class GoodsController < ApplicationController
     array = ["シャネル","ルイヴィトン","シュプリーム","ナイキ"]
       for string in array do
         brands = Good.where(brand: string).order("id DESC").limit(10)
-        brands_id = Good.where(brand: string).pluck(:id)
-        brands_images = []
-        brands_id.each do |i|
-          brands_images << Photo.where(good_id: i).order("id DESC")
-      end
-      instance_variable_set("@brand_no#{string}", brands)
-      instance_variable_set("@img_no#{string}", brands_images)
+        instance_variable_set("@brand_no#{string}", brands)
     end
   end
 end
