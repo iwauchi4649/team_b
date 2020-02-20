@@ -14,7 +14,7 @@
 
           .dropzone-container
             %ul#previews
-              = f.fields_for :photos do |p|
+              = f.fields_for :photo do |p|
                 - @good.photos.each_with_index do |img, i|
                   %li.image-preview
                     %label.upload-label{style:"display: none;"}

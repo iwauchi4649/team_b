@@ -33,7 +33,7 @@ class GoodsController < ApplicationController
           #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
           # @product.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
           before_images_ids.each do |before_img_id|
-            Photo.find(before_img_id).destroy unless update_image_ids.include?("#{before_img_id}") 
+            Photo.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
           end
         else
           # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
@@ -62,16 +62,8 @@ class GoodsController < ApplicationController
 
   def create
     @good = Good.new(good_params)
-    respond_to do |format|
-      if @good.save!
-          params[:good_photos][:image].each do |image|
-            @good.photos.create(image: image, good_id: @good.id)
-          end
-        format.html{redirect_to root_path}
-      else
-        @good.photos.build
-        format.html{render action: 'new'}
-      end
+    if @good.save!
+      redirect_to root_path
     end
   end
 
@@ -95,7 +87,7 @@ class GoodsController < ApplicationController
   private
 
   def good_params
-    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:good).permit(:category_id, :brand, :name, :condition, :discription, :size, :delivery_type, :prefecture, :day, :fee, photos_attributes: [:id, :image]).merge(user_id: current_user.id)
   end
 
   def set_good

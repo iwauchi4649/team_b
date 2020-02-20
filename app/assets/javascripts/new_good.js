@@ -148,8 +148,8 @@ $(document).on('turbolinks:load', function(){
         //nameの番号を更新するために、現在の番号を除去
         $(input).removeAttr('name');
         $(input).attr({
-          name:"product[images_attributes][" + num + "][name]",
-          id:"product_images_attributes_" + num + "_name"
+          name:"good[photos_attributes][" + num + "][image]",
+          id:"good_photos_attributes_" + num + "_image"
         });
       });
     })
