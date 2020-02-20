@@ -21,8 +21,8 @@ class GoodsController < ApplicationController
   end
 
   def update
-    # each do で並べた画像が image
-    # 新しくinputに追加された画像が image_attributes
+    # each do で並べた画像が photo
+    # 新しくinputに追加された画像が photos_attributes
     # この二つがない時はupdateしない
     if params[:good].keys.include?("photo") || params[:good].keys.include?("photos_attributes") 
       if @good.valid?
