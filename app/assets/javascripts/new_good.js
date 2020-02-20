@@ -1,32 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  // 下記はedit用です。できれば別ファイルで作成することを推奨。バグの元
-  var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">クリックしてファイルをアップロード<div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
-  $ul = $('#previews')
-  $lis = $ul.find('.image-preview');
-  $input = $ul.find('.input');
-  if($input.length == 0){
-    if($lis.length <= 4 ){
-      $ul.append(append_input)
-      $('#previews .input').css({
-        'width': `calc(100% - (20% * ${$lis.length}))`
-      })
-    }
-    else if($lis.length == 5 ){
-      $ul.append(append_input)
-      $('#previews .input').css({
-        'width': `100%`
-      })
-    }
-    else if($lis.length <= 9 ){
-      $ul.append(append_input)
-      $('#previews .input').css({
-        'width': `calc(100% - (20% * (${$lis.length} - 5 )))`
-      })
-    }
-  }
-
-  //newにおいては、下記が本題
-
   // プレビュー機能
   //'change'イベントでは$(this)で要素が取得できないため、 'click'イベントを入れた。
   //これにより$(this)で'input'を取得することができ、inputの親要素である'li'まで辿れる。
@@ -69,11 +41,8 @@ $(document).on('turbolinks:load', function(){
       $li.addClass('image-preview'); // inputのクラスからプレビュー用のクラスに変更した
       $lis = $ul.find('.image-preview'); // クラス変更が完了したところで、プレビューの数を数える。 
       $('#previews li').css({
-        'width': `112px`
+        'width': `114px`
       })
-
-
-
 
       //"ul"に新しい"li(inputボタン)"を追加させる。
       if($lis.length <= 4 ){
