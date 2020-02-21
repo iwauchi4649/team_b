@@ -48,7 +48,7 @@ class GoodsController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+      redirect_back(fallback_location: root_path, alert: '画像がありません')
     end
   end
 
@@ -67,10 +67,10 @@ class GoodsController < ApplicationController
         @good.save
         redirect_to root_path
       else
-        redirect_to new_good_path
+        redirect_back(fallback_location: root_path, alert: '未入力項目があるか、入力された値が正しくありません。')
       end
     else
-      redirect_to new_good_path
+      redirect_back(fallback_location: root_path, alert: '画像がありません')
     end
   end
 
