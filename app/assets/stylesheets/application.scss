@@ -1,15 +1,18 @@
 @import "./mixin/reset";
 @import "./mixin/color";
 @import "./mixin/background-color";
+@import "./mixin/flash";
 @import "font-awesome";
 // goodsで使用するscss
 @import "module/goods/index";
 @import "module/goods/exhibition";
+@import "module/goods/new";
 // 共通で使用するscss
 @import "module/partials/footer";
 @import "module/partials/main_header_after";
 @import "module/partials/pan_bar";
 @import "module/partials/main_exbit-btn";
+
 // 以下はカテゴリーまだ
 @import "./mypage";
 @import "./top.scss";

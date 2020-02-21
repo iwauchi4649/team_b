@@ -14,18 +14,31 @@
   &__content {
     margin: 16px 0 0;
     display: inline-block;
+    width: 700px;
+    position: relative;
 
     &__photo {
-      min-width: 300px;
-      max-width: 300px;
-      min-height: 375px;
       position: relative;
       background: #fafafa;
       float: left;
-      margin-left: 20px;
+
+      img {
+        width: 300px;
+        height: 300px;
+      }
 
       .logo {
         padding-top: 40px;
+      }
+    }
+
+    &__child-photo {
+      display: inline-block;
+      position: absolute;
+      top: 300px;
+      left: 0;
+      img {
+        width: 70px;
       }
     }
 
@@ -133,7 +146,7 @@
 
       &__box {
         display: inline-block;
-        padding: 8px 16px;
+        padding: 0 16px;
         border-radius: 40px;
         -webkit-transition: all ease-out .3s;
         transition: all ease-out .3s;
@@ -159,7 +172,6 @@
       }
     }
     &__right {
-      margin: 8px 0 0;
       float: right;
 
       a {
@@ -309,7 +321,6 @@
   margin: 0 auto;
 
   &__exhibitions {
-    margin-bottom: 40px;
 
     &__title {
       font-size: 22px;
@@ -319,24 +330,29 @@
 
     &__image {
       width: auto;
+      position: relative;
+      margin-bottom: 30px;
 
       &__box {
         width: 220px;
-        margin: 0 20px 20px 0;
         position: relative;
+        display: inline-block;
+        top: 0;
+        margin: 20px 20px 20px 0;
+
 
         &__top-image {
           visibility: visible;
           transition: all 0.5s ease 0s;
           opacity: 1;
-          width: 240px;
+          width: 220px;
           padding: 10px;
           box-sizing: border-box;
           position: relative;
 
           img {
             width: 220px;
-            margin: 0 20px 20px 0;
+            height: 220px;
           }
         }
         &__under-text {

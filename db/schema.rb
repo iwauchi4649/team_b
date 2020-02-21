@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_122513) do
+ActiveRecord::Schema.define(version: 2020_02_07_103153) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_122513) do
     t.integer "fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count"
     t.index ["category_id"], name: "index_goods_on_category_id"
     t.index ["user_id"], name: "index_goods_on_user_id"
   end
@@ -94,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_122513) do
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "good_id"
-    t.integer "like", null: false
+    t.integer "like"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["good_id"], name: "index_likes_on_good_id"

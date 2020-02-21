@@ -1,0 +1,1 @@
+$(".item-button-container__left").html("#{escape_javascript(render partial: 'like', locals: { good: @good, goods: @goods, likes: @likes, like: @like})}")

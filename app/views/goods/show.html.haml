@@ -1,0 +1,163 @@
+.wrapper
+  .main__header
+    = render "goods/main_header_after.html.haml"
+
+  .item-container
+    %h1.item-container__item-name
+      = @good.name
+    .item-container__content
+      - @good.photos.each do |i|
+        - if i.image.present?
+          .item-container__content__photo
+            = image_tag i.image.url
+          .item-container__content__child-photo
+            = image_tag i.image.url size: "70x70"
+      
+      %table.item-container__content__details
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              = @good.user.nickname
+              %div
+                .item-user-ratings
+                  = fa_icon 'smile-o', class: "icon-good"
+                  %span 31
+                .item-user-ratings
+                  = fa_icon 'meh-o', class: "icon-good"
+                  %span 1
+                .item-user-ratings
+                  = fa_icon 'meh-o', class: "icon-good"
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              = @prent_category.name
+              = @child_category.name
+              = @grand_category.name
+          %tr
+            %th ブランド
+            %td
+              = @good.brand
+          %tr
+            %th 商品の状態
+            %td
+              = @good.condition
+          %tr
+            %th 配送料の負担
+            %td
+              = @good.delivery_type
+          %tr
+            %th 配送の方法
+            %td 未定
+          %tr
+            %th 配送元の地域
+            %td
+              = @good.prefecture
+          %tr
+            %th 発送日の目安
+            %td
+              = @good.day
+    - if user_signed_in? && current_user.id == @good.user_id
+      = link_to("/goods/#{@good.id}/destroy",{method:"post"}) do
+        %button.btn.btn-outline-primary{type: "button"}
+          %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
+          削除
+      = link_to("/goods/#{@good.id}/edit",{method:"get"}) do
+        %button.btn.btn-outline-primary{type: "button"}
+          %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
+          編集
+    .item-container__price.text-center
+      %span.item-container__price__box
+        = "¥#{@good.fee}"
+      %span.item-container__price__tax （税込）
+      %span.item-container__price__shipping 送料込み
+    .text-center
+      .sales-point-message
+        = "P#{@good.user.point}をお持ちです"
+    .item-container__buy-btn
+      = link_to "購入画面に進む", "#"
+
+    .item-container__description
+      %p.item-container__description__inner
+        = @good.discription
+    .item-container__button
+      .item-container__button__left
+        = render partial: 'likes/like', locals: { good: @good, goods: @goods, likes: @likes, like: @like}
+      .item-container__button__left__box.item-button-report
+        = fa_icon "flag"
+        = link_to "不適切な商品の報告"
+      .item-container__button__right
+        = fa_icon "lock"
+        = link_to "あんしん・あんぜんへの取り組み"
+
+  .item-message
+    .item-message__container
+      .item-message__container__content
+        %ul.message-contents
+          %li.clearfix
+            .message-user
+              %figure
+                = image_tag "/no.png", class: "message-user-icon"
+            .message-body
+              .message-body__text
+                値下げして〜
+              .message-body__time
+                %time.message-body__time__day-before
+                = fa_icon "clock-o"
+                %span 1日前
+            .icon-balloon
+          %li.clearfix
+            .message-user
+              %figure
+                = image_tag "/no.png", class: "message-user-icon"
+            .message-body
+              .message-body__text
+                やだよ
+              .message-body__time
+                %time.message-body__time__day-before
+                = fa_icon "clock-o"
+                %span 1日前
+      .item-message__container__content
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.textarea-default
+        %button.message-submit-btn
+          %span コメントする
+
+
+  %ul.item-link.clearfix
+    %li.item-link__prev
+      = fa_icon "chevron-left", class: "arrow"
+      = link_to "PHP", "#"
+    %li.item-link__next
+      = link_to "HTML", "#"
+      = fa_icon "chevron-right", class: "arrow"
+
+  .item-sns
+    %ul.item-sns__box
+      %li
+        = fa_icon "facebook-square", class: "sns-icon"
+      %li
+        = fa_icon "twitter-square", class: "sns-icon"
+      %li
+        = fa_icon "address-book", class: "sns-icon"
+      %li
+        = fa_icon "paypal", class: "sns-icon"
+
+  .relation-item
+    - if @user_good.present?
+      .relation-item__exhibitions
+        .relation-item__exhibitions__title
+          %h2
+            = "#{@good.user.nickname}さんのその他の出品"
+        .relation-item__exhibitions__image
+          = render partial: 'user_other_product', collection: @user_good, as: "good"
+
+    .relation-item__exhibitions
+      .relation-item__exhibitions__title
+        %h2
+          = "#{@good.brand}のその他の商品"
+      .relation-item__exhibitions__image
+        = render partial: 'brand_other_product', collection: @brand_good, as: "good"
+
+  = render "goods/footer"
