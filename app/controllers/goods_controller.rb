@@ -19,21 +19,15 @@ class GoodsController < ApplicationController
 
   def create
     @good = Good.new(good_params)
-    respond_to do |format|
-      if (params[:good_photos][:image]).length != 0
-        if @good.save
-            params[:good_photos][:image].each do |image|
-              @good.photos.create(image: image, good_id: @good.id)
-            end
-          format.html{redirect_to root_path}
-        else
-          @good.photos.build
-          format.html{redirect_to root_path}
-        end
+    if @good.photos.length != 0
+      if @good.valid?
+        @good.save
+        redirect_to root_path
       else
-        @good.photos.build
-        format.html{redirect_to root_path}
+        redirect_to new_good_path
       end
+    else
+      redirect_to new_good_path
     end
   end
 
