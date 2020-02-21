@@ -11,19 +11,24 @@
             %h3.bigger 出品画像
             %span 必須
           %p.discription 最大10枚までアップロードできます
-          
-          = f.fields_for :photos do |image|
-            .dropzone-container
-              -# 写真のプレビューとインプットボタンのul
-              %ul#previews
-                %li.input
-                  -# 画像を取り込むインプットボタン
-                  %label.upload-label
-                    .upload-label__text
-                      クリックしてファイルをアップロード
-                      .input-area
-                        = image.file_field :image, class: "hidden image_upload"
 
+          .dropzone-container
+            %ul#previews
+              = f.fields_for :photo do |p|
+                - @good.photos.each_with_index do |img, i|
+                  %li.image-preview
+                    %label.upload-label{style:"display: none;"}
+                      .upload-label__text
+                        クリックしてファイルをアップロード
+                        .input-area
+                          = p.file_field :name, value: img.image ,class: "hidden image_upload"
+                          = p.hidden_field :id, value: img.id, name:"good[photo][#{i}]"
+                    .image-preview__wapper
+                      = image_tag img.image.url, class:"preview"
+                    .image-preview_btn
+                      .image-preview_btn_edit 編集
+                      .image-preview_btn_delete 削除
+                      
         .upload-box
           .upload-box__head
             %h3.smaller 商品名
@@ -49,10 +54,31 @@
             .upload-box__input
               .upload-box__input__select-category
                 .parents
-                  = f.select :category, @category_parent_array, {prompt: "--"}, {class: 'category', id: 'parent_category'}
+                  = f.select :category, @category_parents_array, {selected: @category_parent.name}, {class: 'category', id: 'parent_category'}
                 .children
+                  .children__box
+                    = f.select :category, @category_children_array, {selected: @category_child.name}, {class: 'category', id: 'child_category'}
                 .grandchildren
+                  .grandchildren__box
+                    = f.select :category_id, @category_grandchildren_array, {selected: @category_grandchild.name}, {class: 'category', id: 'grandchild_category'}
             .append-box
+              .append-box__wrapper
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    サイズ
+                  %span
+                    必須
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.select :size, [["S", "S"], ["M", "M"],["L", "L"]], {selected: @good.size}
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    ブランド
+                  %span.brand-span
+                    任意
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.text_field :brand, placeholder: "例)シャネル"
             .upload-box__head.upload-box__condition
               %h3.smaller 商品の状態
               %span 必須
@@ -121,8 +147,7 @@
               また、出品をもちまして
               = link_to "加盟店規約", "#"
               に同意したことになります。
-            = f.submit '出品する', class: "submit-btn"
-            = link_to "もどる", "#", class: "gray-btn"
-
+            = f.submit '変更する', class: "submit-btn"
+            = link_to "キャンセル", "#", class: "gray-btn"
 .top-footer
   = render './devise/shared/top-footer'
