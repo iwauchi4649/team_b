@@ -63,6 +63,10 @@
         %button.btn.btn-outline-primary{type: "button"}
           %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
           削除
+      = link_to("/goods/#{@good.id}/edit",{method:"get"}) do
+        %button.btn.btn-outline-primary{type: "button"}
+          %span.glyphicon.glyphicon-trash{"aria-hidden" => "true"}
+          編集
     .item-container__price.text-center
       %span.item-container__price__box
         = "¥#{@good.fee}"
