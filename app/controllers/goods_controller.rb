@@ -72,15 +72,14 @@ class GoodsController < ApplicationController
     @nike = Good.where(brand:"ナイキ").order('id DESC')
   end
   
-  def search
-    @goods = Good.where('name LIKE(?)', "%#{params[:keyword]}%")
-    respond_to do |format|
-      format.html #htmlを読み込んであげないとエラーが出るのでしっかりと記述
-      format.json 
-    end
-  end
 
   def search_result
+    # Viewのformで取得したデータをモデルに渡す。
+    if params[:name].present?
+      @goods = Good.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @goods = Good.none
+    end
   end
   
   private

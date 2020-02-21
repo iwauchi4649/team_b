@@ -6,6 +6,13 @@
 .search-container.l-container.clearflex
   .l-content
     .hidden-large.search-nav.clearflex
+      %ul
+        - @goods.each do |p|
+          %li
+            = link_to p.name
+            = p.fee
+            - p.photos.each do |photo|
+              = image_tag photo.image.url
   .l-side
     = form_tag "#" do
       .search-sort
@@ -13,8 +20,9 @@
           .select.wrap
           = fa_icon "#"
           = select_tag "#", {}
+          %option(value="並び替え")
       .search-dropdown-content.search-extend
-        %h3.visible-large 商品検索
+        %h3.visible-large 詳細検索
         .form-group
           %label
             = fa_icon "icon-plus"
@@ -84,8 +92,38 @@
                   %label 全体的に状態が悪い
         .form-group.clearfix
           %label
+            = fa_icon "truck"
+            %span 配送料の負担
+          .div
+            .checkbox-default
+              %input
+              %i
+              %label(for="shipping_payer_all") すべて
+            .checkbox-default
+              %input
+              %i
+              %label(for="shipping_payer_id[1]") 着払い（購入者負担）
+            .checkbox-default
+              %input
+              %i
+              %label(for="shipping_payer_id[2]") 送料込み（出品者負担）
         .form-group.clearfix
-        .form-group.clearfix
-        .search-extend-btn-empty
-        .search-extend-btn-empty
-
+          %label
+            = fa_icon "cart"
+            %span 販売状況
+          .div
+            .checkbox-default
+              %input
+              %i
+              %label(for="status_all") すべて
+            .checkbox-default
+              %input
+              %i
+              %label(for="status_on_sale") 販売中
+            .checkbox-default
+              %input
+              %i
+              %label(for="status_trading_sold_out") 売り切れ
+        .search-extend-btn.clearfix
+          .btn-default.btn-gray クリア
+          %button.btn-default.btn-red 完了

@@ -6,11 +6,11 @@ class Good < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :evalutions, dependent: :destroy
   accepts_nested_attributes_for :photos , allow_destroy: true
-  def self.search(search)
+  def self.search_result(search)
     if search
-      Post.where(['content LIKE ?', "%#{search}%"])
+      Good.where(['name LIKE ?', "%#{search}%"])
     else
-      Post.all
+      Good.all
     end
   end
 end
