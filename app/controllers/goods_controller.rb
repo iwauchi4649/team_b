@@ -82,7 +82,17 @@ class GoodsController < ApplicationController
     @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
     @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
+  
 
+  def search_result
+    # Viewのformで取得したデータをモデルに渡す。
+    if params[:name].present?
+      @goods = Good.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @goods = Good.none
+    end
+  end
+  
   def destroy
     @good = Good.find_by(id: params[:id])
     if @good.user_id == current_user.id && @good.destroy

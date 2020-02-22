@@ -6,6 +6,14 @@ class Good < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :evalutions, dependent: :destroy
+  accepts_nested_attributes_for :photos , allow_destroy: true
+  def self.search_result(search)
+    if search
+      Good.where(['name LIKE ?', "%#{search}%"])
+    else
+      Good.all
+    end
+  end
   accepts_nested_attributes_for :photos, allow_destroy: true
   validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   validates :name, presence: true
