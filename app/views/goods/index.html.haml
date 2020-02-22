@@ -34,18 +34,17 @@
               レディース新着アイテム
             %a
               もっと見る
-          -# 10個超えた時の処理をどうするか
           .main__contents__center__item__ladies__image
             %ul.main__contents__center__item__ladies__image__ul
-              - @lady_photo.zip(@lady_goods) do |photo, good|
+              - @cat_no1.each do |good|
                 %li.main__contents__center__item__ladies__image__ul__li
                   .main__contents__center__item__ladies__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__item__ladies__image__ul__li__under-text
-                      %span
+                        = "¥#{good.fee}"
+                  .main__contents__center__item__ladies__image__ul__li__under-text
+                    %span
                       = good.name
         .main__contents__center__item__mens
           .main__contents__center__item__mens__title
@@ -55,16 +54,16 @@
               もっと見る
           .main__contents__center__item__mens__image
             %ul.main__contents__center__item__mens__image__ul
-              - @man_photo.zip(@man_goods) do |photo, good|
+              - @cat_no2.each do |good|
                 %li.main__contents__center__item__mens__image__ul__li
                   .main__contents__center__item__mens__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__item__mens__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__item__mens__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__item__electricity
           .main__contents__center__item__electricity__title
             %h1
@@ -73,16 +72,16 @@
               もっと見る
           .main__contents__center__item__electricity__image
             %ul.main__contents__center__item__electricity__image__ul
-              - @electricity_photo.zip(@electricity_goods) do |photo, good|
+              - @cat_no3.each do |good|
                 %li.main__contents__center__item__electricity__image__ul__li
                   .main__contents__center__item__electricity__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__item__electricity__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__item__electricity__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__item__toy
           .main__contents__center__item__toy__title
             %h1
@@ -91,16 +90,16 @@
               もっと見る
           .main__contents__center__item__toy__image
             %ul.main__contents__center__item__toy__image__ul
-              - @hobby_photo.zip(@hobby_goods) do |photo, good|
+              - @cat_no4.each do |good|
                 %li.main__contents__center__item__toy__image__ul__li
                   .main__contents__center__item__toy__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__item__toy__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__item__toy__image__ul__li__under-text
+                    %span
+                      = good.name
       -# 人気のブランド
       .main__contents__center__popular-brand
         %h1
@@ -125,16 +124,16 @@
               もっと見る
           .main__contents__center__brand__chanel__image
             %ul.main__contents__center__brand__chanel__image__ul
-              - @chanel.zip(@photo_chanel_id) do |good, photo|
+              - @brand_noシャネル.each do |good|
                 %li.main__contents__center__brand__chanel__image__ul__li
                   .main__contents__center__brand__chanel__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      =image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__brand__chanel__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__brand__chanel__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__vuitton
           .main__contents__center__brand__vuitton__title
             %h1
@@ -143,16 +142,16 @@
               もっと見る
           .main__contents__center__brand__vuitton__image
             %ul.main__contents__center__brand__vuitton__image__ul
-              - @vuitton.zip(@photo_vuitton_id) do |good, photo|
+              - @brand_noルイヴィトン.each do |good|
                 %li.main__contents__center__brand__vuitton__image__ul__li
                   .main__contents__center__brand__vuitton__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__brand__vuitton__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__brand__vuitton__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__supreme
           .main__contents__center__brand__supreme__title
             %h1
@@ -161,16 +160,16 @@
               もっと見る
           .main__contents__center__brand__supreme__image
             %ul.main__contents__center__brand__supreme__image__ul
-              - @supreme.zip(@photo_supreme_id) do |good, photo|
+              - @brand_noシュプリーム.each do |good|
                 %li.main__contents__center__brand__supreme__image__ul__li
                   .main__contents__center__brand__supreme__image__ul__li__top-image
                     = link_to good_path(good.id) do
-                      = image_tag "#{photo.image.url}"
+                      = image_tag "#{good.photos[0].image.url}"
                       %area-label
-                        = good.fee
-                    .main__contents__center__brand__supreme__image__ul__li__under-text
-                      %span
-                        = good.name
+                        = "¥#{good.fee}"
+                  .main__contents__center__brand__supreme__image__ul__li__under-text
+                    %span
+                      = good.name
         .main__contents__center__brand__nike
           .main__contents__center__brand__nike__title
             %h1
@@ -179,12 +178,13 @@
               もっと見る
           .main__contents__center__brand__nike__image
             %ul.main__contents__center__brand__nike__image__ul
-              - @nike.zip(@photo_nike_id) do |good, photo|
+              - @brand_noナイキ.each do |good|
                 %li.main__contents__center__brand__nike__image__ul__li
                   .main__contents__center__brand__nike__image__ul__li__top-image
-                    = image_tag "#{photo.image.url}"
-                    %area-label
-                      = "¥#{good.fee}"
+                    = link_to good_path(good.id) do
+                      = image_tag "#{good.photos[0].image.url}"
+                      %area-label
+                        = "¥#{good.fee}"
                   .main__contents__center__brand__nike__image__ul__li__under-text
                     %span
                       = good.name
