@@ -13,6 +13,7 @@ class Good < ApplicationRecord
     else
       Good.all
     end
+  end
   accepts_nested_attributes_for :photos, allow_destroy: true
   validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   validates :name, presence: true
