@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  require "payjp"
   before_action :configure_sign_up_params, only: [:create]
 
   def new
@@ -13,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
-    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"] = { user: @user.attributes }
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @phone = @user.build_phone
     render :new_phone
@@ -26,12 +27,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @phone.errors.full_messages
       render :new_phone and return
     end
-    session["devise.regist_phone"] = {phone: @phone.attributes}
+    session["devise.regist_phone"] = { phone: @phone.attributes }
     session["devise.regist_phone"][:phone]["number"] = params[:phone][:number]
     @address = @user.build_address
     render :new_address
   end
-  
+
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @phone = Phone.new(session["devise.regist_phone"]["phone"])
@@ -40,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
-    session["devise.regist_address"] = {address: @address.attributes}
+    session["devise.regist_address"] = { address: @address.attributes }
     @credit_card = @user.build_credit_card
     render :new_crcard
   end
@@ -49,7 +50,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @phone = Phone.new(session["devise.regist_phone"]["phone"])
     @address = Address.new(session["devise.regist_address"]["address"])
-    @credit_card =CreditCard.new(credit_card_params)
+    @credit_card = CreditCard.new(credit_card_params)
     unless @credit_card.valid?
       flash.now[:alert] = @credit_card.errors.full_messages
       render :new_crcard and return
@@ -59,11 +60,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_credit_card(@credit_card.attributes)
     if @user.save!
       sign_in(:user, @user)
-      redirect_to action: 'done' 
     else
       render :new_crcard
     end
-    
+
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # APIキーの呼び出し
+    if params['payjp_token'].blank? # ここはJavaScriptの.append()内のname属性です
+      render :new_crcard
+    else
+      customer = Payjp::Customer.create(        # customerの定義、ここの情報を元に、カード情報との紐付けがされる
+        description: 'test',                    # なくてもいいです
+        email: current_user.email,              # なくてもいいです
+        card: params['payjp_token'],            # 必須です
+        metadata: {user_id: current_user.id}    # なくてもいいです
+      )
+      @card = Card.new(                  # カードテーブルのデータの作成
+        user_id: current_user.id,        # ここでcurrent_user.idがいるので、前もってsigninさせておく
+        customer_id: customer.id,        # customerは上で定義
+        card_id: customer.default_card   # .default_cardを使うことで、customer定義時に紐付けされたカード情報を引っ張ってくる ここがnullなら上のcustomerのcard: params['payjp_token']が読み込めていないことが多い
+      )
+    end
+      if @card.save
+        redirect_to action: "done"
+      else
+        redirect_to action: "create"
+      end
+
     def done
       sign_in User.find(session[:id]) unless user_signed_in?
     end
@@ -83,14 +105,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def personal
     end
   end
+
   protected
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   end
+
   def phone_params
     params.require(:phone).permit(:number)
   end
-  
+
   def address_params
     params.require(:address).permit(:banchi, :potal_code, :prefectures, :municipalties, :buildname)
   end
