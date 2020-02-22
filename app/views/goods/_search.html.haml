@@ -1,0 +1,5 @@
+.main__header__center__up__form
+  = form_tag('/goods/search_result', method: :get, placeholder:'', class:"main__header__center__up__form__text") do
+    = text_field_tag :name, :'', id:'searching-form', placeholder:'何かお探しですか？', autocomplete:'off'
+    %label.label
+      = fa_icon "search", class:"main__header__center__up__form__search-btn__icon",type:"submit"
