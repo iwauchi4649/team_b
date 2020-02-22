@@ -8,17 +8,20 @@ document.addEventListener(
         let card = {
           number: document.getElementById("card_number").value,
           cvc: document.getElementById("cr-input-form").value,
-          exp_year_month: document.getElementById("exp_year_month").value,
+          exp_month: document.getElementById("exp_month").value,
+          exp_year: document.getElementById("exp_year").value,
         }; //入力されたデータを取得します。
         Payjp.createToken(card, (status, response) => {
           if (status === 200) { //成功した場合
             $("#card_number").removeAttr("name");
             $("#cr-input-form").removeAttr("name");
-            $("#exp_year_month").removeAttr("name"); //データを自サーバにpostしないように削除
+            $("#exp_month").removeAttr("name");
+            $("#exp_year").removeAttr("name");//データを自サーバに保存しないようにname属性を削除
             $("#card_token").append(
-              $('<input type="hidden" name="payjp-token">').val(response.id)
             ); //取得したトークンを送信できる状態にします
-            document.inputForm.submit();
+            var token = response.id;
+            $("#charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token" />').val(token));
+            $("#charge-form").get(0).submit();
             alert("登録が完了しました"); //確認用
           } else {
             alert("カード情報が正しくありません。"); //確認用

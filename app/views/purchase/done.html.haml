@@ -1,3 +1,40 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+.wrapper
+  .header
+    = render 'devise/shared/top-header'
+
+  .purchase-main
+    .purchase-main__container
+      .purchase-main__container__head
+        %h2 購入しました！！
+      .purchase-main__container__content
+        .purchase-main__container__content__image
+          = image_tag "sample.jpg", size: "100x100", class: "logo"
+        .purchase-main__container__content__text
+          %ul
+            %li
+              = @good.name
+            %li
+              = "¥ #{@good.fee}（税込）送料込み"
+      .purchase-main__container__content
+        %ul.price
+          %li.purchase-main__container__content__price
+            購入金額
+          %li.purchase-main__container__content__money
+            = "¥ #{@good.fee}"
+          %li.purchase-main__container__content__point
+      .purchase-main__container__content
+        %ul.purchase-main__container__content__info
+          %li 支払い方法
+          %li クレジットカード
+          %li ********1234
+          %li 有効期限 05/21
+          = fa_icon 'cc-visa', class: 'cc-visa'
+      .purchase-main__container__content
+        %ul.purchase-main__container__content__info
+          %li 配送先
+          %li
+            〒534-0000
+            大阪府大阪市
+
+    .top-footer
+      = render 'devise/shared/top-footer'

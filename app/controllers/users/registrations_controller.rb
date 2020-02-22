@@ -50,14 +50,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @phone = Phone.new(session["devise.regist_phone"]["phone"])
     @address = Address.new(session["devise.regist_address"]["address"])
-    @credit_card = CreditCard.new(credit_card_params)
-    unless @credit_card.valid?
-      flash.now[:alert] = @credit_card.errors.full_messages
-      render :new_crcard and return
-    end
     @user.build_address(@address.attributes)
     @user.build_phone(@phone.attributes)
-    @user.build_credit_card(@credit_card.attributes)
     if @user.save!
       sign_in(:user, @user)
     else
@@ -65,26 +59,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # APIキーの呼び出し
-    if params['payjp_token'].blank? # ここはJavaScriptの.append()内のname属性です
+    if params["payjp_token"].blank? # ここはJavaScriptの.append()内のname属性です
       render :new_crcard
     else
-      customer = Payjp::Customer.create(        # customerの定義、ここの情報を元に、カード情報との紐付けがされる
-        description: 'test',                    # なくてもいいです
+      customer = Payjp::Customer.create( # customerの定義、ここの情報を元に、カード情報との紐付けがされる
+        description: "test",                    # なくてもいいです
         email: current_user.email,              # なくてもいいです
-        card: params['payjp_token'],            # 必須です
-        metadata: {user_id: current_user.id}    # なくてもいいです
+        card: params["payjp_token"],            # 必須です
+        metadata: { user_id: current_user.id }, # なくてもいいです
       )
-      @card = Card.new(                  # カードテーブルのデータの作成
+      @card = Card.new( # カードテーブルのデータの作成
         user_id: current_user.id,        # ここでcurrent_user.idがいるので、前もってsigninさせておく
         customer_id: customer.id,        # customerは上で定義
-        card_id: customer.default_card   # .default_cardを使うことで、customer定義時に紐付けされたカード情報を引っ張ってくる ここがnullなら上のcustomerのcard: params['payjp_token']が読み込めていないことが多い
+        card_id: customer.default_card, # .default_cardを使うことで、customer定義時に紐付けされたカード情報を引っ張ってくる ここがnullなら上のcustomerのcard: params['payjp_token']が読み込めていないことが多い
       )
     end
-      if @card.save
-        redirect_to action: "done"
-      else
-        redirect_to action: "create"
-      end
+    if @card.save
+      redirect_to action: "done"
+    else
+      redirect_to action: "create"
+    end
 
     def done
       sign_in User.find(session[:id]) unless user_signed_in?
@@ -118,9 +112,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:banchi, :potal_code, :prefectures, :municipalties, :buildname)
-  end
-
-  def credit_card_params
-    params.require(:credit_card).permit(:card_number, :expiration_date, :security_code)
   end
 end

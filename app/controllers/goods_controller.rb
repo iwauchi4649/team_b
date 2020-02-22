@@ -1,8 +1,8 @@
 class GoodsController < ApplicationController
 
-  before_action :set_good, only: [:show, :purchase, :pay]
+  before_action :set_good, only: [:show, :purchase, :pay, :done]
   before_action :get_category, only: [:show, :edit]
-  before_action :set_address, only: [:purchase, :pay]
+  before_action :set_address, only: [:pay]
 
   def done
   end

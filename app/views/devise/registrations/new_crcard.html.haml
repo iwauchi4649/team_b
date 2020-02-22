@@ -12,7 +12,7 @@
             .form-group
               = f.label :'カード番号'
               %span.form-required  必須
-              = f.text_field :card_number, autofocus: true, placeholder: "半角数字のみ", id: "card_number", class: 'cr-input-form'
+              = f.text_field :card_number, autofocus: true, placeholder: "半角数字のみ", id: "card_number", name:"card_number", class: 'cr-input-form'
               %ul.error
                 %li#card-error.error__text
                   必須項目です
@@ -21,8 +21,32 @@
             .form-group
               %label(for="payment")  有効期限
               %span.form-required  必須
-              .expiration{name:"exp_year_month", type: "text", id:"exp_year_month"}
-                != sprintf(f.date_select(:expiration_date,with_css_classes:'expiration', order:[:month,:year], use_month_numbers:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+              .expiration
+                %select.select-wrap#exp_month{name: "exp_month", type: "text"}
+                  %option{value: ""} --
+                  %option{value: "01"} 01
+                  %option{value: "02"} 02
+                  %option{value: "03"} 03
+                  %option{value: "04"} 04
+                  %option{value: "05"} 05
+                  %option{value: "06"} 06
+                  %option{value: "07"} 07
+                  %option{value: "08"} 08
+                  %option{value: "09"} 09
+                  %option{value: "10"} 10
+                  %option{value: "11"} 11
+                  %option{value: "12"} 12
+                %p 月
+                %select.select-wrap#exp_year{name: "exp_year", type: "text"}
+                  %option{value: ""} --
+                  %option{value: "2019"} 19
+                  %option{value: "2020"} 20
+                  %option{value: "2021"} 21
+                  %option{value: "2022"} 22
+                  %option{value: "2023"} 23
+                  %option{value: "2024"} 24
+                  %option{value: "2025"} 25
+                %p 年
             .form-group
               = f.label :'セキュリティーコード'
               %span.form-required  必須
