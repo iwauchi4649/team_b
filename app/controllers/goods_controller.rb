@@ -45,7 +45,7 @@ class GoodsController < ApplicationController
             Image.find(before_img_id).destroy 
           end
         end
-        @good.save
+        @good.update(good_params)
         redirect_to root_path, notice: "商品を更新しました"
       else
         redirect_back(fallback_location: root_path, alert: '未入力項目があるか、入力された値が正しくありません。')
