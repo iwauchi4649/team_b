@@ -98,11 +98,15 @@ class GoodsController < ApplicationController
   
   def destroy
     @good = Good.find_by(id: params[:id])
-    if @good.user_id == current_user.id && @good.destroy
-      redirect_to(root_path)
+    if @good.user_id == current_user.id
+      if @good.destroy
+        redirect_to(root_path)
       else
-        render "show"
+        redirect_back(fallback_location: root_path, alert: '不正なアクセスです')
       end
+    else
+      redirect_back(fallback_location: root_path, alert: '不正なアクセスです')
+    end
   end
 
   def purchase
