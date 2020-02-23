@@ -16,6 +16,7 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    @good.update(buyer_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       :amount => @good.fee,          #支払金額を引っ張ってくる
