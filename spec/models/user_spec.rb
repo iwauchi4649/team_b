@@ -8,61 +8,47 @@ describe User do
     it "emailが空では登録できない" do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).not_to include("emailが空です。")
+      expect(user.errors[:email]).to include("can't be blank")
     end
 
     it "nicknameが空では登録できない" do
       user = build(:user, nickname: nil)
       user.valid?
-      expect(user.errors[:nickname]).not_to include("can't be blank")
+      expect(user.errors[:nickname]).to include("can't be blank")
     end
 
-    it "name_fullが空では登録できない" do
-      user = build(:user, name_full: nil)
+    it "firstname_fullが空では登録できない" do
+      user = build(:user, firstname_full: nil)
       user.valid?
-      expect(user.errors[:name_full]).not_to include("can't be blank")
+      expect(user.errors[:firstname_full]).to include("can't be blank")
     end
 
-    it "name_canaが空では登録できない" do
-      user = build(:user, name_cana: nil)
+    it "lastname_fullが空では登録できない" do
+      user = build(:user, lastname_full: nil)
       user.valid?
-      expect(user.errors[:name_cana]).not_to include("can't be blank")
+      expect(user.errors[:lastname_full]).to include("can't be blank")
     end
-
-    it "birth_yearが空では登録できない" do
-      user = build(:user, birth_year: nil)
+    it "firstname_canaが空では登録できない" do
+      user = build(:user, firstname_cana: nil)
       user.valid?
-      expect(user.errors[:birth_year]).not_to include("can't be blank")
+      expect(user.errors[:firstname_cana]).to include("can't be blank")
     end
-
-    it "birth_monthが空では登録できない" do
-      user = build(:user, birth_month: nil)
+    it "lastname_canaが空では登録できない" do
+      user = build(:user, lastname_cana: nil)
       user.valid?
-      expect(user.errors[:birth_month]).not_to include("can't be blank")
+      expect(user.errors[:lastname_cana]).to include("can't be blank")
     end
 
     it "birth_dayが空では登録できない" do
       user = build(:user, birth_day: nil)
       user.valid?
-      expect(user.errors[:birth_day]).not_to include("can't be blank")
-    end
-
-    it "call_numberが空では登録できない" do
-      user = build(:user, call_number: nil)
-      user.valid?
-      expect(user.errors[:call_number]).not_to include("can't be blank")
+      expect(user.errors[:birth_day]).to include("can't be blank")
     end
 
     it "pointが空では登録できない" do
       user = build(:user, point: nil)
       user.valid?
-      expect(user.errors[:point]).not_to include("can't be blank")
-    end
-    
-    it "encrypted_passwordが空では登録できない" do
-      user = build(:user, encrypted_password: nil)
-      user.valid?
-      expect(user.errors[:encrypted_password]).not_to include("空ではできない")
+      expect(user.errors[:point]).to include("can't be blank")
     end
   end
 end

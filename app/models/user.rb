@@ -12,6 +12,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_goods, through: :likes, source: :post
   
+
+  validates :email, presence: true, length: { maximum: 20 }
+  validates :nickname, presence: true, length: { maximum: 40 }
+  validates :firstname_full, presence: true, length: { maximum: 40 }
+  validates :lastname_full, presence: true, length: { maximum: 40 }
+  validates :firstname_cana, presence: true, length: { maximum: 40 }
+  validates :lastname_cana, presence: true, length: { maximum: 40 }
+  validates :birth_day, presence: true
+  validates :point, presence: true
   protected
   #コールバックを受けた時にユーザが既にアプリケーションの中で認知されているかどうかを判断する
   def self.find_for_google(auth)
@@ -32,7 +41,6 @@ class User < ApplicationRecord
   
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
- 
     unless user
       user = User.new(
         uid: auth.uid,
@@ -40,7 +48,7 @@ class User < ApplicationRecord
         email: auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
-       user.save(validate: false)
+      user.save(validate: false)
     end
     user
   end

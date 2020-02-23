@@ -3,16 +3,22 @@ FactoryBot.define do
   factory :user do
       sequence(:email) { |n| "hoge#{n}@example.com"}
       nickname           {Faker::Name.last_name}
-      name_full          {Faker::Name.name}
-      name_cana          {Faker::Name.name}
-      birth_year         {"2000"}
-      birth_month        {"12"}
-      birth_day          {"12"}
-      call_number        {"09012345678"}
-      point              {"0"}
+      firstname_full          {Faker::Name.name}
+      lastname_full          {Faker::Name.name}
+      firstname_cana          {Faker::Name.name}
+      lastname_cana          {Faker::Name.name}
+      birth_day         {2000}
+      point              {0}
       password           {"hogehoge"}
       password_confirmation {"hogehoge"}
-
+      # DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP {nil}
+      created_at         {nil}
+      updated_at         {nil}
+      uid                {nil}
+      provider           {nil}
+      name               {nil}
+      image              {nil}
   end
 
 end
+  
