@@ -12,47 +12,47 @@ class GoodsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
   end
 
-    def edit
-      @category_id = @good.category_id
-      @category_parents_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent = Category.find(@category_id).parent.parent
-      @category_children_array = @category_parent.children.pluck(:name)
-      @category_child = Category.find(@category_id).parent
-      @category_grandchildren_array = @category_child.children.pluck(:name, :id)
-      @category_grandchild = Category.find(@category_id)
-    end
+  def edit
+    @category_id = @good.category_id
+    @category_parents_array = Category.where(ancestry: nil).pluck(:name)
+    @category_parent = Category.find(@category_id).parent.parent
+    @category_children_array = @category_parent.children.pluck(:name)
+    @category_child = Category.find(@category_id).parent
+    @category_grandchildren_array = @category_child.children.pluck(:name, :id)
+    @category_grandchild = Category.find(@category_id)
+  end
 
-    def update
-      # each do で並べた画像が photo
-      # 新しくinputに追加された画像が photos_attributes
-      # この二つがない時はupdateしない
-      if params[:good].keys.include?("photo") || params[:good].keys.include?("photos_attributes") 
-        if @good.valid?
-          if params[:good].keys.include?("photo") 
-          # dbにある画像がedit画面で一部削除してるか確認
-            update_images_ids = params[:good][:photo].values #投稿済み画像 
-            before_images_ids = @good.photos.ids
-            #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
-            # @product.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
-            before_images_ids.each do |before_img_id|
-              Photo.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
-            end
-          else
-            # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
-            # @product.images.destroy = nil と削除されないので、each do で一つずつ削除する
-            before_images_ids.each do |before_img_id|
-              Image.find(before_img_id).destroy 
-            end
+  def update
+    # each do で並べた画像が photo
+    # 新しくinputに追加された画像が photos_attributes
+    # この二つがない時はupdateしない
+    if params[:good].keys.include?("photo") || params[:good].keys.include?("photos_attributes") 
+      if @good.valid?
+        if params[:good].keys.include?("photo") 
+        # dbにある画像がedit画面で一部削除してるか確認
+          update_images_ids = params[:good][:photo].values #投稿済み画像 
+          before_images_ids = @good.photos.ids
+          #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
+          # @product.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
+          before_images_ids.each do |before_img_id|
+            Photo.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
           end
-          @good.update(good_params)
-          redirect_to root_path, notice: "商品を更新しました"
         else
-          render 'edit'
+          # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
+          # @product.images.destroy = nil と削除されないので、each do で一つずつ削除する
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy 
+          end
         end
+        @good.update(good_params)
+        redirect_to root_path, notice: "商品を更新しました"
       else
-        redirect_back(fallback_location: root_path, alert: '画像がありません')
+        render 'edit'
       end
+    else
+      redirect_back(fallback_location: root_path, alert: '画像がありません')
     end
+  end
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children

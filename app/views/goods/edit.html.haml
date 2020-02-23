@@ -1,153 +1,153 @@
-  .wrapper
-    .header
-      = render './devise/shared/top-header'
-  .exhibition 
-    .exhibition__container 
-      .exhibition__container__sell
-        %h2 商品の情報を入力
-        = form_for @good , html: {id: "item-dropzone"} do |f|
-          .upload-box
-            .upload-box__head
-              %h3.bigger 出品画像
-              %span 必須
-            %p.discription 最大10枚までアップロードできます
+.wrapper
+  .header
+    = render './devise/shared/top-header'
+.exhibition 
+  .exhibition__container 
+    .exhibition__container__sell
+      %h2 商品の情報を入力
+      = form_for @good , html: {id: "item-dropzone"} do |f|
+        .upload-box
+          .upload-box__head
+            %h3.bigger 出品画像
+            %span 必須
+          %p.discription 最大10枚までアップロードできます
 
-            .dropzone-container
-              %ul#previews
-                = f.fields_for :photo do |p|
-                  - @good.photos.each_with_index do |img, i|
-                    %li.image-preview
-                      %label.upload-label{style:"display: none;"}
-                        .upload-label__text
-                          クリックしてファイルをアップロード
-                          .input-area
-                            = p.file_field :name, value: img.image ,class: "hidden image_upload"
-                            = p.hidden_field :id, value: img.id, name:"good[photo][#{i}]"
-                      .image-preview__wapper
-                        = image_tag img.image.url, class:"preview"
-                      .image-preview_btn
-                        .image-preview_btn_edit 編集
-                        .image-preview_btn_delete 削除
-                        
-          .upload-box
+          .dropzone-container
+            %ul#previews
+              = f.fields_for :photo do |p|
+                - @good.photos.each_with_index do |img, i|
+                  %li.image-preview
+                    %label.upload-label{style:"display: none;"}
+                      .upload-label__text
+                        クリックしてファイルをアップロード
+                        .input-area
+                          = p.file_field :name, value: img.image ,class: "hidden image_upload"
+                          = p.hidden_field :id, value: img.id, name:"good[photo][#{i}]"
+                    .image-preview__wapper
+                      = image_tag img.image.url, class:"preview"
+                    .image-preview_btn
+                      .image-preview_btn_edit 編集
+                      .image-preview_btn_delete 削除
+                      
+        .upload-box
+          .upload-box__head
+            %h3.smaller 商品名
+            %span 必須
+          .upload-box__input
+            .upload-box__input__text
+              = f.text_field :name, class: "upload-box__input__text__name", placeholder: "商品名 (必須 40文字まで)"
+          
+          .upload-box__head
+            %h3.smaller 商品説明
+            %span 必須
+          .upload-box__input
+            .upload-box__input__text
+              = f.text_area :discription, class: "upload-box__input__text__explain", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
+
+        .upload-box.clearfix
+          %h3.sub-head
+            商品の詳細
+          .upload-box__subcontainer
             .upload-box__head
-              %h3.smaller 商品名
+              %h3.smaller カテゴリー
               %span 必須
             .upload-box__input
-              .upload-box__input__text
-                = f.text_field :name, class: "upload-box__input__text__name", placeholder: "商品名 (必須 40文字まで)"
+              .upload-box__input__select-category
+                .parents
+                  = f.select :category, @category_parents_array, {selected: @category_parent.name}, {class: 'category', id: 'parent_category'}
+                .children
+                  .children__box
+                    = f.select :category, @category_children_array, {selected: @category_child.name}, {class: 'category', id: 'child_category'}
+                .grandchildren
+                  .grandchildren__box
+                    = f.select :category_id, @category_grandchildren_array, {selected: @category_grandchild.name}, {class: 'category', id: 'grandchild_category'}
+            .append-box
+              .append-box__wrapper
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    サイズ
+                  %span
+                    必須
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.select :size, [["S", "S"], ["M", "M"],["L", "L"]], {selected: @good.size}
+                .upload-box__head.upload-box__condition
+                  %h3.smaller
+                    ブランド
+                  %span.brand-span
+                    任意
+                .upload-box__input
+                  .upload-box__input__select
+                    = f.text_field :brand, placeholder: "例)シャネル"
+            .upload-box__head.upload-box__condition
+              %h3.smaller 商品の状態
+              %span 必須
+            .upload-box__input
+              .upload-box__input__select
+                = f.select :condition, [["新品未使用", "新品未使用"], ["新品に近い", "新品に近い"]], {prompt: "--"}
+        .upload-box.clearfix
+          %h3.sub-head
+            発送について
+          .upload-box__subcontainer
+            .upload-box__head
+              %h3.smaller 配送料の負担
+              %span 必須
+            .upload-box__input
+              .upload-box__input__select
+                = f.select :delivery_type, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt: "--"}, {class: 'charge'}
             
             .upload-box__head
-              %h3.smaller 商品説明
+              %h3.smaller 発送元の地域
               %span 必須
             .upload-box__input
-              .upload-box__input__text
-                = f.text_area :discription, class: "upload-box__input__text__explain", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: 5
-
-          .upload-box.clearfix
-            %h3.sub-head
-              商品の詳細
-            .upload-box__subcontainer
+              .upload-box__input__select
+                = f.select :prefecture, [["東京都", "東京都"], ["大阪府", "大阪府"]], {prompt: "--"}, {class: 'place'}
+            .upload-box__head
+              %h3.smaller 発送までの日数
+              %span 必須
+            .upload-box__input
+              .upload-box__input__select
+                = f.select :day, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"]], {prompt: "--"}
+        .upload-box.clearfix
+          %h3.sub-head
+            販売価格(300~9,999,999)
+          .upload-box__subcontainer.price
+            .upload-box__subcontainer__subinner
+              .upload-box__head.price-head
+                %h3.smaller 価格
+                %span 必須
+              .upload-box__input
+                .upload-box__input__fee
+                  %p ¥
+                  = f.text_field :fee, placeholder: "例) 300"
+          .upload-box__subcontainer.tax
+            .upload-box__subcontainer__subinner
               .upload-box__head
-                %h3.smaller カテゴリー
-                %span 必須
-              .upload-box__input
-                .upload-box__input__select-category
-                  .parents
-                    = f.select :category, @category_parents_array, {selected: @category_parent.name}, {class: 'category', id: 'parent_category'}
-                  .children
-                    .children__box
-                      = f.select :category, @category_children_array, {selected: @category_child.name}, {class: 'category', id: 'child_category'}
-                  .grandchildren
-                    .grandchildren__box
-                      = f.select :category_id, @category_grandchildren_array, {selected: @category_grandchild.name}, {class: 'category', id: 'grandchild_category'}
-              .append-box
-                .append-box__wrapper
-                  .upload-box__head.upload-box__condition
-                    %h3.smaller
-                      サイズ
-                    %span
-                      必須
-                  .upload-box__input
-                    .upload-box__input__select
-                      = f.select :size, [["S", "S"], ["M", "M"],["L", "L"]], {selected: @good.size}
-                  .upload-box__head.upload-box__condition
-                    %h3.smaller
-                      ブランド
-                    %span.brand-span
-                      任意
-                  .upload-box__input
-                    .upload-box__input__select
-                      = f.text_field :brand, placeholder: "例)シャネル"
-              .upload-box__head.upload-box__condition
-                %h3.smaller 商品の状態
-                %span 必須
-              .upload-box__input
-                .upload-box__input__select
-                  = f.select :condition, [["新品未使用", "新品未使用"], ["新品に近い", "新品に近い"]], {prompt: "--"}
-          .upload-box.clearfix
-            %h3.sub-head
-              発送について
-            .upload-box__subcontainer
-              .upload-box__head
-                %h3.smaller 配送料の負担
-                %span 必須
-              .upload-box__input
-                .upload-box__input__select
-                  = f.select :delivery_type, [["送料込み", "送料込み"], ["着払い", "着払い"]], {prompt: "--"}, {class: 'charge'}
-              
-              .upload-box__head
-                %h3.smaller 発送元の地域
-                %span 必須
-              .upload-box__input
-                .upload-box__input__select
-                  = f.select :prefecture, [["東京都", "東京都"], ["大阪府", "大阪府"]], {prompt: "--"}, {class: 'place'}
-              .upload-box__head
-                %h3.smaller 発送までの日数
-                %span 必須
-              .upload-box__input
-                .upload-box__input__select
-                  = f.select :day, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"]], {prompt: "--"}
-          .upload-box.clearfix
-            %h3.sub-head
-              販売価格(300~9,999,999)
-            .upload-box__subcontainer.price
-              .upload-box__subcontainer__subinner
-                .upload-box__head.price-head
-                  %h3.smaller 価格
-                  %span 必須
-                .upload-box__input
-                  .upload-box__input__fee
-                    %p ¥
-                    = f.text_field :fee, placeholder: "例) 300"
-            .upload-box__subcontainer.tax
-              .upload-box__subcontainer__subinner
-                .upload-box__head
-                  %h3.sub 販売手数料(10%)
-                %p -             
-            .upload-box__subcontainer.tax
-              .upload-box__subcontainer__subinner
-                .upload-box__head.profit-head
-                  %h3 販売利益
-                %p.profit-hyphen -
-          
-          .upload-box
-            .upload-box__attention
-              %p
-                = link_to "禁止されている出品", "#"
-                、
-                = link_to "行為", "#"
-                を必ずご確認ください。
-              %p 
-                またブランド品でシリアルナンバー等がある場合はご記載ください。
-                = link_to "偽ブランドの販売", "#"
-              %p
-                は犯罪であり処罰される可能性があります。
-              %p
-                また、出品をもちまして
-                = link_to "加盟店規約", "#"
-                に同意したことになります。
-              = f.submit '変更する', class: "submit-btn"
-              = link_to "キャンセル", "#", class: "gray-btn"
-  .top-footer
-    = render './devise/shared/top-footer'
+                %h3.sub 販売手数料(10%)
+              %p -             
+          .upload-box__subcontainer.tax
+            .upload-box__subcontainer__subinner
+              .upload-box__head.profit-head
+                %h3 販売利益
+              %p.profit-hyphen -
+        
+        .upload-box
+          .upload-box__attention
+            %p
+              = link_to "禁止されている出品", "#"
+              、
+              = link_to "行為", "#"
+              を必ずご確認ください。
+            %p 
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "偽ブランドの販売", "#"
+            %p
+              は犯罪であり処罰される可能性があります。
+            %p
+              また、出品をもちまして
+              = link_to "加盟店規約", "#"
+              に同意したことになります。
+            = f.submit '変更する', class: "submit-btn"
+            = link_to "キャンセル", "#", class: "gray-btn"
+.top-footer
+  = render './devise/shared/top-footer'
