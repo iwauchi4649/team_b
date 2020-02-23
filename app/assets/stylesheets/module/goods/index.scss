@@ -320,7 +320,7 @@
               display: flex;
               flex-wrap: wrap;
               margin: -10px;
-
+              
               &__li{
                 visibility: visible;
                 transition: all 0.5s ease 0s;
@@ -328,7 +328,7 @@
                 width: 20%;
                 padding: 10px;
                 box-sizing: border-box;
-
+                
                 &__top-image{
                   bottom: 0;
                   top: 0;
@@ -388,6 +388,7 @@
                   }
                 }
               }
+             
             }
           }
         }
@@ -442,7 +443,6 @@
               display: flex;
               flex-wrap: wrap;
               margin: -10px;
-
               &__li{
                 visibility: visible;
                 transition: all 0.5s ease 0s;

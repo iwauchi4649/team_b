@@ -5,124 +5,129 @@
     = render 'main_header_before'
 .search-container
   .l-content
-    .hidden-large.search-nav.clearflex
-      %ul
+    .main__contents__center__item__electricity__image
+      %ul.main__contents__center__item__electricity__image__ul
         - @goods.each do |p|
-          %li
-            = link_to p.name
-            = p.fee
-            - p.photos.each do |photo|
-              = image_tag photo.image.url
-  .search-side
-    = form_tag "#" do
-      .search-sort
-        .form-group
-          .select-wrap
-            %select.select-default{:name => "sort_order"}
-              %option{:value => ""} 並び替え
-      .search-dropdown-content.search-extend
-        %h3.visible-large 詳細検索
-        .form-group
-          %label
-            = fa_icon "icon-plus"
-            %span キーワードを検索する
-            %input.input-default
-        .form-group
-          %label
-            = fa_icon "icon-list"
-            %span カテゴリーを選択する
-          .select-wrap
-            = fa_icon "icon-arrow-bottom"
-            %select.select-default
-        .form-group.search-extend
-          %label
-            = fa_icon "icon-tag"
-            %span ブランド名から探す
-          %input.input-default
-        .form-group
-          %label
-            = fa_icon "icon-size"      
-            %span サイズを指定する
-          .select-wrap
-            = fa_icon "icon-arrow-bottom"
-            %select.select-default
-        .form-group.search-price
-          %label
-            = fa_icon "icon-coin"
-            %span 価格
-          .select-wrap
-            = fa_icon "arrow-down"
-            %select.select-default
-              %option(value="選択してください")
-            %input.input-default
-            %span ~
-            %input.input-default
-              %label
-                = fa_icon "icon-star"
-                %span 商品の状態
-              .div
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label すべて
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label 新品、未使用
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label 未使用に近い
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label 目立った傷や汚れなし
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label やや傷や汚れあり
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label 傷や汚れあり
-                .checkbox-dafault
-                  %input
-                    = fa_icon "icon-check"
-                  %label 全体的に状態が悪い
-        .form-group.clearfix
-          %label
-            = fa_icon "truck"
-            %span 配送料の負担
-          .div
-            .checkbox-default
-              %input
-              %i
-              %label(for="shipping_payer_all") すべて
-            .checkbox-default
-              %input
-              %i
-              %label(for="shipping_payer_id[1]") 着払い（購入者負担）
-            .checkbox-default
-              %input
-              %i
-              %label(for="shipping_payer_id[2]") 送料込み（出品者負担）
-        .form-group.clearfix
-          %label
-            = fa_icon "cart"
-            %span 販売状況
-          .div
-            .checkbox-default
-              %input
-              %i
-              %label(for="status_all") すべて
-            .checkbox-default
-              %input
-              %i
-              %label(for="status_on_sale") 販売中
-            .checkbox-default
-              %input
-              %i
-              %label(for="status_trading_sold_out") 売り切れ
-        .search-extend-btn.clearfix
-          .btn-default.btn-gray クリア
-          %button.btn-default.btn-red 完了
+          %li.main__contents__center__item__electricity__image__ul__li#search-li
+            .main__contents__center__item__electricity__image__ul__li__top-image
+              = link_to good_path(p.id) do
+                = image_tag p.photos[0].image.url
+                %area-label
+                  = "¥#{p.fee}"
+            .main__contents__center__item__electricity__image__ul__li__under-text
+              %span
+                = p.name
+    -# 実装する可能性があるため残しておく
+  -# .search-side
+  -#   = form_tag "#" do
+  -#     .search-sort
+  -#       .form-group
+  -#         .select-wrap
+  -#           %select.select-default{:name => "sort_order"}
+  -#             %option{:value => ""} 並び替え
+  -#     .search-dropdown-content.search-extend
+  -#       %h3.visible-large 詳細検索
+  -#       .form-group
+  -#         %label
+  -#           = fa_icon "icon-plus"
+  -#           %span キーワードを検索する
+  -#           %input.input-default
+  -#       .form-group
+  -#         %label
+  -#           = fa_icon "icon-list"
+  -#           %span カテゴリーを選択する
+  -#         .select-wrap
+  -#           = fa_icon "icon-arrow-bottom"
+  -#           %select.select-default
+  -#       .form-group.search-extend
+  -#         %label
+  -#           = fa_icon "icon-tag"
+  -#           %span ブランド名から探す
+  -#         %input.input-default
+  -#       .form-group
+  -#         %label
+  -#           = fa_icon "icon-size"      
+  -#           %span サイズを指定する
+  -#         .select-wrap
+  -#           = fa_icon "icon-arrow-bottom"
+  -#           %select.select-default
+  -#       .form-group.search-price
+  -#         %label
+  -#           = fa_icon "icon-coin"
+  -#           %span 価格
+  -#         .select-wrap
+  -#           = fa_icon "arrow-down"
+  -#           %select.select-default
+  -#             %option(value="選択してください")
+  -#           %input.input-default
+  -#           %span ~
+  -#           %input.input-default
+  -#             %label
+  -#               = fa_icon "icon-star"
+  -#               %span 商品の状態
+  -#             .div
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label すべて
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label 新品、未使用
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label 未使用に近い
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label 目立った傷や汚れなし
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label やや傷や汚れあり
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label 傷や汚れあり
+  -#               .checkbox-dafault
+  -#                 %input
+  -#                   = fa_icon "icon-check"
+  -#                 %label 全体的に状態が悪い
+  -#       .form-group.clearfix
+  -#         %label
+  -#           = fa_icon "truck"
+  -#           %span 配送料の負担
+  -#         .div
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="shipping_payer_all") すべて
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="shipping_payer_id[1]") 着払い（購入者負担）
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="shipping_payer_id[2]") 送料込み（出品者負担）
+  -#       .form-group.clearfix
+  -#         %label
+  -#           = fa_icon "cart"
+  -#           %span 販売状況
+  -#         .div
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="status_all") すべて
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="status_on_sale") 販売中
+  -#           .checkbox-default
+  -#             %input
+  -#             %i
+  -#             %label(for="status_trading_sold_out") 売り切れ
+  -#       .search-extend-btn.clearfix
+  -#         .btn-default.btn-gray クリア
+  -#         %button.btn-default.btn-red 完了
