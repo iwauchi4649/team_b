@@ -1,9 +1,11 @@
 class GoodsController < ApplicationController
-  before_action :set_good, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_good, only: [:show, :purchase, :pay, :done, :edit, :update, :destroy]
   before_action :get_category, only: [:show, :edit]
+  before_action :set_address, only: [:pay]
   before_action :index_category_set, only: :index
   before_action :index_brand_set, only: :index
-
+  
   def new
     @good = Good.new
     @good.photos.build()
@@ -82,7 +84,17 @@ class GoodsController < ApplicationController
     @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
     @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
+  
 
+  def search_result
+    # Viewのformで取得したデータをモデルに渡す。
+    if params[:name].present?
+      @goods = Good.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @goods = Good.none
+    end
+  end
+  
   def destroy
     @good = Good.find_by(id: params[:id])
     if @good.user_id == current_user.id && @good.destroy
@@ -91,6 +103,25 @@ class GoodsController < ApplicationController
         render "show"
       end
   end
+
+  def purchase
+  end
+
+  def done
+  end
+  
+  def pay
+    @good = Good.find(params[:id])
+    @good.update(buyer_id: current_user.id)
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    charge = Payjp::Charge.create(
+    amount: @good.fee,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+    redirect_to done_goods_path
+  end
+
   private
 
   def good_params
@@ -98,7 +129,15 @@ class GoodsController < ApplicationController
   end
 
   def set_good
-    @good = Good.includes([:user, :photos, :category,]).find(params[:id])
+    @good = Good.includes([:user, :photos, :category]).find(params[:id])
+  end
+
+  def address_params
+    params.require(:address).permit(:user_id, :banchi, :potal_code, :municipalties, :buildname).merge(user_id: current_user.id)
+  end
+
+  def set_address
+    @address = Address.find(params[:id])
   end
 
   def registered_image_params

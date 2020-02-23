@@ -4,11 +4,7 @@
     .main__header__center__up__mercari-logo
       = link_to root_path do
         =image_tag "main_logo.svg" , size:"134x36"
-    .main__header__center__up__form
-      %input{type:"search" , placeholder: "何かお探しですか？" , class:"main__header__center__up__form__text"}
-      %button.main__header__center__up__form__search-btn{title: "検索", type: "submit"}
-        = link_to "#", class: "main__header__center__up__form__search-btn__icon" do
-          = fa_icon "search"
+    = render 'goods/search'
   -# downはカテゴリー、いいね一覧、お知らせ、やることリスト、マイページ
   .main__header__center__down
     .main__header__center__down__left
