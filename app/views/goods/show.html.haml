@@ -76,8 +76,7 @@
       .sales-point-message
         = "P#{@good.user.point}をお持ちです"
     .item-container__buy-btn
-      = link_to "購入画面に進む", "#"
-
+      = link_to "購入画面に進む", good_purchase_index_path(@good.id)
     .item-container__description
       %p.item-container__description__inner
         = @good.discription
