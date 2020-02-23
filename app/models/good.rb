@@ -15,7 +15,7 @@ class Good < ApplicationRecord
     end
   end
   accepts_nested_attributes_for :photos, allow_destroy: true
-  validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :fee, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "無効な値です"}
   validates :name, presence: true
   validates :discription, presence: true
   validates :condition, presence: true

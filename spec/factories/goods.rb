@@ -10,7 +10,7 @@ FactoryBot.define do
     delivery_type        {"送料込み"}
     prefecture           {"東京都"}
     day                  {"2~3日で発送"}
-    fee                  {"1000"}
+    fee                  {1000}
     brand                {"シャネル"}
   end
 end

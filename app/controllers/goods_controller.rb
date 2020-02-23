@@ -47,7 +47,7 @@ class GoodsController < ApplicationController
         @good.update(good_params)
         redirect_to root_path, notice: "商品を更新しました"
       else
-        render 'edit'
+        redirect_back(fallback_location: root_path, alert: '未入力項目があるか、入力された値が正しくありません。')
       end
     else
       redirect_back(fallback_location: root_path, alert: '画像がありません')
@@ -66,7 +66,7 @@ class GoodsController < ApplicationController
     @good = Good.new(good_params)
     if @good.photos.length != 0
       if @good.valid?
-        @good.save
+        @good.save!
         redirect_to root_path
       else
         redirect_back(fallback_location: root_path, alert: '未入力項目があるか、入力された値が正しくありません。')
