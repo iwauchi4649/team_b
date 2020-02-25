@@ -7,7 +7,7 @@ class PurchaseController < ApplicationController
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "cards", action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY] # APIキーの呼び出し
       #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
@@ -17,7 +17,7 @@ class PurchaseController < ApplicationController
 
   def pay
     @good.update(buyer_id: current_user.id)
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY] # APIキーの呼び出し
     Payjp::Charge.create(
       :amount => @good.fee,          #支払金額を引っ張ってくる
       :customer => @card.customer_id,  #顧客ID
