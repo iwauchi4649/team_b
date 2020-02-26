@@ -180,3 +180,10 @@ class GoodsController < ApplicationController
     end
   end
 end
+
+def correct_user
+  @micropost = current_user.microposts.find_by(id: params[:id])
+    unless @micropost
+      redirect_to root_url
+    end
+end
