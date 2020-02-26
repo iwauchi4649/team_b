@@ -82,6 +82,11 @@ class GoodsController < ApplicationController
   end
 
   def show
+    if user_sign_in?
+      render :show
+    else
+      redirect_to root_path
+    end
     @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
     @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
