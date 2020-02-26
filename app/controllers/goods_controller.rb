@@ -5,6 +5,7 @@ class GoodsController < ApplicationController
   before_action :set_address, only: [:pay]
   before_action :index_category_set, only: :index
   before_action :index_brand_set, only: :index
+  before_action :correct_user, only: [:edit, :update]
   
   def new
     @good = Good.new
@@ -82,7 +83,7 @@ class GoodsController < ApplicationController
   end
 
   def show
-    if user_sign_in?
+    if user_signed_in?
       render :show
     else
       redirect_to root_path
@@ -187,8 +188,9 @@ class GoodsController < ApplicationController
 end
 
 def correct_user
-  @micropost = current_user.microposts.find_by(id: params[:id])
-    unless @micropost
-      redirect_to root_url
+  # URL直打ち防止
+  @microgood = current_user.goods.find_by(id: params[:id])
+    unless @microgood
+      redirect_to root_path
     end
 end
