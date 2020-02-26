@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks",
                                     registrations: "users/registrations" }
-
+  resources :users, only: [:show, :edit, :update]
   devise_scope :user do
     get "new_top", to: "users/registrations#new_top"
     get "addresses", to: "users/registrations#new_address"
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   root "goods#index"
 
   # いいね
-  resources :users, only: [:show, :edit, :update]
+  
   resources :goods, only: [:new, :create, :show] do
     resources :likes, only: [:create, :destroy]
   end

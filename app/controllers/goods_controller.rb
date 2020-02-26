@@ -5,6 +5,8 @@ class GoodsController < ApplicationController
   before_action :set_address, only: [:pay]
   before_action :index_category_set, only: :index
   before_action :index_brand_set, only: :index
+  before_action :redirect_root, only: [:show]
+  
   
   def new
     @good = Good.new
@@ -82,11 +84,6 @@ class GoodsController < ApplicationController
   end
 
   def show
-    if user_signed_in?
-      redirect_to good_path
-    else 
-      redirect_to root_path
-    end
     @user_good = Good.where(user_id: @good.user.id).where.not(id:params[:id]).limit(6)
     @brand_good = Good.where(user_id: @good.user.id).where(brand: @good.brand).where.not(id:params[:id]).limit(6)
   end
@@ -183,5 +180,10 @@ class GoodsController < ApplicationController
         brands = Good.where(brand: string).order("id DESC").limit(10)
         instance_variable_set("@brand_no#{string}", brands)
     end
+  end
+  private
+
+  def redirect_root
+    redirect_to root_path unless user_signed_in?
   end
 end
