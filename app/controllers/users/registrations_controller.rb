@@ -34,6 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_address
+    gon.paykey = Rails.application.credentials.payjp[:PAYJP_KEY]
     @user = User.new(session["devise.regist_data"]["user"])
     @phone = Phone.new(session["devise.regist_phone"]["phone"])
     @address = Address.new(address_params)
@@ -58,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_crcard
     end
 
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"] # APIキーの呼び出し
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY] # APIキーの呼び出し
     if params["payjp_token"].blank? # ここはJavaScriptの.append()内のname属性です
       render :new_crcard
     else
